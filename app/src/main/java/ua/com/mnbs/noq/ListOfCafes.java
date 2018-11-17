@@ -3,11 +3,11 @@ package ua.com.mnbs.noq;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ListOfCaffes extends AppCompatActivity {
+public class ListOfCafes extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_of_caffes);
+        setContentView(R.layout.activity_list_of_cafes);
     }
 }

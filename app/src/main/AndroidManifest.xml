@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListOfCaffes" />
+        <activity android:name=".ListOfCafes" />
         <activity android:name=".ListOfOrders"></activity>
     </application>
 

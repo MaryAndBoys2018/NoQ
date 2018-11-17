@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
         Order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent OpenListOfCaffees = new Intent(MainActivity.this, ListOfCaffes.class);
-                startActivity(OpenListOfCaffees);
+                Intent OpenListOfCafes = new Intent(MainActivity.this, ListOfCafes.class);
+                startActivity(OpenListOfCafes);
 
             }
         });
@@ -29,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         Order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent OpenListofOrders = new Intent(MainActivity.this, ListOfOrders.class);
-                startActivity(OpenListofOrders);
+                Intent OpenListOfOrders = new Intent(MainActivity.this, ListOfOrders.class);
+                startActivity(OpenListOfOrders);
 
             }
         });
