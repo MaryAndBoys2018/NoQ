@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 
 public class readfromfile {
     public static void main(String[] args) {
@@ -17,23 +18,18 @@ public class readfromfile {
 
             //до цього моменту ми записали кафешки й файл
             br = new BufferedReader(new FileReader("test23.txt"));
+            ArrayList<String> arr= new ArrayList();
             String line;
             int k=0;
             while ((line = br.readLine()) != null) {
                 k++;
-                System.out.println(k);
+                arr.add(line);
             }
-            String[] arr = new String[k];
-
-                for (int i=0; i<k; i++)
-                {
-                    //тут якось потрібно присвоїти кожному елементу масиву оукреме слово, типу arr[i] = елемент з файлу
-                }
 
 
             for (int i=0; i<k; i++)
             {
-                System.out.println(arr[i]);
+                System.out.println(arr.get(i));
             }
 
         } catch (IOException e) {
