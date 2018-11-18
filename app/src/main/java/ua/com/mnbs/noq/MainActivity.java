@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         });
         Button myOrders = (Button) findViewById(R.id.myOrders);
 
-        Order.setOnClickListener(new View.OnClickListener() {
+        myOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent OpenListOfOrders = new Intent(MainActivity.this, ListOfOrders.class);
