@@ -33,7 +33,6 @@ public class ListOfMeals extends AppCompatActivity {
             printListOfMeals(meals);
         }
 
-
     }
 
     private String readFile(String fileName) {

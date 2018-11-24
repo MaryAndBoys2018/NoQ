@@ -9,7 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -45,9 +48,11 @@ public class ListOfCafes extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Intent OpenListOfMeals = new Intent(ListOfCafes.this, ListOfMeals.class);
-                startActivity(OpenListOfMeals);
+            public void onItemClick(AdapterView<?> adapter, View view, int position, long l) {
+                if (position == 0) {
+                    Intent OpenMenu = new Intent(ListOfCafes.this, ListOfMeals.class);
+                    startActivity(OpenMenu);
+                }
             }
         });
 

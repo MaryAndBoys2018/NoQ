@@ -16,7 +16,7 @@
         android:paddingRight="8dp"
         android:paddingBottom="4dp"
         android:textSize="20sp"
-        tools:text="Yulia's Nyrka" />
+        tools:text="Meal's Name" />
 
 
     <TextView
