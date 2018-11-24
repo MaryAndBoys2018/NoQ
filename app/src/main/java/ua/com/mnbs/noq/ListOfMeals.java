@@ -1,8 +1,11 @@
 package ua.com.mnbs.noq;
 
-import android.os.Bundle;
+import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,6 +22,18 @@ public class ListOfMeals extends AppCompatActivity {
         ArrayList<String> name = moveIntoArrayList(names);
         String prices = readFile("meal_prices.txt");
         ArrayList<String> price = moveIntoArrayList(prices);
+
+        ArrayList<Meal> meals = new ArrayList<>();
+
+        if (isMistakeInFiles(name, price))
+            Toast.makeText(getApplicationContext(), "Something is wrong with your text files.",
+                    Toast.LENGTH_SHORT).show();
+        else {
+            meals = createMealArrayList(name, price);
+            printListOfMeals(meals);
+        }
+
+
     }
 
     private String readFile(String fileName) {
@@ -55,6 +70,10 @@ public class ListOfMeals extends AppCompatActivity {
         MenuAdapter adapter = new MenuAdapter(this, meals);
         ListView listView = (ListView) findViewById(R.id.menu_list);
         listView.setAdapter(adapter);
+    }
+
+    private boolean isMistakeInFiles(ArrayList<String> name, ArrayList<String> price) {
+        return (name.size() != price.size());
     }
 
     private ArrayList<Meal> createMealArrayList(ArrayList<String> name, ArrayList<String> price) {
