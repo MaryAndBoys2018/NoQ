@@ -1,5 +1,6 @@
 package ua.com.mnbs.noq;
 
+import android.content.Intent;
 import android.location.Location;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -40,10 +41,13 @@ public class ListOfCafes extends AppCompatActivity {
             printListOfCafes(cafes);
         }
 
-        cafes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ListView listView = (ListView) findViewById(R.id.cafe_list);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
+                Intent OpenListOfMeals = new Intent(ListOfCafes.this, ListOfMeals.class);
+                startActivity(OpenListOfMeals);
             }
         });
 
