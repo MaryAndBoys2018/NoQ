@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ListOfOrders"
-    android:background="@drawable/gradient_list_of_orders">
+    android:background="@drawable/gradient_list_of_order">
 
 </android.support.constraint.ConstraintLayout>
