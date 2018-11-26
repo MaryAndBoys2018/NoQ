@@ -22,8 +22,12 @@ public class ListOfMeals extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         String currentCafe = extras.getString("cafe name");
+        int position = extras.getInt("position");
 
         currentCafe = currentCafe.trim();
+
+        if (position == 0)
+            currentCafe = currentCafe.substring(1,currentCafe.length());
 
         Toast.makeText(getApplicationContext(), currentCafe,
                 Toast.LENGTH_SHORT).show();
