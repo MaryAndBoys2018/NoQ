@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/cafe_list"
+    android:background="@drawable/gradient_list_of_cafes"
     tools:context=".ListOfCafes">
 
 </ListView>
