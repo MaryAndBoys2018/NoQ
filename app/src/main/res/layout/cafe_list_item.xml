@@ -1,40 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="4dp"
-    android:id="@+id/cafe_list_item">
+    android:orientation="horizontal"
+    android:id="@+id/cafe_list_item"
+    tools:background="@drawable/gradient_main_background">
 
+    <RelativeLayout
+        android:id="@+id/one"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/cafe_name_text_view"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textSize="28sp"
+            tools:text="NiceCoffee"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp"
+
+            android:layout_alignParentRight="true"/>
+
+
+
+
+        <TextView
+            android:id="@+id/cafe_type_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            tools:text="кав'ярня"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="26dp"
+            android:layout_marginLeft="32dp"/>
+
+
+
+        <TextView
+            android:id="@+id/cafe_location_text_view"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            tools:text="вул. Степана Бандери, 19"
+            android:textColor="#FFFFFF"
+            android:layout_below="@+id/cafe_name_text_view"
+            android:layout_marginLeft="8dp"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/cafe_name_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="4dp"
-        android:paddingRight="8dp"
-        android:paddingBottom="4dp"
-        android:textSize="20sp"
-        tools:text="NiceCoffee" />
-
-
-    <TextView
-        android:id="@+id/cafe_type_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="4dp"
-        android:paddingRight="8dp"
-        android:paddingBottom="4dp"
-        tools:text="кав'ярня" />
-
-
-    <TextView
-        android:id="@+id/cafe_location_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="4dp"
-        android:paddingRight="8dp"
-        android:paddingBottom="4dp"
-        tools:text="вул. Степана Бандери, 19" />
-</LinearLayout>
+        android:id="@+id/line1"
+        android:layout_width="380dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#FFFFFF"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/one"/>
+</RelativeLayout>
