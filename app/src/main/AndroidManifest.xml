@@ -18,8 +18,9 @@
         </activity>
         <activity android:name=".ListOfCafes" />
         <activity android:name=".ListOfOrders" />
-        <activity android:name=".MenuActivity"/>
-        <activity android:name=".ListOfMeals"></activity>
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".ListOfMeals" />
+        <activity android:name=".activity_my_orders"></activity>
     </application>
 
 </manifest>
