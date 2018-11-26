@@ -1,5 +1,6 @@
 package ua.com.mnbs.noq;
 
+import android.content.Intent;
 import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,10 +19,27 @@ public class ListOfMeals extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        String names = readFile("meal_names.txt");
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        String currentCafe = extras.getString("cafe name");
+
+        currentCafe = currentCafe.trim();
+
+        Toast.makeText(getApplicationContext(), currentCafe,
+                Toast.LENGTH_SHORT).show();
+
+        String menuFileDirectory = currentCafe + "_menu.txt";
+        String pricesFileDirectory = currentCafe + "_prices.txt";
+
+        Toast.makeText(getApplicationContext(), menuFileDirectory,
+                Toast.LENGTH_SHORT).show();
+
+        String names = readFile(menuFileDirectory);
         ArrayList<String> name = moveIntoArrayList(names);
-        String prices = readFile("meal_prices.txt");
+        String prices = readFile(pricesFileDirectory);
         ArrayList<String> price = moveIntoArrayList(prices);
+
+       // Toast.makeText(getApplicationContext(), name.get(1), Toast.LENGTH_SHORT).show();
 
         ArrayList<Meal> meals = new ArrayList<>();
 

@@ -21,6 +21,8 @@ import java.util.ArrayList;
 
 public class ListOfCafes extends AppCompatActivity {
 
+    ArrayList<Cafe> cafes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +35,6 @@ public class ListOfCafes extends AppCompatActivity {
         ArrayList<String> name = moveIntoArrayList(names);
         ArrayList<String> location = moveIntoArrayList(locations);
         ArrayList<String> type = moveIntoArrayList(types);
-
-        ArrayList<Cafe> cafes = new ArrayList<>();
 
         if (isMistakeInFiles(name, location, type))
             Toast.makeText(getApplicationContext(), "Something is wrong with your text files.",
@@ -49,10 +49,10 @@ public class ListOfCafes extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int position, long l) {
-                if (position == 0) {
+
                     Intent OpenMenu = new Intent(ListOfCafes.this, ListOfMeals.class);
+                    OpenMenu.putExtra("cafe name", cafes.get(position).getCafeName());
                     startActivity(OpenMenu);
-                }
             }
         });
 
