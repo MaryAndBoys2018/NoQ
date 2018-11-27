@@ -58,8 +58,9 @@
             android:height="32dp"
             android:layout_weight="5"
             android:textColor="#FFFFFF"
-            style="@style/AlertDialog.AppCompat.Light"/>
+            style="@style/AlertDialog.AppCompat.Light"
+            android:focusable="false"
+            android:id="@+id/meal_checkbox" />
     </LinearLayout>
-
 
 </RelativeLayout>

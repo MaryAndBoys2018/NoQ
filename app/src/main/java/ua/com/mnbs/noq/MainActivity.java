@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -40,4 +41,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+   /* public class RegistA extends ListOfMeals {
+        CheckBox fee_checkbox;
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.menu_list_item);
+            fee_checkbox = (CheckBox) findViewById(R.id.meal_checkbox);// Fee Payment Check box
+        }
+        public void checkbox_clicked(View v)
+        {
+            Button btn = findViewById(R.id.btn);
+            if(fee_checkbox.isChecked())
+            {
+                btn.setVisibility(Button.VISIBLE);
+
+            }
+            else
+            {
+                btn.setVisibility(Button.GONE);
+            }
+
+        }
+    } */
 }
+
