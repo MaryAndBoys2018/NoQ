@@ -29,16 +29,11 @@ public class ListOfMeals extends AppCompatActivity {
         if (position == 0)
             currentCafe = currentCafe.substring(1,currentCafe.length());
 
-        Toast.makeText(getApplicationContext(), currentCafe,
-                Toast.LENGTH_SHORT).show();
-
         String menuFileDirectory = currentCafe + "_menu.txt";
         String pricesFileDirectory = currentCafe + "_prices.txt";
 
-        Toast.makeText(getApplicationContext(), menuFileDirectory,
-                Toast.LENGTH_SHORT).show();
-
         String names = readFile(menuFileDirectory);
+
         ArrayList<String> name = moveIntoArrayList(names);
         String prices = readFile(pricesFileDirectory);
         ArrayList<String> price = moveIntoArrayList(prices);
