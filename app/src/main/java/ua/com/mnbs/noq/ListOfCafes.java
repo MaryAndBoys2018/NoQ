@@ -42,20 +42,20 @@ public class ListOfCafes extends AppCompatActivity {
         else {
             cafes = createCafeArrayList(name, location, type);
             printListOfCafes(cafes);
-        }
 
-        ListView listView = (ListView) findViewById(R.id.cafe_list);
+            ListView listView = (ListView) findViewById(R.id.cafe_list);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapter, View view, int position, long l) {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapter, View view, int position, long l) {
 
                     Intent OpenMenu = new Intent(ListOfCafes.this, ListOfMeals.class);
                     OpenMenu.putExtra("cafe name", cafes.get(position).getCafeName());
                     OpenMenu.putExtra("position", position);
                     startActivity(OpenMenu);
-            }
-        });
+                }
+            });
+        }
 
     }
 
