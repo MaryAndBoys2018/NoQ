@@ -38,8 +38,6 @@ public class ListOfMeals extends AppCompatActivity {
         String prices = readFile(pricesFileDirectory);
         ArrayList<String> price = moveIntoArrayList(prices);
 
-       // Toast.makeText(getApplicationContext(), name.get(1), Toast.LENGTH_SHORT).show();
-
         ArrayList<Meal> meals = new ArrayList<>();
 
         if (isMistakeInFiles(name, price))
