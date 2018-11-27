@@ -35,7 +35,7 @@ public class ListOfCafes extends AppCompatActivity {
         String locations = readFile("cafe_locations.txt");
         String types = readFile("cafe_types.txt");
 
-        final ArrayList<String> name = moveIntoArrayList(names);
+        ArrayList<String> name = moveIntoArrayList(names);
         ArrayList<String> location = moveIntoArrayList(locations);
         ArrayList<String> type = moveIntoArrayList(types);
 
