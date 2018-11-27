@@ -26,7 +26,7 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Moї замовлення"
+        android:text="Mоє замовлення"
         android:textSize="40sp"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
