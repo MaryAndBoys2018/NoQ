@@ -46,7 +46,9 @@
             android:width="32dp"
             android:height="32dp"
             android:textColor="#FFFFFF"
-            android:theme="@style/MyCheckBox" />
+            android:theme="@style/MyCheckBox"
+            android:focusable="false"
+            android:id="@+id/meal_checkbox"/>
     </LinearLayout>
 
     <TextView
