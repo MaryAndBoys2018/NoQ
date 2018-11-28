@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -48,6 +51,20 @@ public class ListOfMeals extends AppCompatActivity {
             printListOfMeals(meals);
         }
 
+
+        ListView listView = (ListView) findViewById(R.id.menu_list);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position, long l) {
+                if (v != null) {
+                    CheckBox checkBox = (CheckBox)v.findViewById(R.id.meal_checkbox);
+                    checkBox.setChecked(!checkBox.isChecked());
+                }
+
+            }
+
+        });
     }
 
     private String readFile(String fileName) {
