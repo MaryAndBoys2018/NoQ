@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -65,6 +66,18 @@ public class ListOfMeals extends AppCompatActivity {
             }
 
         });
+
+        Button btn = (Button) findViewById(R.id.btn);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent OpenTimeActivity = new Intent(ListOfMeals.this, TimeActivity.class);
+                startActivity(OpenTimeActivity);
+
+            }
+        });
     }
 
     private String readFile(String fileName) {
@@ -96,6 +109,7 @@ public class ListOfMeals extends AppCompatActivity {
         }
         return returnValue;
     }
+
 
     private void printListOfMeals(ArrayList<Meal> meals) {
         MenuAdapter adapter = new MenuAdapter(this, meals);
