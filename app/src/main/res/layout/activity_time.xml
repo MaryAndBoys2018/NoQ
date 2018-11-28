@@ -12,25 +12,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:timePickerMode="clock" />
+        android:timePickerMode="spinner" />
 
-    <TextClock
+    <TextView
         android:id="@+id/current_time"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:format24Hour="true"
-        android:text="Current time - "
-        android:layout_centerHorizontal="true"
+        android:text="Поточний час"
+        android:layout_gravity="center_horizontal"
         android:textSize="30dp"/>
 
     <TextView
         android:id="@+id/text_time"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
         android:textSize="30dp"
-        android:text="Order time - "/>
+        android:text="Час замовлення"/>
 
-
+    <Button
+        android:id="@+id/submit_time"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="Підтвердити"/>
 
 </LinearLayout>
