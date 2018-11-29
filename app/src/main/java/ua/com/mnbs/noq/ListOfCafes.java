@@ -34,16 +34,18 @@ public class ListOfCafes extends AppCompatActivity {
         String names = readFile("cafe_names.txt");
         String locations = readFile("cafe_locations.txt");
         String types = readFile("cafe_types.txt");
+        String emails = readFile("cafe_emails.txt");
 
         ArrayList<String> name = moveIntoArrayList(names);
         ArrayList<String> location = moveIntoArrayList(locations);
         ArrayList<String> type = moveIntoArrayList(types);
+        ArrayList<String> email = moveIntoArrayList(emails);
 
-        if (isMistakeInFiles(name, location, type))
+        if (isMistakeInFiles(name, location, type, email))
             Toast.makeText(getApplicationContext(), "Something is wrong with your text files.",
                     Toast.LENGTH_SHORT).show();
         else {
-            cafes = createCafeArrayList(name, location, type);
+            cafes = createCafeArrayList(name, location, type, email);
             printListOfCafes(cafes);
 
             ListView listView = (ListView) findViewById(R.id.cafe_list);
@@ -154,14 +156,15 @@ public class ListOfCafes extends AppCompatActivity {
     }
 
 
-    private boolean isMistakeInFiles(ArrayList<String> name, ArrayList<String> location, ArrayList<String> type) {
-        return (name.size() != location.size() || name.size() != type.size() || location.size() != type.size());
+    private boolean isMistakeInFiles(ArrayList<String> name, ArrayList<String> location, ArrayList<String> type, ArrayList<String> email) {
+        return (name.size() != location.size() || name.size() != type.size() || location.size() != type.size() ||
+        name.size() != email.size() || type.size() != email.size() || location.size() != email.size());
     }
 
-    private ArrayList<Cafe> createCafeArrayList(ArrayList<String> name, ArrayList<String> location, ArrayList<String> type) {
+    private ArrayList<Cafe> createCafeArrayList(ArrayList<String> name, ArrayList<String> location, ArrayList<String> type, ArrayList<String> email) {
         ArrayList<Cafe> cafes = new ArrayList<>();
         for (int i = 0; i < name.size(); i++)
-            cafes.add(new Cafe(name.get(i), location.get(i), type.get(i)));
+            cafes.add(new Cafe(name.get(i), location.get(i), type.get(i), email.get(i)));
         return cafes;
     }
 }
