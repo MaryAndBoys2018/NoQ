@@ -29,19 +29,26 @@
             android:textColor="#FFFFFF"/>
 
 
-            <TextView
-                android:id="@+id/price_type_text_view"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                tools:text="$$$"
-                android:layout_gravity="center"
-                android:textColor="#FFFFFF"/>
+        <TextView
+            android:id="@+id/price_type_text_view"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            tools:text="$$$"
+            android:layout_gravity="center"
+            android:textColor="#FFFFFF"
+            android:layout_marginRight="54dp"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp">
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/one"
             android:layout_weight="5"
             android:width="32dp"
             android:height="32dp"
@@ -49,16 +56,20 @@
             android:theme="@style/MyCheckBox"
             android:focusable="false"
             android:id="@+id/meal_checkbox"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginRight="30dp"/>
+
     </LinearLayout>
 
     <TextView
         android:id="@+id/line1"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_gravity="center_horizontal"
         android:background="#FFFFFF"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/one"/>
+        android:layout_below="@+id/one"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
 
 </RelativeLayout>
