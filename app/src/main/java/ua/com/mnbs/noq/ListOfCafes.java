@@ -55,10 +55,9 @@ public class ListOfCafes extends AppCompatActivity {
                     Intent OpenMenu = new Intent(ListOfCafes.this, ListOfMeals.class);
                     OpenMenu.putExtra("cafe name", cafes.get(position).getCafeName());
                     OpenMenu.putExtra("position", position);
-                    String k = makeNewOrderFileName(ReadFromFileNotAsset("counter.txt"));
                     deleteFile("counter.txt");
-                    WriteToFile("counter.txt",k);
-                    WriteToFile("Order"+getStringFileSize("counter.txt"+ ".txt"),cafes.get(position).getCafeName()+"\n"+cafes.get(position).getCafeType()+"\n"+cafes.get(position).getCafeLocation());
+                    WriteToFile("counter.txt",makeNewOrderFileName(ReadFromFileNotAsset("counter.txt")));
+                    WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",cafes.get(position).getCafeName()+"\n"+cafes.get(position).getCafeType()+"\n"+cafes.get(position).getCafeLocation());
                     startActivity(OpenMenu);
                 }
             });
@@ -66,6 +65,7 @@ public class ListOfCafes extends AppCompatActivity {
 
     }
 
+//makeNewOrderFileName(ReadFromFileNotAsset("counter.txt"))
 
     private String readFile(String fileName) {
         String text = "";
@@ -94,41 +94,29 @@ public class ListOfCafes extends AppCompatActivity {
         }
         catch (IOException e)
         {
-            Toast.makeText(ListOfCafes.this,"Error Reading from file",Toast.LENGTH_SHORT).show();
+            if (file=="counter.txt"){
+                WriteToFile("counter.txt","0");
+            }
+            else
+            Toast.makeText(ListOfCafes.this,"Помилка у читанні файлу",Toast.LENGTH_SHORT).show();
         }
         return text;
 
     }
 
 
-    public boolean counterIsEmpty(){
-        boolean empty= false;
-        try{
-            FileInputStream fis = openFileInput("counter.txt");
-            int size = fis.available();
-            if (size==0){
-                empty=true;
-            }
-            fis.close();
-        }
-        catch (IOException e)
-        {
-            Toast.makeText(ListOfCafes.this,"Error Reading from file",Toast.LENGTH_SHORT).show();
-        }
-        return empty;
-
-    }
-
     public String makeNewOrderFileName(String text){
-        if (counterIsEmpty()==true){
-            return "0";
-        }
-        else {
+        String smth ="";
+        try {
             int counter = Integer.parseInt(text);
             counter++;
-            String smth = Integer.toString(counter);
+            smth = Integer.toString(counter);
+            }
+            catch (Exception e)
+            {
+            smth="0";
+            }
             return smth;
-        }
     }
 
     private ArrayList<String> moveIntoArrayList(String text) {
@@ -156,15 +144,7 @@ public class ListOfCafes extends AppCompatActivity {
             Toast.makeText(ListOfCafes.this,"Error Writing to file",Toast.LENGTH_SHORT).show();
         }
     }
-    private int getStringFileSize(String file){
-        int size=0;
-        try {
-            FileInputStream fis = openFileInput(file);
-            size=fis.available();
-        }
-        catch (IOException e){}
-        return size;
-    }
+
 
 
     private void printListOfCafes(ArrayList<Cafe> cafes) {
