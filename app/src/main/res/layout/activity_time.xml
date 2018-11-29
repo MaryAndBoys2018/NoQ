@@ -5,37 +5,105 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TimeActivity">
+    tools:context=".TimeActivity"
+    android:background="@drawable/gradient_activity_time_background">
+
+    <TextView
+
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Час отримання"
+        android:textSize="40sp"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:id="@+id/line1"
+        android:layout_width="280dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0"
+        android:background="#FFFFFF" />
+
 
     <TimePicker
+        
         android:id="@+id/clock"
+        android:layout_weight="5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
         android:timePickerMode="spinner" />
 
     <TextView
+
         android:id="@+id/current_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Поточний час"
         android:layout_gravity="center_horizontal"
-        android:textSize="30dp"/>
+        android:layout_weight="1"
+        android:text="Поточний час"
+        android:textColor="#FFFFFF"
+        android:textSize="0dp" />
+
 
     <TextView
+
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="24dp"
+        android:text="Час замовлення:"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:layout_weight="0"
+        android:id="@+id/line2"
+        android:layout_width="190dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:background="#FFFFFF" />
+
+    <TextView
+
+        android:layout_weight="1"
         android:id="@+id/text_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textSize="30dp"
-        android:text="Час замовлення"/>
+        android:textSize="24dp"
+        android:text="Час"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:layout_weight="0"
+        android:id="@+id/line3"
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="#FFFFFF" />
+
 
     <Button
+
+        android:layout_weight="1"
         android:id="@+id/submit_time"
+        android:background="@drawable/fields"
         android:layout_width="320dp"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="20dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:text="Підтвердити"/>
+        android:text="Підтвердити"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
 
 </LinearLayout>
