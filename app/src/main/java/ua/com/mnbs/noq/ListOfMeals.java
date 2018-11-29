@@ -1,9 +1,14 @@
 package ua.com.mnbs.noq;
 
+import android.content.Intent;
 import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,9 +23,23 @@ public class ListOfMeals extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        String names = readFile("meal_names.txt");
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        String currentCafe = extras.getString("cafe name");
+        int position = extras.getInt("position");
+
+        currentCafe = currentCafe.trim();
+
+        if (position == 0)
+            currentCafe = currentCafe.substring(1,currentCafe.length());
+
+        String menuFileDirectory = currentCafe + "_menu.txt";
+        String pricesFileDirectory = currentCafe + "_prices.txt";
+
+        String names = readFile(menuFileDirectory);
+
         ArrayList<String> name = moveIntoArrayList(names);
-        String prices = readFile("meal_prices.txt");
+        String prices = readFile(pricesFileDirectory);
         ArrayList<String> price = moveIntoArrayList(prices);
 
         ArrayList<Meal> meals = new ArrayList<>();
@@ -33,6 +52,32 @@ public class ListOfMeals extends AppCompatActivity {
             printListOfMeals(meals);
         }
 
+
+        ListView listView = (ListView) findViewById(R.id.menu_list);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position, long l) {
+                if (v != null) {
+                    CheckBox checkBox = (CheckBox)v.findViewById(R.id.meal_checkbox);
+                    checkBox.setChecked(!checkBox.isChecked());
+                }
+
+            }
+
+        });
+
+        Button btn = (Button) findViewById(R.id.btn);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent OpenTimeActivity = new Intent(ListOfMeals.this, TimeActivity.class);
+                startActivity(OpenTimeActivity);
+
+            }
+        });
     }
 
     private String readFile(String fileName) {
@@ -64,6 +109,7 @@ public class ListOfMeals extends AppCompatActivity {
         }
         return returnValue;
     }
+
 
     private void printListOfMeals(ArrayList<Meal> meals) {
         MenuAdapter adapter = new MenuAdapter(this, meals);
