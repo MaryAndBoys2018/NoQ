@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="1">
 
         <LinearLayout
             android:id="@+id/group"
@@ -50,14 +50,6 @@
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
-
-          <ListView
-
-              android:id="@+id/list_view_my_order"
-              android:layout_width="wrap_content"
-              android:layout_height="321dp">
-
-          </ListView>
 
             <TextView
                 android:id="@+id/line2"
