@@ -13,8 +13,7 @@
     <RelativeLayout
         android:layout_weight="1"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/gradient_my_order_background">
+    android:layout_height="wrap_content">
 
       <LinearLayout
         android:id="@+id/group"
@@ -69,6 +68,7 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:textColor="#FFFFFF"
+            android:gravity="center_horizontal"
             android:background="@drawable/field_order"/>
 
         <TextView
@@ -91,13 +91,13 @@
             android:background="#FFFFFF"
             android:layout_marginBottom="5dp"/>
 
-        <ListView
+          <ListView
 
-        android:id="@+id/list_view_my_order"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+              android:id="@+id/list_view_my_order"
+              android:layout_width="wrap_content"
+              android:layout_height="321dp">
 
-        </ListView>
+          </ListView>
 
       </LinearLayout>
 
@@ -131,13 +131,13 @@
 
             <TextView
                 android:id="@+id/line4"
-                android:layout_width="40dp"
+                android:layout_width="35dp"
                 android:layout_height="1dp"
+                android:layout_alignBottom="@id/time"
                 android:layout_gravity="center_horizontal"
-                android:background="#FFFFFF"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_alignBottom="@id/time" />
+                android:layout_marginBottom="-1dp"
+                android:background="#FFFFFF" />
 
             <TextView
                 android:layout_marginLeft="65dp"
@@ -173,13 +173,13 @@
 
             <TextView
                 android:id="@+id/line5"
-                android:layout_width="40dp"
+                android:layout_width="45dp"
                 android:layout_height="1dp"
+                android:layout_alignBottom="@id/total"
                 android:layout_gravity="center_horizontal"
-                android:background="#FFFFFF"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_alignBottom="@id/time" />
+                android:layout_marginBottom="-3dp"
+                android:background="#FFFFFF" />
 
             <TextView
                 android:layout_marginLeft="65dp"
@@ -195,14 +195,13 @@
         <Button
 
             android:id="@+id/button_order"
+            android:background="@drawable/fields"
             android:layout_weight="1"
             android:layout_width="320dp"
             android:layout_height="45dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/fields"
             android:text="Підтвердити замовлення"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
