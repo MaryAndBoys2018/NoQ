@@ -38,7 +38,8 @@
         android:layout_marginTop="50dp"
         android:layout_weight="5"
         android:fadeScrollbars="false"
-        android:timePickerMode="spinner" />
+        android:timePickerMode="spinner"
+        android:theme="@style/TimePickerStyle"/>
 
     <TextView
 
