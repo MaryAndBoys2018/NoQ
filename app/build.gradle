@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "ua.com.mnbs.noq"
-        minSdkVersion 23
+        minSdkVersion 'API 15'
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
