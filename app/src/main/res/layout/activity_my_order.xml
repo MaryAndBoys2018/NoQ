@@ -63,7 +63,7 @@
 
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
+                android:layout_gravity="center_horizontal"
                 android:background="@drawable/field_order"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
@@ -118,12 +118,12 @@
                 android:layout_alignBottom="@id/list_view_my_order"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="7dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginBottom="7dp"
                 android:text="Час"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                tools:ignore="NotSibling" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/line4"
@@ -131,6 +131,7 @@
                 android:layout_height="1dp"
                 android:layout_alignBottom="@id/time"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="-1dp"
                 android:background="#FFFFFF" />
@@ -161,16 +162,17 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="7dp"
+                android:layout_marginLeft="5dp"
                 android:text="Сума"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                tools:ignore="NotSibling" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/line5"
                 android:layout_width="45dp"
                 android:layout_height="1dp"
+                android:layout_marginLeft="5dp"
                 android:layout_alignBottom="@id/total"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
@@ -180,7 +182,7 @@
             <TextView
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/time"
+                android:layout_alignLeft="@id/total"
                 android:layout_marginLeft="65dp"
                 android:background="@drawable/field_order"
                 android:textColor="#FFFFFF"
