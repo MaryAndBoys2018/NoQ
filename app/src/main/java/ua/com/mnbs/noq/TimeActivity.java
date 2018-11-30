@@ -1,5 +1,6 @@
 package ua.com.mnbs.noq;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,11 @@ import android.widget.Button;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class TimeActivity extends AppCompatActivity {
 
@@ -40,6 +46,7 @@ public class TimeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent OpenListOfOrders = new Intent(TimeActivity.this, activity_my_orders.class);
+                WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",orderTime.getText().toString());
                 startActivity(OpenListOfOrders);
             }
         });
@@ -83,5 +90,39 @@ public class TimeActivity extends AppCompatActivity {
         convertedTime += fixZero(minute);
 
         return  convertedTime;
+    }
+
+    public String ReadFromFileNotAsset(String file){
+        String text= "";
+        try{
+            FileInputStream fis = openFileInput(file);
+            int size = fis.available();
+            byte[] buffer = new byte[size];
+            fis.read(buffer);
+            fis.close();
+            text = new String(buffer);
+        }
+        catch (IOException e)
+        {
+            if (file=="counter.txt"){
+                WriteToFile("counter.txt","0");
+            }
+            else
+                Toast.makeText(TimeActivity.this,"Помилка у читанні файлу",Toast.LENGTH_SHORT).show();
+        }
+        return text;
+
+    }
+
+    protected void WriteToFile(String file, String text)
+    {
+        try {
+            FileOutputStream fos = openFileOutput(file,Context.MODE_PRIVATE);
+            fos.write(text.getBytes());
+            fos.close();
+        }
+        catch (IOException e){
+            Toast.makeText(TimeActivity.this,"Error Writing to file",Toast.LENGTH_SHORT).show();
+        }
     }
 }
