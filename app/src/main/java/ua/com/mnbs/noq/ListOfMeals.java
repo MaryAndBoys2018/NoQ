@@ -1,5 +1,6 @@
 package ua.com.mnbs.noq;
 
+import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +13,15 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ListOfMeals extends AppCompatActivity {
+    ArrayList<Meal> meals;
+    int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +31,8 @@ public class ListOfMeals extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         String currentCafe = extras.getString("cafe name");
-        int position = extras.getInt("position");
+        position = extras.getInt("position");
+
 
         currentCafe = currentCafe.trim();
 
@@ -42,7 +48,7 @@ public class ListOfMeals extends AppCompatActivity {
         String prices = readFile(pricesFileDirectory);
         ArrayList<String> price = moveIntoArrayList(prices);
 
-        ArrayList<Meal> meals = new ArrayList<>();
+        meals = new ArrayList<>();
 
         if (isMistakeInFiles(name, price))
             Toast.makeText(getApplicationContext(), "Something is wrong with your text files.",
@@ -74,6 +80,7 @@ public class ListOfMeals extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent OpenTimeActivity = new Intent(ListOfMeals.this, TimeActivity.class);
+                WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",meals.get(position).getMealName()+"\n"+meals.get(position).getMealPrice());
                 startActivity(OpenTimeActivity);
 
             }
@@ -94,6 +101,40 @@ public class ListOfMeals extends AppCompatActivity {
             e.printStackTrace();
         }
         return text;
+    }
+
+    public String ReadFromFileNotAsset(String file){
+        String text= "";
+        try{
+            FileInputStream fis = openFileInput(file);
+            int size = fis.available();
+            byte[] buffer = new byte[size];
+            fis.read(buffer);
+            fis.close();
+            text = new String(buffer);
+        }
+        catch (IOException e)
+        {
+            if (file=="counter.txt"){
+                WriteToFile("counter.txt","0");
+            }
+            else
+                Toast.makeText(ListOfMeals.this,"Помилка у читанні файлу",Toast.LENGTH_SHORT).show();
+        }
+        return text;
+
+    }
+
+    protected void WriteToFile(String file, String text)
+    {
+        try {
+            FileOutputStream fos = openFileOutput(file,Context.MODE_PRIVATE);
+            fos.write(text.getBytes());
+            fos.close();
+        }
+        catch (IOException e){
+            Toast.makeText(ListOfMeals.this,"Error Writing to file",Toast.LENGTH_SHORT).show();
+        }
     }
 
     private ArrayList<String> moveIntoArrayList(String text) {
