@@ -8,11 +8,11 @@ import android.widget.Button;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 public class TimeActivity extends AppCompatActivity {
 
     TimePicker floatTime;
-    TextView currentTime;
     TextView orderTime;
     Button submitTime;
 
@@ -22,15 +22,26 @@ public class TimeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_time);
 
         floatTime = (TimePicker) findViewById(R.id.clock);
-        currentTime = (TextView) findViewById(R.id.current_time);
         orderTime = (TextView) findViewById(R.id.text_time);
 
-        currentTime.setText(" " + updateDisplay());
+        floatTime.setIs24HourView(true);
+
+        final Integer currentHour = floatTime.getHour();
+        final Integer currentMinute = floatTime.getMinute();
+
+
+        orderTime.setText(updateDisplay());
 
         floatTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                updateDisplay(hourOfDay, minute);
+
+                if (isCafeOpen(hourOfDay)) {
+                    if (isAllowableTime(hourOfDay, currentHour, minute, currentMinute)) {
+                        updateDisplay(hourOfDay, minute);
+                    }
+                }
+
             }
         });
 
@@ -39,8 +50,8 @@ public class TimeActivity extends AppCompatActivity {
         submitTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent OpenListOfOrders = new Intent(TimeActivity.this, activity_my_orders.class);
-                startActivity(OpenListOfOrders);
+                Intent OpenMyOrder = new Intent(TimeActivity.this, activity_my_orders.class);
+                startActivity(OpenMyOrder);
             }
         });
     }
@@ -51,15 +62,14 @@ public class TimeActivity extends AppCompatActivity {
 
         String mOrderTime = convertTime(orderHour, orderMinute);
 
-        orderTime.setText(" " + mOrderTime);
+        orderTime.setText(mOrderTime);
     }
 
     private String updateDisplay(){
+        Integer currentHour = floatTime.getHour();
+        Integer currentMinute = floatTime.getMinute();
 
-        Integer orderHour = floatTime.getHour();
-        Integer orderMinute = floatTime.getMinute();
-
-        String mOrderTime = convertTime(orderHour, orderMinute);
+        String mOrderTime = convertTime(currentHour, currentMinute);
 
         return  mOrderTime;
     }
@@ -83,5 +93,47 @@ public class TimeActivity extends AppCompatActivity {
         convertedTime += fixZero(minute);
 
         return  convertedTime;
+    }
+
+    private boolean isAllowableTime(int orderHour, Integer currentHour, int orderMinute, Integer currentMinute){
+
+        if(orderHour < currentHour){
+            updateDisplay();
+            Toast.makeText(this, "Ей, не можна робити замовлення в минулому часі", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        else if (orderHour == currentHour){
+            if (orderMinute < currentMinute){
+                updateDisplay();
+                Toast.makeText(this, "Ей, не можна робити замовлення в минулому часі", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            else if(orderMinute < currentMinute + 15){
+                updateDisplay();
+                Toast.makeText(this, "Май совість, це замало часу на приготування твого замовлення", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isCafeOpen(int orderHour){
+
+        if (orderHour >= 22){
+            updateDisplay(22, 0);
+            Toast.makeText(this, "Вибач, але кафе вже зачинено", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (orderHour <= 7){
+            updateDisplay(7, 0);
+            Toast.makeText(this, "Вибач, але кафе ще зачинено", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
 }
