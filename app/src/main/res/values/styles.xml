@@ -1,5 +1,4 @@
-<resources>
-
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -25,6 +24,14 @@
     <style name="CheckBoxStyle" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">#FFFFFF</item>
         <item name="colorControlActivated">#FFFFFF</item>
+    </style>
+
+    <style name="TimePickerStyle" parent="Base.Theme.AppCompat.Light">
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorSecondary">#FFFFFF</item>
+        <item name="android:numbersTextColor">#FFFFFF</item>
+        <item name="android:numbersInnerTextColor">#FFFFFF</item>
     </style>
 
 </resources>
