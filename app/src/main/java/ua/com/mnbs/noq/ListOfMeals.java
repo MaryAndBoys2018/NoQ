@@ -1,14 +1,21 @@
 package ua.com.mnbs.noq;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -16,7 +23,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ListOfMeals extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +71,26 @@ public class ListOfMeals extends AppCompatActivity {
             }
 
         });
+
+       /* LayoutInflater inflater = getLayoutInflater();
+        View myView = inflater.inflate(R.layout.menu_list_item, null);
+        CheckBox myTextView = (CheckBox) myView.findViewById(R.id.meal_checkbox);
+        myTextView.setText("3468430248"); */
+
+        /*View v = LayoutInflater.from(this).inflate(R.layout.menu_list_item, null);
+        CheckBox check = (CheckBox) v.findViewById(R.id.meal_checkbox);
+        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            Button btn =(Button)findViewById( R.id.btn);
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    btn.setVisibility(View.VISIBLE);
+                }else{
+                    btn.setVisibility(View.GONE);
+                }
+
+            }
+        });*/
     }
 
     private String readFile(String fileName) {
