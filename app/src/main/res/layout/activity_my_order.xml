@@ -123,8 +123,7 @@
                 android:text="Час"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                tools:ignore="NotSibling" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/line4"
@@ -167,8 +166,7 @@
                 android:text="Сума"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                tools:ignore="NotSibling" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/line5"
@@ -184,7 +182,7 @@
             <TextView
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/time"
+                android:layout_alignLeft="@id/total"
                 android:layout_marginLeft="65dp"
                 android:background="@drawable/field_order"
                 android:textColor="#FFFFFF"
