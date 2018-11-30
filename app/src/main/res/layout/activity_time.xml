@@ -37,10 +37,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:layout_weight="5"
-        android:addStatesFromChildren="true"
-        android:numbersBackgroundColor="#FFFFFF"
-        android:numbersSelectorColor="#FFFFFF"
-        android:timePickerMode="spinner" />
+        android:fadeScrollbars="false"
+        android:timePickerMode="spinner"
+        android:theme="@style/TimePickerStyle"/>
 
     <TextView
 
