@@ -73,8 +73,8 @@ public class ListOfMeals extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent OpenTimeActivity = new Intent(ListOfMeals.this, TimeActivity.class);
-                startActivity(OpenTimeActivity);
+                Intent OpenQuantityActivity = new Intent(ListOfMeals.this, QuantityActivity.class);
+                startActivity(OpenQuantityActivity);
 
             }
         });
