@@ -4,6 +4,8 @@ public class Meal {
     private String mMealName;
     private String mMealPrice;
     private boolean mIsChecked;
+    public static int numberOfCheckedItems;
+
     Meal(String mealName, String mealPrice){
         mMealName = mealName;
         mMealPrice = mealPrice;

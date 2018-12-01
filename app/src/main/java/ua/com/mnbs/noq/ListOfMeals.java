@@ -14,9 +14,12 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ListOfMeals extends AppCompatActivity {
+
+    ArrayList<Meal> meals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,7 @@ public class ListOfMeals extends AppCompatActivity {
         String prices = readFile(pricesFileDirectory);
         ArrayList<String> price = moveIntoArrayList(prices);
 
-        ArrayList<Meal> meals = new ArrayList<>();
+        meals = new ArrayList<>();
 
         if (isMistakeInFiles(name, price))
             Toast.makeText(getApplicationContext(), "Something is wrong with your text files.",
@@ -54,6 +57,8 @@ public class ListOfMeals extends AppCompatActivity {
 
 
         ListView listView = (ListView) findViewById(R.id.menu_list);
+        final Button chooseDishes = (Button) findViewById(R.id.choose_dishes_button);
+        meals.get(0).numberOfCheckedItems = 0;
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -61,13 +66,19 @@ public class ListOfMeals extends AppCompatActivity {
                 if (v != null) {
                     CheckBox checkBox = (CheckBox)v.findViewById(R.id.meal_checkbox);
                     checkBox.setChecked(!checkBox.isChecked());
+                    if (meals.get(0).numberOfCheckedItems == 0) {
+                        chooseDishes.setEnabled(false);
+                        Toast.makeText(getApplicationContext(), "Виберіть, будь ласка, страву",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        chooseDishes.setEnabled(true);
+                    }
                 }
 
             }
 
         });
-
-        final Button chooseDishes = (Button) findViewById(R.id.choose_dishes_button);
 
         chooseDishes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +89,7 @@ public class ListOfMeals extends AppCompatActivity {
 
             }
         });
+
     }
 
     private String readFile(String fileName) {
