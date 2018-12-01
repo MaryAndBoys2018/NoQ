@@ -61,7 +61,7 @@ public class TimeActivity extends AppCompatActivity {
         });
     }
 
-    private void updateDisplay(int hour, int minute){
+    private void updateDisplay(int hour, int minute) {
         Integer orderHour = hour;
         Integer orderMinute = minute;
 
@@ -70,64 +70,60 @@ public class TimeActivity extends AppCompatActivity {
         orderTime.setText(mOrderTime);
     }
 
-    private String updateDisplay(){
+    private String updateDisplay() {
         Integer currentHour = floatTime.getHour();
         Integer currentMinute = floatTime.getMinute();
 
         String mOrderTime = convertTime(currentHour, currentMinute);
 
-        return  mOrderTime;
+        return mOrderTime;
     }
 
-    private String fixZero(Integer num){
+    private String fixZero(Integer num) {
         String stringNum;
 
-        if (num < 10){
+        if (num < 10) {
             stringNum = "0";
             stringNum += num.toString();
-        }else{
+        } else {
             stringNum = num.toString();
         }
 
         return stringNum;
     }
 
-    private String convertTime(Integer hour, Integer minute){
+    private String convertTime(Integer hour, Integer minute) {
         String convertedTime = fixZero(hour);
         convertedTime += ":";
         convertedTime += fixZero(minute);
 
-        return  convertedTime;
+        return convertedTime;
     }
 
-    private boolean isAllowableTime(int orderHour, Integer currentHour, int orderMinute, Integer currentMinute){
+    private boolean isAllowableTime(int orderHour, Integer currentHour, int orderMinute, Integer currentMinute) {
 
-        if(orderHour < currentHour){
+        if (orderHour < currentHour) {
             updateDisplay();
 
-            if (wasNotShownToastForPast){
+            if (wasNotShownToastForPast) {
                 Toast.makeText(this, "Ей, не можна робити замовлення в минулому часі", Toast.LENGTH_SHORT).show();
                 wasNotShownToastForPast = false;
             }
 
             floatTime.setHour(currentHour);
             return false;
-        }
-
-        else if (orderHour == currentHour){
-            if (orderMinute < currentMinute){
+        } else if (orderHour == currentHour) {
+            if (orderMinute < currentMinute) {
                 updateDisplay();
 
-                if (wasNotShownToastForPast){
+                if (wasNotShownToastForPast) {
                     Toast.makeText(this, "Ей, не можна робити замовлення в минулому часі", Toast.LENGTH_SHORT).show();
                     wasNotShownToastForPast = false;
                 }
 
                 floatTime.setMinute(currentMinute);
                 return false;
-            }
-
-            else if(orderMinute < currentMinute + 15){
+            } else if (orderMinute < currentMinute + 15) {
                 updateDisplay();
 
                 if (wasNotShownToastForPreparation) {
@@ -142,9 +138,9 @@ public class TimeActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean isCafeOpen(int orderHour){
+    private boolean isCafeOpen(int orderHour) {
 
-        if (orderHour >= 22){
+        if (orderHour >= 22) {
             updateDisplay(22, 0);
 
             if (wasNotShownTooLateToast) {
@@ -156,7 +152,7 @@ public class TimeActivity extends AppCompatActivity {
             return false;
         }
 
-        if (orderHour <= 7){
+        if (orderHour <= 7) {
             updateDisplay(7, 0);
             if (wasNotShownTooEarlyToast) {
                 Toast.makeText(this, "Вибач, але кафе ще зачинено", Toast.LENGTH_SHORT).show();
