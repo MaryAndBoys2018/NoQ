@@ -67,9 +67,9 @@ public class ListOfMeals extends AppCompatActivity {
 
         });
 
-        Button btn = (Button) findViewById(R.id.btn);
+        final Button chooseDishes = (Button) findViewById(R.id.choose_dishes_button);
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        chooseDishes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

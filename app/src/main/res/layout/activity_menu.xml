@@ -123,7 +123,7 @@
         android:gravity="center_horizontal">
 
         <Button
-            android:id="@+id/btn"
+            android:id="@+id/choose_dishes_button"
             style="@style/ButtonStyle"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
