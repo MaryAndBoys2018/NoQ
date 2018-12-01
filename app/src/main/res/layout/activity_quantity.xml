@@ -65,7 +65,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:id="@+id/quantity_text_view"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/white"/>
             <Button
                 android:layout_width="48dp"
                 android:layout_height="48dp"
