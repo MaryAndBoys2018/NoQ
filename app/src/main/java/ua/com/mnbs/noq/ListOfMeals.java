@@ -66,14 +66,6 @@ public class ListOfMeals extends AppCompatActivity {
                 if (v != null) {
                     CheckBox checkBox = (CheckBox)v.findViewById(R.id.meal_checkbox);
                     checkBox.setChecked(!checkBox.isChecked());
-                    if (meals.get(0).numberOfCheckedItems == 0) {
-                        chooseDishes.setEnabled(false);
-                        Toast.makeText(getApplicationContext(), "Виберіть, будь ласка, страву",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        chooseDishes.setEnabled(true);
-                    }
                 }
 
             }
@@ -83,9 +75,15 @@ public class ListOfMeals extends AppCompatActivity {
         chooseDishes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (meals.get(0).numberOfCheckedItems == 0) {
+                    Toast.makeText(getApplicationContext(), "Виберіть, будь ласка, страву",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else {
 
-                Intent OpenQuantityActivity = new Intent(ListOfMeals.this, QuantityActivity.class);
-                startActivity(OpenQuantityActivity);
+                    Intent OpenQuantityActivity = new Intent(ListOfMeals.this, QuantityActivity.class);
+                    startActivity(OpenQuantityActivity);
+                }
 
             }
         });
