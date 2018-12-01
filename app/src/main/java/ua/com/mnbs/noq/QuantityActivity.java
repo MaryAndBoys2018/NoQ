@@ -24,34 +24,10 @@ public class QuantityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_quantity);
 
-        Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-        String currentCafe = extras.getString("cafe name");
-        int position = extras.getInt("position");
 
-        currentCafe = currentCafe.trim();
 
-        if (position == 0)
-            currentCafe = currentCafe.substring(1,currentCafe.length());
 
-        String menuFileDirectory = currentCafe + "_menu.txt";
-        String pricesFileDirectory = currentCafe + "_prices.txt";
 
-        String names = readFile(menuFileDirectory);
-
-        ArrayList<String> name = moveIntoArrayList(names);
-        String prices = readFile(pricesFileDirectory);
-        ArrayList<String> price = moveIntoArrayList(prices);
-
-        ArrayList<Meal> meals = new ArrayList<>();
-
-        if (isMistakeInFiles(name, price))
-            Toast.makeText(getApplicationContext(), "Something is wrong with your text files.",
-                    Toast.LENGTH_SHORT).show();
-        else {
-            meals = createMealArrayList(name, price);
-            printListOfMeals(meals);
-        }
         Button btn = (Button) findViewById(R.id.btn1);
 
         btn.setOnClickListener(new View.OnClickListener() {
