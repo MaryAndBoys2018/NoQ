@@ -6,6 +6,7 @@ import android.location.Location;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,7 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class ListOfMeals extends AppCompatActivity {
+public class ListOfMeals extends MenuActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,17 +69,31 @@ public class ListOfMeals extends AppCompatActivity {
                     checkBox.setChecked(!checkBox.isChecked());
                 }
 
+
+               CheckBox checkBox = (CheckBox)v.findViewById(R.id.meal_checkbox);
+                checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                        Button btn= findViewById(R.id.btn);
+                        if (isChecked) {
+                            btn.setVisibility(View.VISIBLE);
+                        }
+                        else{
+                            btn.setVisibility(View.GONE);
+                        }
+                    }
+                });
+
             }
 
         });
-
        /* LayoutInflater inflater = getLayoutInflater();
         View myView = inflater.inflate(R.layout.menu_list_item, null);
         CheckBox myTextView = (CheckBox) myView.findViewById(R.id.meal_checkbox);
         myTextView.setText("3468430248"); */
 
         /*View v = LayoutInflater.from(this).inflate(R.layout.menu_list_item, null);
-        CheckBox check = (CheckBox) v.findViewById(R.id.meal_checkbox);
+        CheckBox check = (CheckBox) findViewById(R.id.meal_checkbox);
         check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             Button btn =(Button)findViewById( R.id.btn);
             @Override
@@ -90,7 +105,7 @@ public class ListOfMeals extends AppCompatActivity {
                 }
 
             }
-        });*/
+        }); */
     }
 
     private String readFile(String fileName) {

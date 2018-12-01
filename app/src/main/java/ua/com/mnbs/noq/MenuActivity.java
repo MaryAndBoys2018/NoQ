@@ -13,18 +13,19 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_list_item);
-      /* CheckBox check = findViewById(R.id.meal_checkbox);
+       /*final CheckBox check = findViewById(R.id.meal_checkbox);
         check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             Button btn =(Button)findViewById( R.id.btn);
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    btn.setVisibility(View.VISIBLE);
+                    check.setVisibility(View.VISIBLE);
                 }else{
-                    btn.setVisibility(View.GONE);
+                    check.setVisibility(View.GONE);
                 }
 
             }
         }); */
     }
+
 }
