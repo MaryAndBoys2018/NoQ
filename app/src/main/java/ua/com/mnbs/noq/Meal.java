@@ -7,6 +7,7 @@ public class Meal {
     Meal(String mealName, String mealPrice){
         mMealName = mealName;
         mMealPrice = mealPrice;
+        mIsChecked = false;
     }
     public String getMealName(){
         return mMealName;
