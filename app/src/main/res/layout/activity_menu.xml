@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/gradient_list_of_meals"
     android:orientation="vertical">
@@ -115,20 +115,13 @@
             tools:context=".MenuActivity" />
     </RelativeLayout>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="32dp"
-        android:gravity="center_horizontal">
-
         <Button
+            android:gravity="center"
             android:id="@+id/btn"
             style="@style/ButtonStyle"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:text="Обрати"/>
-
-    </LinearLayout>
+            android:layout_marginBottom="20dp"
+            android:text="Обрати кількість"/>
 
 </LinearLayout>
