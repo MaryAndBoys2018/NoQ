@@ -27,14 +27,14 @@ public class QuantityActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         int numberOfCheckedItems = extras.getInt("number of checked meals");
-       int[] positions = new int[5];
-       String menuFile = extras.getString("menu file");
-       String pricesFile = extras.getString("price file");
-        for (int i=0; i<numberOfCheckedItems; i++)
-            positions[i] = extras.getInt("position"+i);
-
-
-        final ArrayList<Meal> meals = new ArrayList<Meal>();
+        ArrayList<Meal> meals = new ArrayList<>();
+        String tempName = "";
+        String tempPrice = "";
+        for (int i=0; i<numberOfCheckedItems; i++){
+            tempName = extras.getString("name"+i);
+            tempPrice = extras.getString("price"+i);
+            meals.add(new Meal(tempName, tempPrice));
+        }
 
         QuantityAdapter adapter = new QuantityAdapter( this, meals);
         ListView listView = (ListView) findViewById(R.id.menu_list);

@@ -87,9 +87,8 @@ public class ListOfMeals extends AppCompatActivity {
                     for (int i=0; i<meals.size(); i++) {
                         if (meals.get(i).getChecked()) {
                             OpenQuantityActivity.putExtra("number of checked meals", meals.get(0).numberOfCheckedItems);
-                            OpenQuantityActivity.putExtra("position"+index,i);
-                            OpenQuantityActivity.putExtra("menu file", menuFileDirectory);
-                            OpenQuantityActivity.putExtra("price file", pricesFileDirectory);
+                            OpenQuantityActivity.putExtra("name"+index,meals.get(i).getMealName());
+                            OpenQuantityActivity.putExtra("price"+index,meals.get(i).getMealPrice());
                             index++;
                         }
                     }
