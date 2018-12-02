@@ -30,7 +30,8 @@
             android:layout_weight="9"
             android:backgroundTint="#FFFFFF"
             android:textColor="#FFFFFF"
-            android:textCursorDrawable="@null" />
+            android:textCursorDrawable="@null"
+            android:hint="Пошук"/>
 
         <ImageView
             android:layout_width="50dp"
