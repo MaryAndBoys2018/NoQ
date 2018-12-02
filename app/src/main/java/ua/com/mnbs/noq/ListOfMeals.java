@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class ListOfMeals extends AppCompatActivity {
     ArrayList<Meal> meals;
     int position;
+    ArrayList<Meal> MealsChecked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +62,13 @@ public class ListOfMeals extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.menu_list);
 
+        MealsChecked = new ArrayList<>();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long l) {
                 if (v != null) {
                     CheckBox checkBox = (CheckBox)v.findViewById(R.id.meal_checkbox);
+                    MealsChecked.add(meals.get(position));
                     checkBox.setChecked(!checkBox.isChecked());
                 }
 
@@ -78,11 +81,11 @@ public class ListOfMeals extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent OpenTimeActivity = new Intent(ListOfMeals.this, TimeActivity.class);
-                WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",meals.get(position).getMealName()+"\n"+meals.get(position).getMealPrice());
+                for (int i=0;i<MealsChecked.size();i++) {
+                    WriteToFile("Order" + ReadFromFileNotAsset("counter.txt") + ".txt", meals.get(i).getMealName() + "\n" + meals.get(i).getMealPrice());
+                }
                 startActivity(OpenTimeActivity);
-
             }
         });
     }

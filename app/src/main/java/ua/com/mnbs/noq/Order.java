@@ -2,32 +2,25 @@ package ua.com.mnbs.noq;
 
 public class Order {
     private String mDate;
-    private int mHOUR;
-    private int mMinute;
+    private String mTime;
     private String mCafe;
-    private int mSum;
-    private String mProduct;
-    private int mQuantity;
-    public Order(String product,int hour,int minute,String cafe,int sum,String date,int quantity){
-        mHOUR=hour;
-        mMinute=minute;
+    private String mSum;
+    private String mQuantity;
+    private String mAdress;
+    public Order(String cafe,String adress,String time,String date,String quantity,String sum){
+        mTime=time;
         mCafe=cafe;
         mSum=sum;
         mDate=date;
-        mProduct=product;
         mQuantity=quantity;
-
+        mAdress=adress;
     }
 
-    public int getmHOUR() {
-        return mHOUR;
+    public String getmTime() {
+        return mTime;
     }
 
-    public int getmMinute() {
-        return mMinute;
-    }
-
-    public int getmSum() {
+    public String getmSum() {
         return mSum;
     }
 
@@ -39,11 +32,11 @@ public class Order {
         return mCafe;
     }
 
-    public String getmProduct() {
-        return mProduct;
+    public String getmQuantity() {
+        return mQuantity;
     }
 
-    public int getmQuantity() {
-        return mQuantity;
+    public String getmAdress() {
+        return mAdress;
     }
 }

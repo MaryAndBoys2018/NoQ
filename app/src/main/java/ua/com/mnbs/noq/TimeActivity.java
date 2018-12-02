@@ -91,7 +91,17 @@ public class TimeActivity extends AppCompatActivity {
 
         return  convertedTime;
     }
-
+    protected void WriteToFile(String file, String text)
+    {
+        try {
+            FileOutputStream fos = openFileOutput(file,Context.MODE_PRIVATE);
+            fos.write(text.getBytes());
+            fos.close();
+        }
+        catch (IOException e){
+            Toast.makeText(TimeActivity.this,"Error Writing to file",Toast.LENGTH_SHORT).show();
+        }
+    }
     public String ReadFromFileNotAsset(String file){
         String text= "";
         try{
@@ -112,17 +122,5 @@ public class TimeActivity extends AppCompatActivity {
         }
         return text;
 
-    }
-
-    protected void WriteToFile(String file, String text)
-    {
-        try {
-            FileOutputStream fos = openFileOutput(file,Context.MODE_PRIVATE);
-            fos.write(text.getBytes());
-            fos.close();
-        }
-        catch (IOException e){
-            Toast.makeText(TimeActivity.this,"Error Writing to file",Toast.LENGTH_SHORT).show();
-        }
     }
 }
