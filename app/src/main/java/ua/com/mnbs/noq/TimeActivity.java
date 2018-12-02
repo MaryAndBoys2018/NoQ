@@ -61,14 +61,12 @@ public class TimeActivity extends AppCompatActivity {
     }
 
 
-
     private void updateDisplay(int hour, int minute) {
         Integer orderHour = hour;
         Integer orderMinute = minute;
         String mOrderTime = convertTime(orderHour, orderMinute);
         orderTime.setText(mOrderTime);
     }
-
 
 
     private String updateDisplay() {
@@ -79,19 +77,16 @@ public class TimeActivity extends AppCompatActivity {
     }
 
 
-
     private String fixZero(Integer num) {
         String stringNum;
         if (num < 10) {
             stringNum = "0";
             stringNum += num.toString();
-        }
-        else {
+        } else {
             stringNum = num.toString();
         }
         return stringNum;
     }
-
 
 
     private String convertTime(Integer hour, Integer minute) {
@@ -100,7 +95,6 @@ public class TimeActivity extends AppCompatActivity {
         convertedTime += fixZero(minute);
         return convertedTime;
     }
-
 
 
     private boolean isAllowableTime(int orderHour, Integer currentHour, int orderMinute, Integer currentMinute) {
@@ -113,18 +107,8 @@ public class TimeActivity extends AppCompatActivity {
             }
             floatTime.setHour(currentHour);
             return false;
-        }
-        else if (orderHour == currentHour) {
-            if (orderMinute < currentMinute) {
-                updateDisplay();
-                if (wasNotShownToastForPast) {
-                    Toast.makeText(this, "Ей, не можна робити замовлення в минулому часі", Toast.LENGTH_SHORT).show();
-                    wasNotShownToastForPast = false;
-                }
-                floatTime.setMinute(currentMinute);
-                return false;
-            }
-            else if (orderMinute < currentMinute + 15) {
+        } else if (orderHour == currentHour) {
+            if (orderMinute < currentMinute + 15) {
                 updateDisplay();
                 if (wasNotShownToastForPreparation) {
                     Toast.makeText(this, "Май совість, це замало часу на приготування твого замовлення", Toast.LENGTH_SHORT).show();
@@ -138,11 +122,10 @@ public class TimeActivity extends AppCompatActivity {
     }
 
 
-
     private boolean isCafeOpen(int orderHour) {
         if (orderHour >= 22) {
             updateDisplay(22, 0);
-            if (wasNotShownTooLateToast){
+            if (wasNotShownTooLateToast) {
                 Toast.makeText(this, "Вибач, але кафе вже зачинено", Toast.LENGTH_SHORT).show();
                 wasNotShownTooLateToast = false;
             }
