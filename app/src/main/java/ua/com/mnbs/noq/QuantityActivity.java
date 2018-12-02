@@ -1,5 +1,6 @@
 package ua.com.mnbs.noq;
 
+import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -37,8 +40,8 @@ public class QuantityActivity extends AppCompatActivity {
         chooseQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent OpenQuantityActivity = new Intent(QuantityActivity.this, TimeActivity.class);
+                WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",Integer.toString(quantity));
                 startActivity(OpenQuantityActivity);
 
             }
@@ -66,6 +69,38 @@ public class QuantityActivity extends AppCompatActivity {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + numberOfCoffees);
     }
+    protected void WriteToFile(String file, String text)
+    {
+        try {
+            FileOutputStream fos = openFileOutput(file,Context.MODE_PRIVATE);
+            fos.write(text.getBytes());
+            fos.close();
+        }
+        catch (IOException e){
+            Toast.makeText(QuantityActivity.this,"Error Writing to file",Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    public String ReadFromFileNotAsset(String file){
+        String text= "";
+        try{
+            FileInputStream fis = openFileInput(file);
+            int size = fis.available();
+            byte[] buffer = new byte[size];
+            fis.read(buffer);
+            fis.close();
+            text = new String(buffer);
+        }
+        catch (IOException e)
+        {
+            if (file=="counter.txt"){
+                WriteToFile("counter.txt","0");
+            }
+            else
+                Toast.makeText(QuantityActivity.this,"Помилка у читанні файлу",Toast.LENGTH_SHORT).show();
+        }
+        return text;
+
+    }
 
 }

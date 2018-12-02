@@ -61,6 +61,7 @@
 
             <TextView
 
+                android:id="@+id/order_cafe_name"
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -91,7 +92,8 @@
 
                 android:id="@+id/list_view_my_order"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                tools:context=".ListOfOrders">
 
             </ListView>
 
@@ -137,6 +139,7 @@
                 android:background="#FFFFFF" />
 
             <TextView
+                android:id="@+id/order_time"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@id/time"

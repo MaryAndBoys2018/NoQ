@@ -23,9 +23,6 @@ import java.util.ArrayList;
 public class ListOfMeals extends AppCompatActivity {
     ArrayList<Meal> meals;
     int position;
-    ArrayList<Meal> MealsChecked;
-
-    ArrayList<Meal> meals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +64,11 @@ public class ListOfMeals extends AppCompatActivity {
         final Button chooseDishes = (Button) findViewById(R.id.choose_dishes_button);
         meals.get(0).numberOfCheckedItems = 0;
 
-        MealsChecked = new ArrayList<>();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long l) {
                 if (v != null) {
                     CheckBox checkBox = (CheckBox)v.findViewById(R.id.meal_checkbox);
-                    MealsChecked.add(meals.get(position));
                     checkBox.setChecked(!checkBox.isChecked());
                 }
 
@@ -90,12 +85,12 @@ public class ListOfMeals extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
                 else {
-
                     Intent OpenQuantityActivity = new Intent(ListOfMeals.this, QuantityActivity.class);
-                   for (int i=0;i<MealsChecked.size();i++) {
-                    WriteToFile("Order" + ReadFromFileNotAsset("counter.txt") + ".txt", meals.get(i).getMealName() + "\n" + meals.get(i).getMealPrice());
-                }
-                    startActivity(OpenQuantityActivity);
+                     for (int i=0;i<meals.size();i++) {
+                         if (meals.get(i).getChecked())
+                              WriteToFile("Order" + ReadFromFileNotAsset("counter.txt") + ".txt", meals.get(i).getMealName() + "\n" + meals.get(i).getMealPrice());
+                     }
+                   startActivity(OpenQuantityActivity);
                 }
             }
         });

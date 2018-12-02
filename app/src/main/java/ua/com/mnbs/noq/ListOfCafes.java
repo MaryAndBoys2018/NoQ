@@ -59,7 +59,7 @@ public class ListOfCafes extends AppCompatActivity {
                     OpenMenu.putExtra("position", position);
                     deleteFile("counter.txt");
                     WriteToFile("counter.txt",makeNewOrderFileName(ReadFromFileNotAsset("counter.txt")));
-                    WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",cafes.get(position).getCafeName()+"\n"+cafes.get(position).getCafeType()+"\n"+cafes.get(position).getCafeLocation());
+                    WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",cafes.get(position).getCafeName()+"\n"+cafes.get(position).getCafeLocation());
                     startActivity(OpenMenu);
                 }
             });
@@ -67,7 +67,6 @@ public class ListOfCafes extends AppCompatActivity {
 
     }
 
-//makeNewOrderFileName(ReadFromFileNotAsset("counter.txt"))
 
     private String readFile(String fileName) {
         String text = "";

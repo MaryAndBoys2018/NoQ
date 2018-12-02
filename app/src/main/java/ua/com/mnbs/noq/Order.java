@@ -7,7 +7,7 @@ public class Order {
     private String mSum;
     private String mQuantity;
     private String mAdress;
-    public Order(String cafe,String adress,String time,String date,String quantity,String sum){
+    public Order(String cafe,String adress,String quantity,String sum,String time,String date){
         mTime=time;
         mCafe=cafe;
         mSum=sum;
