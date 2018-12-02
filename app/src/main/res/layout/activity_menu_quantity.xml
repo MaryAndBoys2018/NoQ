@@ -2,62 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/gradient_list_of_meals"
+    android:background="@drawable/gradient_menu_quantity"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <LinearLayout
+            android:layout_marginTop="8dp"
             android:id="@+id/top"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:descendantFocusability="beforeDescendants"
-            android:focusableInTouchMode="true"
             android:orientation="horizontal"
             android:weightSum="10">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dp"
                 android:layout_weight="1"
-                android:src="@drawable/arrow" />
-
-            <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="8dp"
-                android:layout_weight="9"
-                android:backgroundTint="#FFFFFF"
-                android:textColor="#FFFFFF"
-                android:textCursorDrawable="@null"
-                android:hint="Пошук"/>
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:src="@drawable/search" />
+                android:src="@drawable/arrow"
+                android:layout_marginLeft="8dp"/>
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="8dp"
                 android:layout_weight="1"
-                android:src="@drawable/horse" />
+                android:src="@drawable/horse"
+                android:layout_marginLeft="260dp"/>
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/top"
             android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/top"
-            android:layout_marginTop="8dp">
+            >
 
             <TextView
 
@@ -71,13 +52,13 @@
             android:id="@+id/one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/line"
             android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
             android:orientation="vertical"
             android:paddingLeft="30dp"
-            android:paddingRight="30dp">
+            android:paddingRight="30dp"
+            android:layout_below="@+id/line">
 
 
             <TextView
@@ -87,7 +68,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="15dp"
                 android:layout_weight="1"
-                android:text="Меню"
+                android:text="Кількість"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp" />
 
@@ -119,12 +100,12 @@
     </RelativeLayout>
 
         <Button
-            android:gravity="center"
-            android:id="@+id/choose_dishes_button"
+            android:id="@+id/choose_quantity_button"
             style="@style/ButtonStyle"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="Обрати кількість"/>
+            android:text="Обрати" />
+
 
 </LinearLayout>

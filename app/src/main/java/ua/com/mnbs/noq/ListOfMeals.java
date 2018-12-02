@@ -17,12 +17,15 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ListOfMeals extends AppCompatActivity {
     ArrayList<Meal> meals;
     int position;
     ArrayList<Meal> MealsChecked;
+
+    ArrayList<Meal> meals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,8 @@ public class ListOfMeals extends AppCompatActivity {
 
 
         ListView listView = (ListView) findViewById(R.id.menu_list);
+        final Button chooseDishes = (Button) findViewById(R.id.choose_dishes_button);
+        meals.get(0).numberOfCheckedItems = 0;
 
         MealsChecked = new ArrayList<>();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -76,18 +81,25 @@ public class ListOfMeals extends AppCompatActivity {
 
         });
 
-        Button btn = (Button) findViewById(R.id.btn);
-
-        btn.setOnClickListener(new View.OnClickListener() {
+        chooseDishes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent OpenTimeActivity = new Intent(ListOfMeals.this, TimeActivity.class);
-                for (int i=0;i<MealsChecked.size();i++) {
+
+                if (meals.get(0).numberOfCheckedItems == 0) {
+                    Toast.makeText(getApplicationContext(), "Виберіть, будь ласка, страву",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else {
+
+                    Intent OpenQuantityActivity = new Intent(ListOfMeals.this, QuantityActivity.class);
+                   for (int i=0;i<MealsChecked.size();i++) {
                     WriteToFile("Order" + ReadFromFileNotAsset("counter.txt") + ".txt", meals.get(i).getMealName() + "\n" + meals.get(i).getMealPrice());
                 }
-                startActivity(OpenTimeActivity);
+                    startActivity(OpenQuantityActivity);
+                }
             }
         });
+
     }
 
     private String readFile(String fileName) {

@@ -1,208 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="activity_my_orders"
-    tools:ignore="NotSibling"
+    android:background="@drawable/gradient_my_order_background"
     android:orientation="vertical"
-    android:background="@drawable/gradient_my_order_background">
+    tools:context="activity_my_orders"
+    tools:ignore="NotSibling">
 
     <RelativeLayout
-        android:layout_weight="1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/gradient_my_order_background">
-
-      <LinearLayout
-        android:id="@+id/group"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-       <TextView
-
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mоє замовлення"
-        android:textSize="40sp"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_weight="1">
 
-       <TextView
-        android:id="@+id/line1"
-        android:layout_width="320dp"
-        android:layout_height="1dp"
-        android:layout_gravity="center_horizontal"
-        android:background="#FFFFFF" />
+        <LinearLayout
+            android:id="@+id/group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
+            <TextView
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:layout_gravity="center_horizontal"
-            android:text="Заклад:"
-            android:textSize="18sp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="1dp"
-            />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:text="Mоє замовлення"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp" />
 
-        <TextView
-            android:id="@+id/line2"
-            android:layout_width="66dp"
-            android:layout_height="1dp"
-            android:layout_gravity="center_horizontal"
-            android:background="#FFFFFF"
-            android:layout_marginBottom="5dp"/>
+            <TextView
+                android:id="@+id/line1"
+                android:layout_width="320dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#FFFFFF" />
 
-        <TextView
+            <TextView
 
-            android:layout_marginLeft="35dp"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/field_order"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="1dp"
+                android:text="Заклад:"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:layout_gravity="center_horizontal"
-            android:text="Замовлення:"
-            android:textSize="18sp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="1dp"
-            />
+            <TextView
+                android:id="@+id/line2"
+                android:layout_width="66dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:background="#FFFFFF" />
 
-        <TextView
-            android:id="@+id/line3"
-            android:layout_width="110dp"
-            android:layout_height="1dp"
-            android:layout_gravity="center_horizontal"
-            android:background="#FFFFFF"
-            android:layout_marginBottom="5dp"/>
+            <TextView
 
-        <ListView
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/field_order"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
 
-        android:id="@+id/list_view_my_order"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="1dp"
+                android:text="Замовлення:"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
-        </ListView>
+            <TextView
+                android:id="@+id/line3"
+                android:layout_width="110dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:background="#FFFFFF" />
 
-      </LinearLayout>
+            <ListView
+
+                android:id="@+id/list_view_my_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </ListView>
+
+        </LinearLayout>
 
     </RelativeLayout>
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_alignBottom="@id/group">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/group"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/time_group"
-            android:layout_weight="30"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="30">
 
             <TextView
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/list_view_my_order"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="7dp"
+                android:text="Час"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
-                android:layout_gravity="center_horizontal"
-                android:text="Час"
-                android:textSize="18sp"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
-                android:layout_alignBottom="@id/list_view_my_order"
-                tools:ignore="NotSibling" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/line4"
-                android:layout_width="40dp"
+                android:layout_width="35dp"
                 android:layout_height="1dp"
+                android:layout_alignBottom="@id/time"
                 android:layout_gravity="center_horizontal"
-                android:background="#FFFFFF"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_alignBottom="@id/time" />
+                android:layout_marginBottom="-1dp"
+                android:background="#FFFFFF" />
 
             <TextView
-                android:layout_marginLeft="65dp"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textColor="#FFFFFF"
+                android:layout_alignLeft="@id/time"
+                android:layout_marginLeft="65dp"
                 android:background="@drawable/field_order"
-                android:layout_alignLeft="@id/time"/>
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
 
 
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/total_group"
-            android:layout_weight="30"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="30">
 
             <TextView
                 android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
+                android:layout_alignBottom="@id/list_view_my_order"
                 android:layout_gravity="center_horizontal"
-                android:text="Сума"
-                android:textSize="18sp"
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="7dp"
-                android:layout_alignBottom="@id/list_view_my_order"
-                tools:ignore="NotSibling" />
+                android:layout_marginLeft="5dp"
+                android:text="Сума"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/line5"
-                android:layout_width="40dp"
+                android:layout_width="45dp"
                 android:layout_height="1dp"
+                android:layout_marginLeft="5dp"
+                android:layout_alignBottom="@id/total"
                 android:layout_gravity="center_horizontal"
-                android:background="#FFFFFF"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_alignBottom="@id/time" />
+                android:layout_marginBottom="-3dp"
+                android:background="#FFFFFF" />
 
             <TextView
-                android:layout_marginLeft="65dp"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textColor="#FFFFFF"
+                android:layout_alignLeft="@id/total"
+                android:layout_marginLeft="65dp"
                 android:background="@drawable/field_order"
-                android:layout_alignLeft="@id/time"/>
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
 
         </RelativeLayout>
 
         <Button
 
             android:id="@+id/button_order"
+            android:background="@drawable/fields"
             android:layout_weight="1"
             android:layout_width="320dp"
             android:layout_height="45dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/fields"
             android:text="Підтвердити замовлення"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"

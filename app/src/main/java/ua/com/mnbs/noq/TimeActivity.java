@@ -10,17 +10,21 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+
 public class TimeActivity extends AppCompatActivity {
 
     TimePicker floatTime;
-    TextView currentTime;
     TextView orderTime;
     Button submitTime;
+
+    boolean wasNotShownToastForPast = true;
+    boolean wasNotShownToastForPreparation = true;
+    boolean wasNotShownTooEarlyToast = true;
+    boolean wasNotShownTooLateToast = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,15 +32,25 @@ public class TimeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_time);
 
         floatTime = (TimePicker) findViewById(R.id.clock);
-        currentTime = (TextView) findViewById(R.id.current_time);
         orderTime = (TextView) findViewById(R.id.text_time);
 
-        currentTime.setText(" " + updateDisplay());
+        floatTime.setIs24HourView(true);
+
+        final Integer currentHour = floatTime.getHour();
+        final Integer currentMinute = floatTime.getMinute();
+
+        orderTime.setText(updateDisplay());
 
         floatTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                updateDisplay(hourOfDay, minute);
+
+                if (isCafeOpen(hourOfDay)) {
+                    if (isAllowableTime(hourOfDay, currentHour, minute, currentMinute)) {
+                        updateDisplay(hourOfDay, minute);
+                    }
+                }
+
             }
         });
 
@@ -45,51 +59,115 @@ public class TimeActivity extends AppCompatActivity {
         submitTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent OpenListOfOrders = new Intent(TimeActivity.this, activity_my_orders.class);
+
+                Intent OpenMyOrder = new Intent(TimeActivity.this, activity_my_orders.class);
                 WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",orderTime.getText().toString());
-                startActivity(OpenListOfOrders);
+                startActivity(OpenMyOrder);
             }
         });
     }
 
-    private void updateDisplay(int hour, int minute){
+
+
+    private void updateDisplay(int hour, int minute) {
         Integer orderHour = hour;
         Integer orderMinute = minute;
-
         String mOrderTime = convertTime(orderHour, orderMinute);
-
-        orderTime.setText(" " + mOrderTime);
+        orderTime.setText(mOrderTime);
     }
 
-    private String updateDisplay(){
 
-        Integer orderHour = floatTime.getHour();
-        Integer orderMinute = floatTime.getMinute();
 
-        String mOrderTime = convertTime(orderHour, orderMinute);
-
-        return  mOrderTime;
+    private String updateDisplay() {
+        Integer currentHour = floatTime.getHour();
+        Integer currentMinute = floatTime.getMinute();
+        String mOrderTime = convertTime(currentHour, currentMinute);
+        return mOrderTime;
     }
 
-    private String fixZero(Integer num){
+
+
+    private String fixZero(Integer num) {
         String stringNum;
-
-        if (num < 10){
+        if (num < 10) {
             stringNum = "0";
             stringNum += num.toString();
-        }else{
+        }
+        else {
             stringNum = num.toString();
         }
-
         return stringNum;
     }
 
-    private String convertTime(Integer hour, Integer minute){
+
+
+    private String convertTime(Integer hour, Integer minute) {
         String convertedTime = fixZero(hour);
         convertedTime += ":";
         convertedTime += fixZero(minute);
+        return convertedTime;
+    }
 
-        return  convertedTime;
+
+
+    private boolean isAllowableTime(int orderHour, Integer currentHour, int orderMinute, Integer currentMinute) {
+
+        if (orderHour < currentHour) {
+            updateDisplay();
+            if (wasNotShownToastForPast) {
+                Toast.makeText(this, "Ей, не можна робити замовлення в минулому часі", Toast.LENGTH_SHORT).show();
+                wasNotShownToastForPast = false;
+            }
+            floatTime.setHour(currentHour);
+            return false;
+        }
+        else if (orderHour == currentHour) {
+            if (orderMinute < currentMinute) {
+                updateDisplay();
+                if (wasNotShownToastForPast) {
+                    Toast.makeText(this, "Ей, не можна робити замовлення в минулому часі", Toast.LENGTH_SHORT).show();
+                    wasNotShownToastForPast = false;
+                }
+                floatTime.setMinute(currentMinute);
+                return false;
+            }
+            else if (orderMinute < currentMinute + 15) {
+                updateDisplay();
+                if (wasNotShownToastForPreparation) {
+                    Toast.makeText(this, "Май совість, це замало часу на приготування твого замовлення", Toast.LENGTH_SHORT).show();
+                    wasNotShownToastForPreparation = false;
+                }
+                floatTime.setMinute(currentMinute + 15);
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
+    private boolean isCafeOpen(int orderHour) {
+        if (orderHour >= 22) {
+            updateDisplay(22, 0);
+            if (wasNotShownTooLateToast){
+                Toast.makeText(this, "Вибач, але кафе вже зачинено", Toast.LENGTH_SHORT).show();
+                wasNotShownTooLateToast = false;
+            }
+            floatTime.setHour(22);
+            floatTime.setMinute(0);
+            return false;
+        }
+        if (orderHour <= 7) {
+            updateDisplay(7, 0);
+            if (wasNotShownTooEarlyToast) {
+                Toast.makeText(this, "Вибач, але кафе ще зачинено", Toast.LENGTH_SHORT).show();
+                wasNotShownTooEarlyToast = false;
+            }
+            floatTime.setHour(7);
+            floatTime.setMinute(0);
+            return false;
+        }
+        return true;
     }
     protected void WriteToFile(String file, String text)
     {
