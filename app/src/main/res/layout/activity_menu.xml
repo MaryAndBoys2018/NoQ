@@ -35,7 +35,8 @@
                 android:backgroundTint="#FFFFFF"
                 android:textColor="#FFFFFF"
                 android:textCursorDrawable="@null"
-                android:hint="Пошук"/>
+                android:hint="Пошук"
+                android:textColorHint="#FFFFFF"/>
 
             <ImageView
                 android:layout_width="50dp"
