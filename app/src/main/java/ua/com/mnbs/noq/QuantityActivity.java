@@ -37,7 +37,7 @@ public class QuantityActivity extends AppCompatActivity {
         }
 
         QuantityAdapter adapter = new QuantityAdapter( this, meals);
-        ListView listView = (ListView) findViewById(R.id.menu_list);
+        ListView listView = (ListView) findViewById(R.id.quantity_list);
         listView.setAdapter(adapter);
 
 
