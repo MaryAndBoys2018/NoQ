@@ -36,8 +36,8 @@ public class ListOfMeals extends AppCompatActivity {
         if (position == 0)
             currentCafe = currentCafe.substring(1,currentCafe.length());
 
-        String menuFileDirectory = currentCafe + "_menu.txt";
-        String pricesFileDirectory = currentCafe + "_prices.txt";
+       final String menuFileDirectory = currentCafe + "_menu.txt";
+       final String pricesFileDirectory = currentCafe + "_prices.txt";
 
         String names = readFile(menuFileDirectory);
 
@@ -72,6 +72,7 @@ public class ListOfMeals extends AppCompatActivity {
 
         });
 
+
         chooseDishes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +83,16 @@ public class ListOfMeals extends AppCompatActivity {
                 else {
 
                     Intent OpenQuantityActivity = new Intent(ListOfMeals.this, QuantityActivity.class);
+                    int index = 0;
+                    for (int i=0; i<meals.size(); i++) {
+                        if (meals.get(i).getChecked()) {
+                            OpenQuantityActivity.putExtra("number of checked meals", meals.get(0).numberOfCheckedItems);
+                            OpenQuantityActivity.putExtra("position"+index,i);
+                            OpenQuantityActivity.putExtra("menu file", menuFileDirectory);
+                            OpenQuantityActivity.putExtra("price file", pricesFileDirectory);
+                            index++;
+                        }
+                    }
                     startActivity(OpenQuantityActivity);
                 }
 

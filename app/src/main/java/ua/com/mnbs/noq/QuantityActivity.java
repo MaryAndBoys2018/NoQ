@@ -24,8 +24,18 @@ public class QuantityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_quantity);
 
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        int numberOfCheckedItems = extras.getInt("number of checked meals");
+       int[] positions = new int[5];
+       String menuFile = extras.getString("menu file");
+       String pricesFile = extras.getString("price file");
+        for (int i=0; i<numberOfCheckedItems; i++)
+            positions[i] = extras.getInt("position"+i);
+
+
         final ArrayList<Meal> meals = new ArrayList<Meal>();
-        meals.add(new Meal("Гамбургер", "40грн"));
+
         QuantityAdapter adapter = new QuantityAdapter( this, meals);
         ListView listView = (ListView) findViewById(R.id.menu_list);
         listView.setAdapter(adapter);
