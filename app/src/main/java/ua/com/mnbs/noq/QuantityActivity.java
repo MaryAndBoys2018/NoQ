@@ -30,7 +30,7 @@ public class QuantityActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         int numberOfCheckedItems = extras.getInt("number of checked meals");
-        ArrayList<Meal> meals = new ArrayList<>();
+        final ArrayList<Meal> meals = new ArrayList<>();
         String tempName = "";
         String tempPrice = "";
         for (int i=0; i<numberOfCheckedItems; i++){
@@ -45,15 +45,16 @@ public class QuantityActivity extends AppCompatActivity {
 
 
 
+
         Button chooseQuantity = (Button) findViewById(R.id.choose_quantity_button);
 
         chooseQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent OpenQuantityActivity = new Intent(QuantityActivity.this, TimeActivity.class);
-                WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",Integer.toString(quantity));
+                for (int i=1;i<meals.size();i++)
+                    WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",Integer.toString(meals.get(i).getQuantity())+"\n");
                 startActivity(OpenQuantityActivity);
-
             }
         });
     }

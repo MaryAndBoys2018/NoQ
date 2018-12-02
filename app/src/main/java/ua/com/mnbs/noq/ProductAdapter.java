@@ -24,8 +24,8 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         TextView ProductNameTextView = (TextView) listItemView.findViewById(R.id.product_name_text_view);
         ProductNameTextView.setText(currentProduct.getmProductName());
 
-        TextView SumTextView = (TextView) listItemView.findViewById(R.id.product_price_text_view);
-        SumTextView.setText(currentProduct.getmProductName());
+        TextView PriceTextView = (TextView) listItemView.findViewById(R.id.product_price_text_view);
+        PriceTextView.setText(currentProduct.getmProductName());
 
         TextView QuantityTextView = (TextView) listItemView.findViewById(R.id.quantity_text_view);
         ProductNameTextView.setText(currentProduct.getmProductName());

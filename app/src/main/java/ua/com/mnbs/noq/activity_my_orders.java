@@ -144,6 +144,13 @@ public class activity_my_orders extends AppCompatActivity {
         return products;
     }
 
+    int sum(){
+        int sum=0;
+        for (int i=0;i<QuantityArrayList(ReadFromFileBufferedReader(file)).size();i++)
+            sum+=Integer.parseInt(QuantityArrayList(ReadFromFileBufferedReader(file)).get(i))*Integer.parseInt(PriceArrayList(ReadFromFileBufferedReader(file)).get(i));
+        return sum;
+    }
+
 
     private void DisplayOrder(){
         ArrayList<String> order = OnlyOrder(ReadFromFileBufferedReader("Order" + ReadFromFileNotAsset("counter.txt") + ".txt"));
@@ -157,7 +164,8 @@ public class activity_my_orders extends AppCompatActivity {
         timeTextView.setText(order.get(order.size()-1));
 
         TextView sumTextView = (TextView) findViewById(R.id.sum_text_view);
-        sumTextView.setText(order.get(order.size()-2));
+        sumTextView.setText(Integer.toString(sum()));
+
 
     }
 }

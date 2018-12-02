@@ -35,6 +35,7 @@
 
             <Button
                 android:layout_width="38dp"
+                android:id="@+id/decrement"
                 android:layout_height="38dp"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
@@ -56,6 +57,7 @@
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:text="+"
+                android:id="@+id/increment"
                 android:onClick="increment"
                 android:background="@drawable/field_order"
                 android:textSize="20sp"

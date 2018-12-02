@@ -4,6 +4,7 @@ public class Meal {
     private String mMealName;
     private String mMealPrice;
     private boolean mIsChecked;
+    private int quantity=1;
     public static int numberOfCheckedItems;
 
     Meal(String mealName, String mealPrice){
@@ -20,5 +21,13 @@ public class Meal {
     public boolean getChecked() { return mIsChecked; }
     public void setChecked(boolean isChecked){
         mIsChecked = isChecked;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 }
