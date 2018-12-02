@@ -13,37 +13,40 @@
         <LinearLayout
             android:id="@+id/top"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="8dp"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
             android:orientation="horizontal"
             android:weightSum="10">
 
             <ImageView
                 android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
                 android:src="@drawable/arrow" />
 
             <EditText
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_weight="9"
                 android:backgroundTint="#FFFFFF"
                 android:textColor="#FFFFFF"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:hint="Пошук"/>
 
             <ImageView
                 android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:src="@drawable/search" />
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:src="@drawable/horse" />
@@ -117,7 +120,7 @@
 
         <Button
             android:gravity="center"
-            android:id="@+id/btn"
+            android:id="@+id/choose_dishes_button"
             style="@style/ButtonStyle"
             android:layout_width="280dp"
             android:layout_height="wrap_content"

@@ -13,24 +13,20 @@
             android:layout_marginTop="8dp"
             android:id="@+id/top"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
             <ImageView
                 android:layout_weight="1"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/arrow"
                 android:layout_marginLeft="8dp"/>
 
-
-
-
-
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:src="@drawable/horse"
                 android:layout_marginLeft="260dp"/>
@@ -104,7 +100,7 @@
     </RelativeLayout>
 
         <Button
-            android:id="@+id/btn1"
+            android:id="@+id/choose_quantity_button"
             style="@style/ButtonStyle"
             android:layout_width="280dp"
             android:layout_height="wrap_content"

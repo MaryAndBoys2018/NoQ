@@ -32,9 +32,9 @@ public class QuantityActivity extends AppCompatActivity {
 
 
 
-        Button btn = (Button) findViewById(R.id.btn1);
+        Button chooseQuantity = (Button) findViewById(R.id.choose_quantity_button);
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        chooseQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
