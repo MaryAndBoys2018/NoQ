@@ -13,7 +13,7 @@
         <LinearLayout
             android:id="@+id/top"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="8dp"
             android:descendantFocusability="beforeDescendants"
             android:focusableInTouchMode="true"
@@ -22,14 +22,14 @@
 
             <ImageView
                 android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
                 android:src="@drawable/arrow" />
 
             <EditText
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_weight="9"
                 android:backgroundTint="#FFFFFF"
@@ -38,14 +38,14 @@
 
             <ImageView
                 android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:src="@drawable/search" />
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:src="@drawable/horse" />
