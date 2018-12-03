@@ -15,7 +15,8 @@ public class TimeActivity extends AppCompatActivity {
     TextView orderTime;
     Button submitTime;
 
-    int preparationTime = 15;
+    final int preparationTime = 15;
+    final int minutesInHour = 60;
 
     boolean wasNotShownToastForPast = true;
     boolean wasNotShownToastForPreparation = true;
@@ -35,18 +36,18 @@ public class TimeActivity extends AppCompatActivity {
         final Integer currentHour = floatTime.getHour();
         final Integer currentMinute = floatTime.getMinute();
 
-        orderTime.setText(updateDisplay());
+        if (isCafeOpen(currentHour, currentMinute)){
+            orderTime.setText(updateDisplay());
+        }
 
         floatTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-
-                if (isCafeOpen(hourOfDay)) {
+                if (isCafeOpen(hourOfDay, minute)) {
                     if (isAllowableTime(hourOfDay, currentHour, minute, currentMinute)) {
                         updateDisplay(hourOfDay, minute);
                     }
                 }
-
             }
         });
 
@@ -56,7 +57,12 @@ public class TimeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent OpenMyOrder = new Intent(TimeActivity.this, MyOrdersActivity.class);
-                startActivity(OpenMyOrder);
+                if (checkPreparationTime(floatTime.getHour(), floatTime.getMinute(), currentHour, currentMinute)) {
+                    startActivity(OpenMyOrder);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Май совість, це замало часу на приготування твого замовлення", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -90,6 +96,7 @@ public class TimeActivity extends AppCompatActivity {
     }
 
 
+
     private String convertTime(Integer hour, Integer minute) {
         String convertedTime = fixZero(hour);
         convertedTime += ":";
@@ -98,24 +105,26 @@ public class TimeActivity extends AppCompatActivity {
     }
 
 
+
     private boolean isAllowableTime(int orderHour, Integer currentHour, int orderMinute, Integer currentMinute) {
 
         if (orderHour < currentHour) {
-            updateDisplay();
             if (wasNotShownToastForPast) {
                 Toast.makeText(this, "Ей, не можна робити замовлення в минулому часі", Toast.LENGTH_SHORT).show();
                 wasNotShownToastForPast = false;
             }
             floatTime.setHour(currentHour);
+            floatTime.setMinute(currentMinute);
             return false;
+
         } else if (orderHour == currentHour) {
-            if (orderMinute < currentMinute + 15) {
-                updateDisplay();
-                if (wasNotShownToastForPreparation) {
-                    Toast.makeText(this, "Май совість, це замало часу на приготування твого замовлення", Toast.LENGTH_SHORT).show();
-                    wasNotShownToastForPreparation = false;
+            if (orderMinute < currentMinute){
+                if (wasNotShownToastForPast) {
+                    Toast.makeText(this, "Ей, не можна робити замовлення в минулому часі", Toast.LENGTH_SHORT).show();
+                    wasNotShownToastForPast = false;
                 }
-                floatTime.setMinute(currentMinute + 15);
+                floatTime.setHour(currentHour);
+                floatTime.setMinute(currentMinute);
                 return false;
             }
         }
@@ -123,9 +132,27 @@ public class TimeActivity extends AppCompatActivity {
     }
 
 
-    private boolean isCafeOpen(int orderHour) {
+
+    private int cutMinute(int minute){
+        if (minute >= minutesInHour){
+            minute -= minutesInHour;
+        }
+        return minute;
+    }
+
+
+
+    private boolean isNearNewHour(Integer currentMinute){
+        if (minutesInHour - preparationTime <= currentMinute){
+            return true;
+        }
+        return false;
+    }
+
+
+
+    private boolean isCafeOpen(int orderHour, int orderMinute) {
         if (orderHour > 22) {
-            updateDisplay(22, 0);
             if (wasNotShownTooLateToast) {
                 Toast.makeText(this, "Вибач, але кафе вже зачинено", Toast.LENGTH_SHORT).show();
                 wasNotShownTooLateToast = false;
@@ -134,8 +161,18 @@ public class TimeActivity extends AppCompatActivity {
             floatTime.setMinute(0);
             return false;
         }
+
+        if (orderHour == 22 && orderMinute > 0) {
+            if (wasNotShownTooLateToast) {
+                Toast.makeText(this, "Вибач, але кафе вже зачинено", Toast.LENGTH_SHORT).show();
+                wasNotShownTooLateToast = false;
+            }
+            floatTime.setHour(22);
+            floatTime.setMinute(0);
+            return false;
+        }
+
         if (orderHour < 7) {
-            updateDisplay(7, 0);
             if (wasNotShownTooEarlyToast) {
                 Toast.makeText(this, "Вибач, але кафе ще зачинено", Toast.LENGTH_SHORT).show();
                 wasNotShownTooEarlyToast = false;
@@ -145,5 +182,35 @@ public class TimeActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+
+    private boolean checkPreparationTime(int orderHour, int orderMinute, int currentHour, int currentMinute) {
+        if (isNearNewHour(currentMinute)) {
+            if (orderHour == currentHour) {
+                if (wasNotShownToastForPreparation) {
+                    Toast.makeText(this, "Май совість, це замало часу на приготування твого замовлення", Toast.LENGTH_SHORT).show();
+                    wasNotShownToastForPreparation = false;
+                }
+                return false;
+            }
+            if(orderHour == currentHour + 1) {
+                if (orderMinute < cutMinute(currentMinute + preparationTime)) {
+
+                    if (wasNotShownToastForPreparation) {
+                        Toast.makeText(this, "Май совість, це замало часу на приготування твого замовлення", Toast.LENGTH_SHORT).show();
+                        wasNotShownToastForPreparation = false;
+                    }
+                    return false;
+                }
+            }
+        }
+
+        else{
+            if (orderMinute < currentMinute + preparationTime){
+                return false;
+            }
+        }
+        return  true;
     }
 }
