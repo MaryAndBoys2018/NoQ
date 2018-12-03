@@ -15,8 +15,8 @@ public class TimeActivity extends AppCompatActivity {
     TextView orderTime;
     Button submitTime;
 
-    final int closingHour = 1;
-    final int openingHour = 0;
+    final int closingHour = 22;
+    final int openingHour = 7;
     final int preparationTime = 15;
     final int minutesInHour = 60;
 
