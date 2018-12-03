@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_my_order_background"
     android:orientation="vertical"
-    tools:context="activity_my_orders"
+    tools:context=".MyOrdersActivity"
     tools:ignore="NotSibling">
 
     <RelativeLayout
