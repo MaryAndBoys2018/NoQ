@@ -76,6 +76,4 @@ public class QuantityActivity extends AppCompatActivity {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + numberOfCoffees);
     }
-
-
 }

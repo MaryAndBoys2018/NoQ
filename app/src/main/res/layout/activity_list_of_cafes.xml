@@ -17,6 +17,7 @@
         android:weightSum="10">
 
         <ImageView
+            android:id="@+id/horse_icon_from_cafes"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="8dp"
@@ -43,6 +44,7 @@
             android:src="@drawable/search" />
 
         <ImageView
+            android:id="@+id/back_from_cafes"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginRight="8dp"

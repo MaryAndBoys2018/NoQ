@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -67,11 +68,29 @@ public class ListOfMeals extends AppCompatActivity {
                     CheckBox checkBox = (CheckBox)v.findViewById(R.id.meal_checkbox);
                     checkBox.setChecked(!checkBox.isChecked());
                 }
-
             }
 
         });
 
+        ImageView buttonToMain = (ImageView) findViewById(R.id.horse_icon_from_menu);
+
+        buttonToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toMainActivity = new Intent(ListOfMeals.this, MainActivity.class);
+                startActivity(toMainActivity);
+            }
+        });
+
+        ImageView backButton = (ImageView) findViewById(R.id.back_from_menu) ;
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toListOfCafes = new Intent(ListOfMeals.this, ListOfCafes.class);
+                startActivity(toListOfCafes);
+            }
+        });
 
         chooseDishes.setOnClickListener(new View.OnClickListener() {
             @Override

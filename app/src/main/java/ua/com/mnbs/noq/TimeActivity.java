@@ -16,6 +16,8 @@ public class TimeActivity extends AppCompatActivity {
     TextView orderTime;
     Button submitTime;
 
+    int preparationTime = 15;
+
     boolean wasNotShownToastForPast = true;
     boolean wasNotShownToastForPreparation = true;
     boolean wasNotShownTooEarlyToast = true;
@@ -123,7 +125,7 @@ public class TimeActivity extends AppCompatActivity {
 
 
     private boolean isCafeOpen(int orderHour) {
-        if (orderHour >= 22) {
+        if (orderHour > 22) {
             updateDisplay(22, 0);
             if (wasNotShownTooLateToast) {
                 Toast.makeText(this, "Вибач, але кафе вже зачинено", Toast.LENGTH_SHORT).show();
@@ -133,7 +135,7 @@ public class TimeActivity extends AppCompatActivity {
             floatTime.setMinute(0);
             return false;
         }
-        if (orderHour <= 7) {
+        if (orderHour < 7) {
             updateDisplay(7, 0);
             if (wasNotShownTooEarlyToast) {
                 Toast.makeText(this, "Вибач, але кафе ще зачинено", Toast.LENGTH_SHORT).show();

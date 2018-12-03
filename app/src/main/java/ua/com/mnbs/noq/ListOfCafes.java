@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -64,6 +65,26 @@ public class ListOfCafes extends AppCompatActivity {
                 }
             });
         }
+
+        ImageView buttonToMain = (ImageView) findViewById(R.id.horse_icon_from_cafes);
+
+        buttonToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toMainActivity = new Intent(ListOfCafes.this, MainActivity.class);
+                startActivity(toMainActivity);
+            }
+        });
+
+        ImageView backButton = (ImageView) findViewById(R.id.back_from_cafes) ;
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toMainActivity = new Intent(ListOfCafes.this, MainActivity.class);
+                startActivity(toMainActivity);
+            }
+        });
 
     }
 
