@@ -18,6 +18,7 @@
             android:weightSum="10">
 
             <ImageView
+                android:id="@+id/back_from_quantity"
                 android:layout_weight="1"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -25,6 +26,7 @@
                 android:layout_marginLeft="8dp"/>
 
             <ImageView
+                android:id="@+id/horse_icon_from_quantity"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"

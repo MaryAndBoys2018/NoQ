@@ -29,13 +29,16 @@ public class ListOfMeals extends AppCompatActivity {
         String currentCafe = extras.getString("cafe name");
         int position = extras.getInt("position");
 
+        final String cafeNameForIntent = currentCafe;
+        final int positionForIntent = position;
+
         currentCafe = currentCafe.trim();
 
         if (position == 0)
             currentCafe = currentCafe.substring(1,currentCafe.length());
 
-       final String menuFileDirectory = currentCafe + "_menu.txt";
-       final String pricesFileDirectory = currentCafe + "_prices.txt";
+        final String menuFileDirectory = currentCafe + "_menu.txt";
+        final String pricesFileDirectory = currentCafe + "_prices.txt";
 
         String names = readFile(menuFileDirectory);
 
@@ -97,8 +100,9 @@ public class ListOfMeals extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
                 else {
-
                     Intent OpenQuantityActivity = new Intent(ListOfMeals.this, QuantityActivity.class);
+                    OpenQuantityActivity.putExtra("cafe name for intent", cafeNameForIntent);
+                    OpenQuantityActivity.putExtra("position for intent", positionForIntent);
                     int index = 0;
                     for (int i=0; i<meals.size(); i++) {
                         if (meals.get(i).getChecked()) {

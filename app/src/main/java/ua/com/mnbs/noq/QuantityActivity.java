@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +28,12 @@ public class QuantityActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         int numberOfCheckedItems = extras.getInt("number of checked meals");
+
+        final String nameOfCafeForBackButton = extras.getString("cafe name for intent");
+        final int positionForBackButton = extras.getInt("position for intent");
+
         ArrayList<Meal> meals = new ArrayList<>();
+
         String tempName = "";
         String tempPrice = "";
         for (int i=0; i<numberOfCheckedItems; i++){
@@ -40,7 +46,27 @@ public class QuantityActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.quantity_list);
         listView.setAdapter(adapter);
 
+        ImageView buttonToMain = (ImageView) findViewById(R.id.horse_icon_from_quantity);
 
+        buttonToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toMainActivity = new Intent(QuantityActivity.this, MainActivity.class);
+                startActivity(toMainActivity);
+            }
+        });
+
+        ImageView backButton = (ImageView) findViewById(R.id.back_from_quantity) ;
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toLisOfMeals = new Intent(QuantityActivity.this, ListOfMeals.class);
+                toLisOfMeals.putExtra("cafe name", nameOfCafeForBackButton);
+                toLisOfMeals.putExtra("position", positionForBackButton);
+                startActivity(toLisOfMeals);
+            }
+        });
 
         Button chooseQuantity = (Button) findViewById(R.id.choose_quantity_button);
 
@@ -48,12 +74,13 @@ public class QuantityActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent OpenQuantityActivity = new Intent(QuantityActivity.this, TimeActivity.class);
-                startActivity(OpenQuantityActivity);
+                Intent OpenTimeActivity = new Intent(QuantityActivity.this, TimeActivity.class);
+                startActivity(OpenTimeActivity);
 
             }
         });
     }
+
     int quantity=1;
 
     public void increment(View view) {
