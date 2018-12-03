@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -56,7 +55,7 @@ public class TimeActivity extends AppCompatActivity {
         submitTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent OpenMyOrder = new Intent(TimeActivity.this, activity_my_orders.class);
+                Intent OpenMyOrder = new Intent(TimeActivity.this, MyOrdersActivity.class);
                 startActivity(OpenMyOrder);
             }
         });

@@ -1,12 +1,10 @@
 package ua.com.mnbs.noq;
 
 import android.content.Intent;
-import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -15,7 +13,6 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ListOfMeals extends AppCompatActivity {
@@ -151,7 +148,7 @@ public class ListOfMeals extends AppCompatActivity {
 
 
     private void printListOfMeals(ArrayList<Meal> meals) {
-        MenuAdapter adapter = new MenuAdapter(this, meals);
+        MealAdapter adapter = new MealAdapter(this, meals);
         ListView listView = (ListView) findViewById(R.id.menu_list);
         listView.setAdapter(adapter);
     }

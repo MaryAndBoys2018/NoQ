@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MenuAdapter extends ArrayAdapter<Meal> {
-    MenuAdapter(Activity context, ArrayList<Meal> meals) {
+public class MealAdapter extends ArrayAdapter<Meal> {
+    MealAdapter(Activity context, ArrayList<Meal> meals) {
         super(context, 0, meals);
     }
 
