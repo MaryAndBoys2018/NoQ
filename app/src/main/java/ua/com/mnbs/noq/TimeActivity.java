@@ -15,6 +15,8 @@ public class TimeActivity extends AppCompatActivity {
     TextView orderTime;
     Button submitTime;
 
+    final int closingHour = 1;
+    final int openingHour = 0;
     final int preparationTime = 15;
     final int minutesInHour = 60;
 
@@ -38,6 +40,10 @@ public class TimeActivity extends AppCompatActivity {
 
         if (isCafeOpen(currentHour, currentMinute)){
             orderTime.setText(updateDisplay());
+        }
+        else {
+            Intent toMainActivity = new Intent(TimeActivity.this, MainActivity.class);
+            startActivity(toMainActivity);
         }
 
         floatTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
@@ -152,32 +158,32 @@ public class TimeActivity extends AppCompatActivity {
 
 
     private boolean isCafeOpen(int orderHour, int orderMinute) {
-        if (orderHour > 22) {
+        if (orderHour > closingHour) {
             if (wasNotShownTooLateToast) {
                 Toast.makeText(this, "Вибач, але кафе вже зачинено", Toast.LENGTH_SHORT).show();
                 wasNotShownTooLateToast = false;
             }
-            floatTime.setHour(22);
+            floatTime.setHour(closingHour);
             floatTime.setMinute(0);
             return false;
         }
 
-        if (orderHour == 22 && orderMinute > 0) {
+        if (orderHour == closingHour && orderMinute > 0) {
             if (wasNotShownTooLateToast) {
                 Toast.makeText(this, "Вибач, але кафе вже зачинено", Toast.LENGTH_SHORT).show();
                 wasNotShownTooLateToast = false;
             }
-            floatTime.setHour(22);
+            floatTime.setHour(closingHour);
             floatTime.setMinute(0);
             return false;
         }
 
-        if (orderHour < 7) {
+        if (orderHour < openingHour) {
             if (wasNotShownTooEarlyToast) {
                 Toast.makeText(this, "Вибач, але кафе ще зачинено", Toast.LENGTH_SHORT).show();
                 wasNotShownTooEarlyToast = false;
             }
-            floatTime.setHour(7);
+            floatTime.setHour(openingHour);
             floatTime.setMinute(0);
             return false;
         }
