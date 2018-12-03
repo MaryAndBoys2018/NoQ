@@ -16,10 +16,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class ListOfCafes extends AppCompatActivity {
@@ -59,7 +62,7 @@ public class ListOfCafes extends AppCompatActivity {
                     OpenMenu.putExtra("position", position);
                     deleteFile("counter.txt");
                     WriteToFile("counter.txt",makeNewOrderFileName(ReadFromFileNotAsset("counter.txt")));
-                    WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",cafes.get(position).getCafeName()+"\n"+cafes.get(position).getCafeLocation());
+                    WriteToFileBuffer("Order"+ReadFromFileNotAsset("counter.txt")+".txt",cafes.get(position).getCafeName()+"\n"+cafes.get(position).getCafeLocation());
                     startActivity(OpenMenu);
                 }
             });
@@ -103,6 +106,20 @@ public class ListOfCafes extends AppCompatActivity {
         }
         return text;
 
+    }
+
+    public void WriteToFileBuffer(String filePath,String text){
+        try{
+            File file = new File(filePath);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            PrintWriter pw = new PrintWriter(file);
+            pw.println(text);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
 

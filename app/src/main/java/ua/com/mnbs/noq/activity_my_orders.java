@@ -22,16 +22,16 @@ import android.widget.Button;
 
 
 public class activity_my_orders extends AppCompatActivity {
-    ArrayList<Product> products;
-    String file =("Order"+ReadFromFileNotAsset("counter.txt")+".txt");
+    String file =("Order0.txt");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_order);
         Button orderButton = (Button) findViewById(R.id.button_order);
-        products =new ArrayList<>();
+
         DisplayOrder();
+
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,9 +153,8 @@ public class activity_my_orders extends AppCompatActivity {
 
 
     private void DisplayOrder(){
-        ArrayList<String> order = OnlyOrder(ReadFromFileBufferedReader("Order" + ReadFromFileNotAsset("counter.txt") + ".txt"));
+        ArrayList<String> order = OnlyOrder(ReadFromFileBufferedReader("Order0.txt"));
 
-        printListOfProducts(products);
 
         TextView nameTextView = (TextView) findViewById(R.id.order_cafe_name);
         nameTextView.setText(order.get(1));

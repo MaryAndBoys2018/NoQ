@@ -14,9 +14,5 @@ public class ListOfOrders extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_orders);
     }
-    private void printListOfOrders(ArrayList<Order> orders) {
-        OrderAdapter adapter = new OrderAdapter(this, orders);
-        ListView listView = (ListView) findViewById(R.id.order_list);
-        listView.setAdapter(adapter);
-    }
+
 }

@@ -10,9 +10,12 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 
 public class TimeActivity extends AppCompatActivity {
@@ -61,7 +64,7 @@ public class TimeActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent OpenMyOrder = new Intent(TimeActivity.this, activity_my_orders.class);
-                WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",orderTime.getText().toString());
+                WriteToFileBuffer("Order"+ReadFromFileNotAsset("counter.txt")+".txt",orderTime.getText().toString());
                 startActivity(OpenMyOrder);
             }
         });
@@ -85,6 +88,19 @@ public class TimeActivity extends AppCompatActivity {
         return mOrderTime;
     }
 
+    public void WriteToFileBuffer(String filePath,String text){
+        try{
+            File file = new File(filePath);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            PrintWriter pw = new PrintWriter(file);
+            pw.println(text);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
 
     private String fixZero(Integer num) {

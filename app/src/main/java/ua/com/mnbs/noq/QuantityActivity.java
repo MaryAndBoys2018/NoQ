@@ -14,10 +14,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class QuantityActivity extends AppCompatActivity {
@@ -53,12 +55,25 @@ public class QuantityActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent OpenQuantityActivity = new Intent(QuantityActivity.this, TimeActivity.class);
                 for (int i=1;i<meals.size();i++)
-                    WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",Integer.toString(meals.get(i).getQuantity())+"\n");
+                    WriteToFileBuffer("Order"+ReadFromFileNotAsset("counter.txt")+".txt",Integer.toString(meals.get(i).getQuantity())+"\n");
                 startActivity(OpenQuantityActivity);
             }
         });
     }
-    int quantity=1;
+
+    public void WriteToFileBuffer(String filePath,String text){
+        try{
+            File file = new File(filePath);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            PrintWriter pw = new PrintWriter(file);
+            pw.println(text);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     protected void WriteToFile(String file, String text)
     {

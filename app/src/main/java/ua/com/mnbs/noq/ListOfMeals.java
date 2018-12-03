@@ -13,10 +13,12 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -98,7 +100,7 @@ public class ListOfMeals extends AppCompatActivity {
                     }
                   for (int i=0;i<meals.size();i++) {
                          if (meals.get(i).getChecked())
-                              WriteToFile("Order" + ReadFromFileNotAsset("counter.txt") + ".txt", meals.get(i).getMealName() + "\n" + meals.get(i).getMealPrice());
+                              WriteToFileBuffer("Order" + ReadFromFileNotAsset("counter.txt") + ".txt", meals.get(i).getMealName() + "\n" + meals.get(i).getMealPrice());
                      }
                     startActivity(OpenQuantityActivity);
                 }
@@ -169,6 +171,20 @@ public class ListOfMeals extends AppCompatActivity {
             temp += text.charAt(i);
         }
         return returnValue;
+    }
+
+    public void WriteToFileBuffer(String filePath,String text){
+        try{
+            File file = new File(filePath);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            PrintWriter pw = new PrintWriter(file);
+            pw.println(text);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
 
