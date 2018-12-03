@@ -16,6 +16,7 @@ public class QuantityAdapter extends ArrayAdapter<Meal> {
         super(context, 0, meals);
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View listItemView = convertView;
@@ -32,7 +33,10 @@ public class QuantityAdapter extends ArrayAdapter<Meal> {
         final TextView priceTypeTextView = (TextView) listItemView.findViewById(R.id.price_type_text_view);
         priceTypeTextView.setText(currentMeal.getMealPrice());
 
+        final TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity_text_view);
+
         Button IncrementButton = (Button) listItemView.findViewById(R.id.increment);
+
 
         IncrementButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,9 +45,10 @@ public class QuantityAdapter extends ArrayAdapter<Meal> {
                     return;
                 }
                 currentMeal.setQuantity(currentMeal.getQuantity()+1);
-                priceTypeTextView.setText(currentMeal.getQuantity()*Integer.parseInt(currentMeal.getMealPrice()));
             }
+
         });
+
 
         Button DecrementButton = (Button) listItemView.findViewById(R.id.decrement);
 
@@ -54,7 +59,6 @@ public class QuantityAdapter extends ArrayAdapter<Meal> {
                     return;
                 }
                 currentMeal.setQuantity(currentMeal.getQuantity()-1);
-                priceTypeTextView.setText(currentMeal.getQuantity()*Integer.parseInt(currentMeal.getMealPrice()));
             }
         });
 

@@ -60,26 +60,6 @@ public class QuantityActivity extends AppCompatActivity {
     }
     int quantity=1;
 
-    public void increment(View view) {
-        if (quantity==20){
-            Toast.makeText(this, "Ууупс! Не вибирайте так багато. Ми не впораємося:)", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        quantity= quantity+1;
-        displayQuantity(quantity);
-    }
-    public void decrement(View view) {
-        if (quantity==1) {
-            Toast.makeText(this, "Не можна вибрати від'ємну кількість страв:)", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        quantity= quantity-1;
-        displayQuantity(quantity);
-    }
-    private void displayQuantity(int numberOfCoffees) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + numberOfCoffees);
-    }
     protected void WriteToFile(String file, String text)
     {
         try {

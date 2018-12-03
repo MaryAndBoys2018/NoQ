@@ -26,7 +26,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         cafeTextView.setText(currentOrder.getmCafe());
 
         TextView sumTextView = (TextView) listItemView.findViewById(R.id.sum_text_view);
-        sumTextView.setText(currentOrder.getmSum());
+        sumTextView.setText(currentOrder.getmSum()+" грн");
 
         TextView timeTextView = (TextView) listItemView.findViewById(R.id.time_text_view);
         timeTextView.setText(currentOrder.getmTime());

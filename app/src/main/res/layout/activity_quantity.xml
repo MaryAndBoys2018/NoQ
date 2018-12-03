@@ -40,7 +40,6 @@
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
                 android:text="-"
-                android:onClick="decrement"
                 android:background="@drawable/field_order"
                 android:textSize="20sp"
                 android:textColor="#FFFFFF" />
@@ -58,7 +57,6 @@
                 android:layout_height="38dp"
                 android:text="+"
                 android:id="@+id/increment"
-                android:onClick="increment"
                 android:background="@drawable/field_order"
                 android:textSize="20sp"
                 android:textColor="#FFFFFF"/>
