@@ -64,7 +64,7 @@ public class TimeActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent OpenMyOrder = new Intent(TimeActivity.this, activity_my_orders.class);
-                WriteToFileBuffer("Order"+ReadFromFileNotAsset("counter.txt")+".txt",orderTime.getText().toString());
+                WriteToFile("Time"+ReadFromFileNotAsset("counter.txt")+".txt",orderTime.getText().toString());
                 startActivity(OpenMyOrder);
             }
         });

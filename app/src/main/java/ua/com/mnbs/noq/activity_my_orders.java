@@ -22,7 +22,11 @@ import android.widget.Button;
 
 
 public class activity_my_orders extends AppCompatActivity {
-    String file =("Order0.txt");
+    String file ="Order0.txt";
+    String product_file ="Product0.txt";
+    String product_quantity="ProductQuantity0.txt";
+    String time_file="Time0.txt";
+    String product_price="ProductPrice0.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +78,7 @@ public class activity_my_orders extends AppCompatActivity {
 
     private ArrayList<String> ReadFromFileBufferedReader(String file) {
         int i = 0;
-        ArrayList<String> text = new ArrayList<>();
+        ArrayList<String> text=null;
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             while (reader.readLine() != null) {
@@ -102,68 +106,55 @@ public class activity_my_orders extends AppCompatActivity {
         return text;
 
     }
-    private ArrayList<String> OnlyOrder(ArrayList<String> orderlist){
-        ArrayList<String> DisplayOrder= new ArrayList<String>();
-        DisplayOrder.add(orderlist.get(1));//cafe name
-        DisplayOrder.add(orderlist.get(2));//cafe location
-        DisplayOrder.add(orderlist.get(orderlist.size()-2));//sum
-        DisplayOrder.add(orderlist.get(orderlist.size()-1));//time
-        DisplayOrder.add(orderlist.get(orderlist.size()));//date
-        return DisplayOrder;
-    }
 
-    private ArrayList<String> NameArrayList(ArrayList<String> list){
-        ArrayList<String> NameArrayList= new ArrayList<>();
-        for (int i=3;i<(list.size()-3);i+=3){
-            NameArrayList.add(list.get(i));
+    private ArrayList<String> moveIntoArrayList(String text) {
+        ArrayList<String> returnValue = new ArrayList<>();
+        String temp = "";
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == '\n' || text.charAt(i) == '\0') {
+                returnValue.add(temp);
+                temp = "";
+                continue;
+            }
+            temp += text.charAt(i);
         }
-        return NameArrayList;
+        return returnValue;
     }
 
-    private ArrayList<String> QuantityArrayList(ArrayList<String> list){
-        ArrayList<String> QuantityArrayList= new ArrayList<>();
-        for (int i=3+(2*QuantityArrayList(ReadFromFileBufferedReader(file)).size());i<(list.size()-3);i++){
-            QuantityArrayList.add(list.get(i));
-        }
-        return QuantityArrayList;
-    }
 
-    private ArrayList<String> PriceArrayList(ArrayList<String> list){
-        ArrayList<String> PriceArrayList= new ArrayList<>();
-        for (int i=4;i<(list.size()-3);i+=3){
-            PriceArrayList.add(list.get(i));
-        }
-        return PriceArrayList;
-    }
+    private ArrayList<Product> products(){
 
-    private ArrayList<Product> products(ArrayList<String> Name,ArrayList<String> Quantity, ArrayList<String> Price){
+        ArrayList<String> rawProducts =moveIntoArrayList(ReadFromFileNotAsset(product_file));
+        ArrayList<String> quantities = moveIntoArrayList(ReadFromFileNotAsset(product_quantity));
+        ArrayList<String> prices = moveIntoArrayList(ReadFromFileNotAsset(product_price));
         ArrayList<Product> products= new ArrayList<>();
-        for (int i=0;i<Name.size();i++){
-            products.add(new Product(Name.get(i),Price.get(i),Quantity.get(i)));
+        for (int i=0;i<(rawProducts.size());i++) {
+            products.add(new Product(rawProducts.get(i), prices.get(i + 1), quantities.get(i)));
         }
-        return products;
+        return  products;
     }
+
 
     int sum(){
         int sum=0;
-        for (int i=0;i<QuantityArrayList(ReadFromFileBufferedReader(file)).size();i++)
-            sum+=Integer.parseInt(QuantityArrayList(ReadFromFileBufferedReader(file)).get(i))*Integer.parseInt(PriceArrayList(ReadFromFileBufferedReader(file)).get(i));
+        for (int i=0;i<products().size();i++)
+            sum+=Integer.parseInt(products().get(i).getmQuantity())*Integer.parseInt(products().get(i).getmProductPrice());
         return sum;
     }
 
 
     private void DisplayOrder(){
-        ArrayList<String> order = OnlyOrder(ReadFromFileBufferedReader("Order0.txt"));
-
 
         TextView nameTextView = (TextView) findViewById(R.id.order_cafe_name);
-        nameTextView.setText(order.get(1));
+        nameTextView.setText(ReadFromFileNotAsset(file));
+
 
         TextView timeTextView = (TextView) findViewById(R.id.order_time);
-        timeTextView.setText(order.get(order.size()-1));
+        timeTextView.setText(ReadFromFileNotAsset(time_file));
 
         TextView sumTextView = (TextView) findViewById(R.id.sum_text_view);
-        sumTextView.setText(Integer.toString(sum()));
+        //sumTextView.setText(sum());
+        printListOfProducts(products());
 
 
     }

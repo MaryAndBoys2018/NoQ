@@ -100,7 +100,8 @@ public class ListOfMeals extends AppCompatActivity {
                     }
                   for (int i=0;i<meals.size();i++) {
                          if (meals.get(i).getChecked())
-                              WriteToFileBuffer("Order" + ReadFromFileNotAsset("counter.txt") + ".txt", meals.get(i).getMealName() + "\n" + meals.get(i).getMealPrice());
+                              WriteToFile("Product" + ReadFromFileNotAsset("counter.txt") + ".txt",meals.get(i).getMealName());
+                              WriteToFile("ProductPrice" + ReadFromFileNotAsset("counter.txt") + ".txt",meals.get(i).getMealPrice());
                      }
                     startActivity(OpenQuantityActivity);
                 }
