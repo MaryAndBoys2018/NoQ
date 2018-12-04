@@ -19,6 +19,7 @@ public class Meal {
     public String getMealPrice(){
         return mMealPrice;
     }
+    protected void setMealPrice() {}
     public boolean getChecked() { return mIsChecked; }
     public void setChecked(boolean isChecked){
         mIsChecked = isChecked;

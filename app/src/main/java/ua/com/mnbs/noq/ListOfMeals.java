@@ -41,7 +41,6 @@ public class ListOfMeals extends AppCompatActivity {
         final String pricesFileDirectory = currentCafe + "_prices.txt";
 
         String names = readFile(menuFileDirectory);
-
         ArrayList<String> name = moveIntoArrayList(names);
         String prices = readFile(pricesFileDirectory);
         ArrayList<String> price = moveIntoArrayList(prices);
@@ -163,8 +162,11 @@ public class ListOfMeals extends AppCompatActivity {
 
     private ArrayList<Meal> createMealArrayList(ArrayList<String> name, ArrayList<String> price) {
         ArrayList<Meal> meals = new ArrayList<>();
-        for (int i = 0; i < name.size(); i++)
+        price.set(0, price.get(0).substring(1,price.get(0).length()));
+        for (int i = 0; i < name.size(); i++) {
+            price.set(i, price.get(i).trim());
             meals.add(new Meal(name.get(i), price.get(i)));
+        }
         return meals;
     }
 }

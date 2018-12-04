@@ -31,7 +31,7 @@ public class MealAdapter extends ArrayAdapter<Meal> {
         mealNameTextView.setText(currentMeal.getMealName());
 
         TextView priceTypeTextView = (TextView) listItemView.findViewById(R.id.price_type_text_view);
-        priceTypeTextView.setText(currentMeal.getMealPrice());
+        priceTypeTextView.setText(currentMeal.getMealPrice() + " грн");
 
         CheckBox mealCheckBox = (CheckBox) listItemView.findViewById(R.id.meal_checkbox);
         currentMeal.setChecked(mealCheckBox.isChecked());

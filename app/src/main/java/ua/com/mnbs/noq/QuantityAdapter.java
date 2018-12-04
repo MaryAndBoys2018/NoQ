@@ -26,12 +26,11 @@ public class QuantityAdapter extends ArrayAdapter<Meal> {
         }
         final Meal currentMeal = getItem(position);
 
-
         TextView mealNameTextView = (TextView) listItemView.findViewById(R.id.meal_name_text_view);
         mealNameTextView.setText(currentMeal.getMealName());
 
-        TextView priceTypeTextView = (TextView) listItemView.findViewById(R.id.price_type_text_view);
-        priceTypeTextView.setText(currentMeal.getMealPrice());
+        final TextView priceTypeTextView = (TextView) listItemView.findViewById(R.id.price_type_text_view);
+        priceTypeTextView.setText(currentMeal.getMealPrice() + " грн");
 
         final TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity_text_view);
         quantityTextView.setText(String.valueOf(currentMeal.getQuantity()));
@@ -43,6 +42,9 @@ public class QuantityAdapter extends ArrayAdapter<Meal> {
                 int quantity = currentMeal.getQuantity() + 1;
                 currentMeal.setQuantity(quantity);
                 quantityTextView.setText(String.valueOf(currentMeal.getQuantity()));
+                int total = Integer.parseInt(currentMeal.getMealPrice()) * quantity;
+                priceTypeTextView.setText(total + " грн");
+
             }
         });
 
@@ -56,6 +58,8 @@ public class QuantityAdapter extends ArrayAdapter<Meal> {
                     int quantity = currentMeal.getQuantity() - 1;
                     currentMeal.setQuantity(quantity);
                     quantityTextView.setText(String.valueOf(currentMeal.getQuantity()));
+                    int total = Integer.parseInt(currentMeal.getMealPrice()) * quantity;
+                    priceTypeTextView.setText(String.valueOf(total) + " грн");
                 }
             }
         });
