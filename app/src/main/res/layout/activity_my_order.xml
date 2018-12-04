@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_my_order_background"
     android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     tools:context=".MyOrdersActivity"
     tools:ignore="NotSibling">
 
@@ -41,15 +43,15 @@
 
             <TextView
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="1dp"
-                android:text="Заклад:"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="1dp"
+            android:text="Заклад:"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/line2"
@@ -69,10 +71,39 @@
                 android:textSize="24sp" />
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="1dp"
+                android:text="Адреса:"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/line3"
+                android:layout_width="66dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:background="#FFFFFF" />
+
+            <TextView
+
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/field_order"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="1dp"
                 android:text="Замовлення:"
                 android:textAllCaps="false"
@@ -80,7 +111,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/line3"
+                android:id="@+id/line4"
                 android:layout_width="110dp"
                 android:layout_height="1dp"
                 android:layout_gravity="center_horizontal"
@@ -105,9 +136,14 @@
         android:layout_alignBottom="@id/group"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
         <RelativeLayout
             android:id="@+id/time_group"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="30">
 
@@ -120,13 +156,13 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginBottom="7dp"
-                android:text="Час"
+                android:text="Час:"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/line4"
+                android:id="@+id/line5"
                 android:layout_width="35dp"
                 android:layout_height="1dp"
                 android:layout_alignBottom="@id/time"
@@ -137,9 +173,12 @@
                 android:background="#FFFFFF" />
 
             <TextView
-                android:layout_width="280dp"
+
+                android:id="@+id/time_field"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@id/time"
+                android:layout_alignParentTop="true"
                 android:layout_marginLeft="65dp"
                 android:background="@drawable/field_order"
                 android:textColor="#FFFFFF"
@@ -150,7 +189,7 @@
 
         <RelativeLayout
             android:id="@+id/total_group"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="30">
 
@@ -163,13 +202,13 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="7dp"
                 android:layout_marginLeft="5dp"
-                android:text="Сума"
+                android:text="Сума:"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/line5"
+                android:id="@+id/line6"
                 android:layout_width="45dp"
                 android:layout_height="1dp"
                 android:layout_marginLeft="5dp"
@@ -180,26 +219,30 @@
                 android:background="#FFFFFF" />
 
             <TextView
-                android:layout_width="280dp"
+
+                android:id="@+id/total_field"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@id/total"
+                android:layout_alignParentTop="true"
                 android:layout_marginLeft="65dp"
                 android:background="@drawable/field_order"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
-
         </RelativeLayout>
+            
+        </LinearLayout>
 
         <Button
 
             android:id="@+id/button_order"
             android:background="@drawable/fields"
             android:layout_weight="1"
-            android:layout_width="320dp"
-            android:layout_height="45dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="10dp"
             android:text="Підтвердити замовлення"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
