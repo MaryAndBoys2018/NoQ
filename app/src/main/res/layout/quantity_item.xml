@@ -40,7 +40,7 @@
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
                 android:text="-"
-                android:onClick="decrement"
+                android:id="@+id/minus_button"
                 android:background="@drawable/field_order"
                 android:textColor="#FFFFFF" />
 
@@ -59,7 +59,7 @@
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
                 android:text="+"
-                android:onClick="increment"
+                android:id="@+id/plus_button"
                 android:background="@drawable/field_order"
                 android:textColor="#FFFFFF"/>
 </LinearLayout>
