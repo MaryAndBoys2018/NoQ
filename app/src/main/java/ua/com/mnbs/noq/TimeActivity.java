@@ -194,27 +194,21 @@ public class TimeActivity extends AppCompatActivity {
     private boolean checkPreparationTime(int orderHour, int orderMinute, int currentHour, int currentMinute) {
         if (isNearNewHour(currentMinute)) {
             if (orderHour == currentHour) {
-                if (wasNotShownToastForPreparation) {
-                    Toast.makeText(this, "Май совість, це замало часу на приготування твого замовлення", Toast.LENGTH_SHORT).show();
-                    wasNotShownToastForPreparation = false;
-                }
                 return false;
             }
+
             if(orderHour == currentHour + 1) {
                 if (orderMinute < cutMinute(currentMinute + preparationTime)) {
-
-                    if (wasNotShownToastForPreparation) {
-                        Toast.makeText(this, "Май совість, це замало часу на приготування твого замовлення", Toast.LENGTH_SHORT).show();
-                        wasNotShownToastForPreparation = false;
-                    }
                     return false;
                 }
             }
         }
 
         else{
-            if (orderMinute < currentMinute + preparationTime){
-                return false;
+            if (orderHour == currentHour) {
+                if (orderMinute < currentMinute + preparationTime) {
+                    return false;
+                }
             }
         }
         return  true;
