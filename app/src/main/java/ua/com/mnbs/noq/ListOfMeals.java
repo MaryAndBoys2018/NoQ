@@ -19,6 +19,8 @@ public class ListOfMeals extends AppCompatActivity {
 
     ArrayList<Meal> meals;
 
+    boolean wasShownToast = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,8 +97,11 @@ public class ListOfMeals extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (meals.get(0).numberOfCheckedItems == 0) {
-                    Toast.makeText(getApplicationContext(), "Виберіть, будь ласка, страву",
-                            Toast.LENGTH_SHORT).show();
+                    if (!wasShownToast) {
+                        Toast.makeText(getApplicationContext(), "Виберіть, будь ласка, страву",
+                                Toast.LENGTH_SHORT).show();
+                        wasShownToast = true;
+                    }
                 }
                 else {
                     Intent OpenQuantityActivity = new Intent(ListOfMeals.this, QuantityActivity.class);

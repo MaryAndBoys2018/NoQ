@@ -20,10 +20,9 @@ public class TimeActivity extends AppCompatActivity {
     final int preparationTime = 15;
     final int minutesInHour = 60;
 
-    boolean wasNotShownToastForPast = true;
-    boolean wasNotShownToastForPreparation = true;
-    boolean wasNotShownTooEarlyToast = true;
-    boolean wasNotShownTooLateToast = true;
+    boolean wasShownToastForPast = false;
+    boolean wasShownTooEarlyToast = false;
+    boolean wasShownTooLateToast = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +66,7 @@ public class TimeActivity extends AppCompatActivity {
                     startActivity(OpenMyOrder);
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "Май совість, це замало часу на приготування твого замовлення", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Май совість, дай хоча б 15 хвилин на приготування", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -115,9 +114,9 @@ public class TimeActivity extends AppCompatActivity {
     private boolean isAllowableTime(int orderHour, Integer currentHour, int orderMinute, Integer currentMinute) {
 
         if (orderHour < currentHour) {
-            if (wasNotShownToastForPast) {
+            if (!wasShownToastForPast) {
                 Toast.makeText(this, "Ей, не можна робити замовлення в минулому часі", Toast.LENGTH_SHORT).show();
-                wasNotShownToastForPast = false;
+                wasShownToastForPast = true;
             }
             floatTime.setHour(currentHour);
             floatTime.setMinute(currentMinute);
@@ -125,9 +124,9 @@ public class TimeActivity extends AppCompatActivity {
 
         } else if (orderHour == currentHour) {
             if (orderMinute < currentMinute){
-                if (wasNotShownToastForPast) {
+                if (!wasShownToastForPast) {
                     Toast.makeText(this, "Ей, не можна робити замовлення в минулому часі", Toast.LENGTH_SHORT).show();
-                    wasNotShownToastForPast = false;
+                    wasShownToastForPast = true;
                 }
                 floatTime.setHour(currentHour);
                 floatTime.setMinute(currentMinute);
@@ -159,9 +158,9 @@ public class TimeActivity extends AppCompatActivity {
 
     private boolean isCafeOpen(int orderHour, int orderMinute) {
         if (orderHour > closingHour) {
-            if (wasNotShownTooLateToast) {
+            if (!wasShownTooLateToast) {
                 Toast.makeText(this, "Вибач, але кафе вже зачинено", Toast.LENGTH_SHORT).show();
-                wasNotShownTooLateToast = false;
+                wasShownTooLateToast = true;
             }
             floatTime.setHour(closingHour);
             floatTime.setMinute(0);
@@ -169,9 +168,9 @@ public class TimeActivity extends AppCompatActivity {
         }
 
         if (orderHour == closingHour && orderMinute > 0) {
-            if (wasNotShownTooLateToast) {
+            if (!wasShownTooLateToast) {
                 Toast.makeText(this, "Вибач, але кафе вже зачинено", Toast.LENGTH_SHORT).show();
-                wasNotShownTooLateToast = false;
+                wasShownTooLateToast = true;
             }
             floatTime.setHour(closingHour);
             floatTime.setMinute(0);
@@ -179,9 +178,9 @@ public class TimeActivity extends AppCompatActivity {
         }
 
         if (orderHour < openingHour) {
-            if (wasNotShownTooEarlyToast) {
+            if (!wasShownTooEarlyToast) {
                 Toast.makeText(this, "Вибач, але кафе ще зачинено", Toast.LENGTH_SHORT).show();
-                wasNotShownTooEarlyToast = false;
+                wasShownTooEarlyToast = true;
             }
             floatTime.setHour(openingHour);
             floatTime.setMinute(0);
