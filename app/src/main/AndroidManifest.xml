@@ -20,10 +20,9 @@
         <activity android:name=".ListOfOrders" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".ListOfMeals" />
-        <activity android:name=".activity_my_orders" />
         <activity android:name=".TimeActivity" />
         <activity android:name=".QuantityActivity" />
-        <activity android:name=".menu_quantity"></activity>
+        <activity android:name=".MyOrder"></activity>
     </application>
 
 </manifest>

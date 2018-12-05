@@ -60,8 +60,6 @@ public class ListOfCafes extends AppCompatActivity {
                     Intent OpenMenu = new Intent(ListOfCafes.this, ListOfMeals.class);
                     OpenMenu.putExtra("cafe name", cafes.get(position).getCafeName());
                     OpenMenu.putExtra("position", position);
-                    deleteFile("counter.txt");
-                    WriteToFile("counter.txt",makeNewOrderFileName(ReadFromFileNotAsset("counter.txt")));
                     WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",cafes.get(position).getCafeName()+"\n");
                     startActivity(OpenMenu);
                 }
@@ -99,7 +97,7 @@ public class ListOfCafes extends AppCompatActivity {
         catch (IOException e)
         {
             if (file=="counter.txt"){
-                WriteToFile("counter.txt","0");
+                WriteToFile("counter.txt","1");
             }
             else
             Toast.makeText(ListOfCafes.this,"Помилка у читанні файлу",Toast.LENGTH_SHORT).show();

@@ -63,14 +63,21 @@ public class TimeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent OpenMyOrder = new Intent(TimeActivity.this, activity_my_orders.class);
-                WriteToFile("Time"+ReadFromFileNotAsset("counter.txt")+".txt",orderTime.getText().toString());
+                Intent OpenMyOrder = new Intent(TimeActivity.this,MyOrder.class);
+                OpenMyOrder.putExtra("counter",getCounter());
+                WriteToFile("Time+"+ReadFromFileNotAsset("counter.txt")+".txt",orderTime.getText().toString());
                 startActivity(OpenMyOrder);
             }
         });
     }
 
+    String getCounter(){
+        return ReadFromFileNotAsset("counter.txt");
+    }
 
+    void showToast(){
+        Toast.makeText(TimeActivity.this,ReadFromFileNotAsset("counter.txt"),Toast.LENGTH_LONG).show();
+    }
 
     private void updateDisplay(int hour, int minute) {
         Integer orderHour = hour;

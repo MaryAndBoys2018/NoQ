@@ -55,7 +55,7 @@ public class QuantityActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent OpenQuantityActivity = new Intent(QuantityActivity.this, TimeActivity.class);
                 for (int i=1;i<meals.size();i++)
-                    WriteToFile("ProductQuantity"+ReadFromFileNotAsset("counter.txt")+".txt",Integer.toString(meals.get(i).getQuantity()));
+                    WriteToFile("ProductQuantity"+ReadFromFileNotAsset("counter.txt")+".txt",Integer.toString(meals.get(i).getQuantity())+"\n");
                 startActivity(OpenQuantityActivity);
             }
         });
@@ -103,7 +103,7 @@ public class QuantityActivity extends AppCompatActivity {
                 WriteToFile("counter.txt","0");
             }
             else
-                Toast.makeText(QuantityActivity.this,"Помилка у читанні файлу",Toast.LENGTH_SHORT).show();
+                Toast.makeText(QuantityActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
         }
         return text;
 

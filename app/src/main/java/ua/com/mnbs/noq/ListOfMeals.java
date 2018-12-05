@@ -92,16 +92,17 @@ public class ListOfMeals extends AppCompatActivity {
                     int index = 0;
                     for (int i=0; i<meals.size(); i++) {
                         if (meals.get(i).getChecked()) {
-                            OpenQuantityActivity.putExtra("number of checked meals", meals.get(0).numberOfCheckedItems);
+                            OpenQuantityActivity.putExtra("number of checked meals", meals.get(i).numberOfCheckedItems);
                             OpenQuantityActivity.putExtra("name"+index,meals.get(i).getMealName());
                             OpenQuantityActivity.putExtra("price"+index,meals.get(i).getMealPrice());
                             index++;
                         }
                     }
                   for (int i=0;i<meals.size();i++) {
-                         if (meals.get(i).getChecked())
-                              WriteToFile("Product" + ReadFromFileNotAsset("counter.txt") + ".txt",meals.get(i).getMealName());
-                              WriteToFile("ProductPrice" + ReadFromFileNotAsset("counter.txt") + ".txt",meals.get(i).getMealPrice());
+                         if (meals.get(i).getChecked()) {
+                             WriteToFile("Product"+ReadFromFileNotAsset("counter.txt")+".txt", meals.get(i).getMealName());
+                             WriteToFile("ProductPrice"+ReadFromFileNotAsset("counter.txt")+".txt", meals.get(i).getMealPrice());
+                         }
                      }
                     startActivity(OpenQuantityActivity);
                 }
@@ -142,7 +143,7 @@ public class ListOfMeals extends AppCompatActivity {
                 WriteToFile("counter.txt","0");
             }
             else
-                Toast.makeText(ListOfMeals.this,"Помилка у читанні файлу",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListOfMeals.this,e.getMessage(),Toast.LENGTH_LONG).show();
         }
         return text;
 
