@@ -19,13 +19,15 @@
        />
 
     <TextView
-        android:layout_width="27dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="123dp"
         android:layout_marginRight="127dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="6dp"
         android:background="@drawable/field_order"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
