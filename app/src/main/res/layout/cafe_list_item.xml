@@ -21,7 +21,6 @@
             android:textSize="28sp"
             tools:text="NiceCoffee"
             android:textColor="#FFFFFF"
-            android:layout_marginTop="16dp"
 
             android:layout_alignParentRight="true"/>
 
@@ -35,7 +34,7 @@
             android:textColor="#FFFFFF"
             tools:text="кав'ярня"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="216dp"/>
 

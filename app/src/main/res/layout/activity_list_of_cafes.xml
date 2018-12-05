@@ -20,14 +20,13 @@
             android:id="@+id/horse_icon_from_cafes"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
             android:layout_weight="1"
-            android:src="@drawable/arrow" />
+            android:src="@drawable/arrow"
+            android:padding="5dp"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginRight="8dp"
             android:layout_weight="9"
             android:backgroundTint="#FFFFFF"
             android:textColor="#FFFFFF"
@@ -41,7 +40,8 @@
             android:layout_height="match_parent"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:src="@drawable/search" />
+            android:src="@drawable/search"
+            android:padding="3dp"/>
 
         <ImageView
             android:id="@+id/back_from_cafes"
@@ -72,9 +72,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/line"
-        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
         android:orientation="vertical"
         android:paddingLeft="30dp"
         android:paddingRight="30dp">
@@ -83,10 +82,10 @@
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="Обрати заклад"
             android:textColor="#FFFFFF"
             android:textSize="40sp" />
@@ -106,7 +105,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/cafe_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/one"
         android:orientation="vertical"
         tools:context=".ListOfCafes"
