@@ -22,7 +22,8 @@
 
     <style name="CheckBoxStyle" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">#FFFFFF</item>
-        <item name="colorControlActivated">#FFFFFF</item>
+        <item name="colorControlActivated">#ffffff</item>
+        <item name="editTextColor">#FFFFFF</item>
     </style>
 
     <style name="TimePickerStyle" parent="Base.Theme.AppCompat.Light">
