@@ -6,14 +6,44 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 public class MyOrdersActivity extends AppCompatActivity {
+
+    ArrayList<Meal> meals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_order);
 
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        final int numberOfCheckedItems = extras.getInt("number of checked meals");
+        final String nameOfCafe = extras.getString("cafe name");
+        final String cafeAddress = extras.getString("cafe address");
+
+
+        meals = new ArrayList<>();
+
+        String tempName = "";
+        String tempPrice = "";
+        int tempQuantity;
+        for (int i=0; i<numberOfCheckedItems; i++){
+            tempName = extras.getString("meal name"+i);
+            tempPrice = extras.getString("meal price"+i);
+            tempQuantity = extras.getInt("meal quantity"+i);
+            meals.add(new Meal(tempName, tempPrice));
+            meals.get(i).setQuantity(tempQuantity);
+        }
+
+
+        displayOrder(nameOfCafe, cafeAddress, meals);
         Button orderButton = (Button) findViewById(R.id.button_order);
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +77,17 @@ public class MyOrdersActivity extends AppCompatActivity {
             Intent goToOrders = new Intent(MyOrdersActivity.this, ListOfOrders.class);
             startActivity(goToOrders);
         }
+        }
+        private  void displayOrder(String cafeName, String cafeAddress, ArrayList<Meal> meals)
+        {
+            TextView nameTextView = (TextView) findViewById(R.id.place);
+            TextView locationTextView = (TextView) findViewById(R.id.adress);
+            nameTextView.setText(cafeName);
+            locationTextView.setText(cafeAddress);
+
+            MyOrderAdapter adapter = new MyOrderAdapter(this, meals);
+            ListView listView = (ListView) findViewById(R.id.list_view_my_order);
+            listView.setAdapter(adapter);
         }
 
 }
