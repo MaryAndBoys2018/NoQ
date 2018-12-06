@@ -66,8 +66,8 @@
 
         <Button
 
-            style="@style/ButtonStyle"
             android:id="@+id/makeOrder"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="center_horizontal"
@@ -79,8 +79,8 @@
 
         <Button
 
-            style="@style/ButtonStyle"
             android:id="@+id/myOrders"
+            style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="center_horizontal"

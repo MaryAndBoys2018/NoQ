@@ -25,13 +25,13 @@
 
         <LinearLayout
             android:id="@+id/one"
-            android:layout_weight="9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/line"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="9">
 
             <TextView
                 android:id="@+id/name"

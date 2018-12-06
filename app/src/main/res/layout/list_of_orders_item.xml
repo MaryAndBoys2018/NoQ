@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:background="@drawable/gradient_activity_list_of_my_orders">
 
-<TextView
+    <TextView
 
-    android:id="@+id/cafe_name"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="8dp"
-    android:layout_marginLeft="14dp"
-    tools:text="Заклад"
-    android:textColor="#FFFFFF"
-    android:textAllCaps="false"
-    android:textSize="24sp"/>
+        android:id="@+id/cafe_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:padding="8dp"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        tools:text="Заклад" />
 
     <TextView
 
@@ -35,10 +34,10 @@
     <TextView
 
         android:layout_width="270dp"
-        android:layout_marginLeft="17dp"
         android:layout_height="1dp"
         android:layout_below="@id/cafe_name"
-        android:background="#FFFFFF"/>
+        android:layout_marginLeft="17dp"
+        android:background="#FFFFFF" />
 
     <TextView
 
@@ -54,13 +53,14 @@
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         tools:text="Час " />
+
     <TextView
         android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/adress_of_cafe"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="17dp"
         android:layout_marginRight="17dp"
-        android:layout_height="1dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/adress_of_cafe"
-        android:background="#FFFFFF"/>
+        android:background="#FFFFFF" />
 
 </RelativeLayout>
