@@ -17,11 +17,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class MyOrdersActivity extends AppCompatActivity {
+    String counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_order);
+
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         DisplayOrder(extras.getString("counter"));
@@ -76,7 +78,7 @@ public class MyOrdersActivity extends AppCompatActivity {
             }
 
         } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), "e.printStackTrace()", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         return text;
     }
@@ -138,7 +140,7 @@ public class MyOrdersActivity extends AppCompatActivity {
     private void DisplayOrder(String count){
 
         TextView nameTextView = (TextView) findViewById(R.id.name);
-        nameTextView.setText(ReadFromFileNotAsset("Order"+count+".txt"));
+        nameTextView.setText(ReadFromFileNotAsset("Order.txt"));
 
 
         TextView timeTextView = (TextView) findViewById(R.id.time_field);

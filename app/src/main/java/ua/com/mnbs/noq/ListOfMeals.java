@@ -1,5 +1,6 @@
 package ua.com.mnbs.noq;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -115,6 +118,13 @@ public class ListOfMeals extends AppCompatActivity {
                             OpenQuantityActivity.putExtra("price"+index,meals.get(i).getMealPrice());
                             index++;
                         }
+                        for (int j=0;j<meals.size();j++) {
+                            if (meals.get(i).getChecked()) {
+                                WriteToFile("Product"+ReadFromFileNotAsset("counter.txt")+".txt", meals.get(j).getMealName());
+                                WriteToFile("ProductPrice"+ReadFromFileNotAsset("counter.txt")+".txt", meals.get(j).getMealPrice());
+                            }
+                        }
+                        startActivity(OpenQuantityActivity);
                     }
                     startActivity(OpenQuantityActivity);
                 }
@@ -122,6 +132,40 @@ public class ListOfMeals extends AppCompatActivity {
             }
         });
 
+    }
+
+    public String ReadFromFileNotAsset(String file){
+        String text= "";
+        try{
+            FileInputStream fis = openFileInput(file);
+            int size = fis.available();
+            byte[] buffer = new byte[size];
+            fis.read(buffer);
+            fis.close();
+            text = new String(buffer);
+        }
+        catch (IOException e)
+        {
+            if (file=="counter.txt"){
+                WriteToFile("counter.txt","0");
+            }
+            else
+                Toast.makeText(ListOfMeals.this,"Помилка у читанні файлу",Toast.LENGTH_SHORT).show();
+        }
+        return text;
+
+    }
+
+    protected void WriteToFile(String file, String text)
+    {
+        try {
+            FileOutputStream fos = openFileOutput(file,Context.MODE_PRIVATE);
+            fos.write(text.getBytes());
+            fos.close();
+        }
+        catch (IOException e){
+            Toast.makeText(ListOfMeals.this,"Error Writing to file",Toast.LENGTH_SHORT).show();
+        }
     }
 
     private String readFile(String fileName) {

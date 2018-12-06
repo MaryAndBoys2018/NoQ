@@ -59,9 +59,7 @@ public class ListOfCafes extends AppCompatActivity {
                     Intent OpenMenu = new Intent(ListOfCafes.this, ListOfMeals.class);
                     OpenMenu.putExtra("cafe name", cafes.get(position).getCafeName());
                     OpenMenu.putExtra("position", position);
-                    deleteFile("counter.txt");
-                    WriteToFile("counter.txt",makeNewOrderFileName(ReadFromFileNotAsset("counter.txt")));
-                    WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",cafes.get(position).getCafeName()+"\n");
+                    WriteToFile("Order.txt",cafes.get(position).getCafeName()+"\n");
                     startActivity(OpenMenu);
                 }
             });
