@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_my_order_background"
     android:orientation="vertical"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
     tools:context=".MyOrdersActivity"
     tools:ignore="NotSibling">
 
@@ -22,24 +20,68 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/top"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:descendantFocusability="beforeDescendants"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal"
+                android:weightSum="10">
 
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/horse_icon_from_cafes"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:src="@drawable/arrow" />
+
+                <LinearLayout
+                    android:id="@+id/one"
+                    android:layout_weight="9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Моє замовлення"
+                        android:textColor="#FFFFFF"
+                        android:textSize="35sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/back_from_cafes"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/horse" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/line"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="5dp"
-                android:text="Mоє замовлення"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="40sp" />
+                android:layout_below="@+id/top">
 
-            <TextView
-                android:id="@+id/line1"
-                android:layout_width="320dp"
-                android:layout_height="1dp"
-                android:layout_gravity="center_horizontal"
-                android:background="#FFFFFF" />
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#FFFFFF" />
+            </LinearLayout>
 
             <TextView
 
@@ -63,8 +105,10 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="21dp"
-                android:layout_marginRight="21dp">
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <TextView
 
@@ -131,7 +175,9 @@
 
                 android:id="@+id/list_view_my_order"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
             </ListView>
 
@@ -143,7 +189,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/group"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
