@@ -19,9 +19,9 @@ public class TimeActivity extends AppCompatActivity {
     TextView orderTime;
     Button submitTime;
 
-    final int closingHour = 23;
+    final int closingHour = 22;
     final int openingHour = 7;
-    final int preparationTime = 0;
+    final int preparationTime = 15;
     final int minutesInHour = 60;
 
     boolean wasShownToastForPast = false;
@@ -60,22 +60,22 @@ public class TimeActivity extends AppCompatActivity {
         final Integer currentHour = floatTime.getHour();
         final Integer currentMinute = floatTime.getMinute();
 
-      // if (isCafeOpen(currentHour, currentMinute)){
+      if (isCafeOpen(currentHour, currentMinute)){
             orderTime.setText(updateDisplay());
-       // }
-       /* else {
+       }
+       else {
 
             Intent toMainActivity = new Intent(TimeActivity.this, MainActivity.class);
             startActivity(toMainActivity);
-        }*/
+        }
 
         floatTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-               // if (isCafeOpen(hourOfDay, minute)) {
+               if (isCafeOpen(hourOfDay, minute)) {
                     if (isAllowableTime(hourOfDay, currentHour, minute, currentMinute)) {
                         updateDisplay(hourOfDay, minute);
-                    //}
+                    }
                 }
             }
         });

@@ -34,18 +34,19 @@ public class MyOrdersActivity extends AppCompatActivity {
         String tempName = "";
         String tempPrice = "";
         int tempQuantity;
+        int totalPrice = 0;
 
-        tempName = extras.getString("meal name1");
         for (int i=0; i<numberOfCheckedItems; i++){
             tempName = extras.getString("meal name"+i);
             tempPrice = extras.getString("meal price"+i);
             tempQuantity = extras.getInt("meal quantity"+i);
             meals.add(new Meal(tempName, tempPrice));
             meals.get(i).setQuantity(tempQuantity);
+            totalPrice += Integer.parseInt(meals.get(i).getMealPrice()) * meals.get(i).getQuantity();
         }
 
 
-        displayOrder(nameOfCafe, cafeAddress, meals);
+        displayOrder(nameOfCafe, cafeAddress, meals, totalPrice);
 
         Button orderButton = (Button) findViewById(R.id.button_order);
         orderButton.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +82,7 @@ public class MyOrdersActivity extends AppCompatActivity {
             startActivity(goToOrders);
         }
         }
-        private  void displayOrder(String cafeName, String cafeAddress, ArrayList<Meal> meals)
+        private  void displayOrder(String cafeName, String cafeAddress, ArrayList<Meal> meals, int totalPrice)
         {
             TextView nameTextView = (TextView) findViewById(R.id.place);
             TextView locationTextView = (TextView) findViewById(R.id.adress);
@@ -91,6 +92,9 @@ public class MyOrdersActivity extends AppCompatActivity {
             MyOrderAdapter adapter = new MyOrderAdapter(this, meals);
             ListView listView = (ListView) findViewById(R.id.list_view_my_order);
             listView.setAdapter(adapter);
+
+            TextView totalTextView = (TextView) findViewById(R.id.total_field);
+            totalTextView.setText(String.valueOf(totalPrice) + " грн");
         }
 
 }
