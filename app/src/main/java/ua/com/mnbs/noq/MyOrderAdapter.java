@@ -35,7 +35,7 @@ public class MyOrderAdapter extends ArrayAdapter<Meal> {
         priceTypeTextView.setText(String.valueOf(Integer.parseInt(currentMeal.getMealPrice()) * currentMeal.getQuantity()) + " грн");
 
         TextView quantityTextView = (TextView) listItemView.findViewById(R.id.dish_quantity);
-        quantityTextView.setText(currentMeal.getQuantity());
+        quantityTextView.setText(String.valueOf(currentMeal.getQuantity()));
         return listItemView;
     }
 }

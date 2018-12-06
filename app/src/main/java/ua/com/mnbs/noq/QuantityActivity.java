@@ -86,7 +86,7 @@ public class QuantityActivity extends AppCompatActivity {
                 for (int i=0; i<numberOfCheckedItems; i++){
                     OpenTimeActivity.putExtra("meal name"+i, meals.get(i).getMealName());
                     OpenTimeActivity.putExtra("meal quantity"+i, meals.get(i).getQuantity());
-                    OpenTimeActivity.putExtra("meal price"+1, meals.get(i).getMealPrice());
+                    OpenTimeActivity.putExtra("meal price"+i, meals.get(i).getMealPrice());
                 }
                 startActivity(OpenTimeActivity);
 

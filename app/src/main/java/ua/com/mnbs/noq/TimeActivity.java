@@ -40,16 +40,19 @@ public class TimeActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        final int numberOfCheckedItems = extras.getInt("number of checked meals");
+        final int numberOfCheckedItems = extras.getInt("number of checked items");
         final String nameOfCafe = extras.getString("cafe name");
         final String cafeAddress = extras.getString("cafe address");
 
         String tempName = "";
         String tempPrice = "";
+        int tempQuantity;
         for (int i=0; i<numberOfCheckedItems; i++){
-            tempName = extras.getString("name"+i);
-            tempPrice = extras.getString("price"+i);
+            tempName = extras.getString("meal name"+i);
+            tempPrice = extras.getString("meal price"+i);
+            tempQuantity = extras.getInt("meal quantity"+i);
             meals.add(new Meal(tempName, tempPrice));
+            meals.get(i).setQuantity(tempQuantity);
         }
 
         floatTime.setIs24HourView(true);

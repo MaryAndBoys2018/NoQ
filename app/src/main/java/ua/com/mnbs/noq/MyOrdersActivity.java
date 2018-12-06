@@ -24,7 +24,7 @@ public class MyOrdersActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        final int numberOfCheckedItems = extras.getInt("number of checked meals");
+        final int numberOfCheckedItems = extras.getInt("number of checked items");
         final String nameOfCafe = extras.getString("cafe name");
         final String cafeAddress = extras.getString("cafe address");
 
@@ -34,6 +34,8 @@ public class MyOrdersActivity extends AppCompatActivity {
         String tempName = "";
         String tempPrice = "";
         int tempQuantity;
+
+        tempName = extras.getString("meal name1");
         for (int i=0; i<numberOfCheckedItems; i++){
             tempName = extras.getString("meal name"+i);
             tempPrice = extras.getString("meal price"+i);
@@ -44,6 +46,7 @@ public class MyOrdersActivity extends AppCompatActivity {
 
 
         displayOrder(nameOfCafe, cafeAddress, meals);
+
         Button orderButton = (Button) findViewById(R.id.button_order);
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
