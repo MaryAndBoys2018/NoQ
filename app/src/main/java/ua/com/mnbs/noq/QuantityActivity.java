@@ -54,7 +54,7 @@ public class QuantityActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent OpenQuantityActivity = new Intent(QuantityActivity.this, TimeActivity.class);
-                for (int i=1;i<meals.size();i++)
+                for (int i=0;i<meals.size();i++)
                     WriteToFile("ProductQuantity"+ReadFromFileNotAsset("counter.txt")+".txt",Integer.toString(meals.get(i).getQuantity())+"\n");
                 startActivity(OpenQuantityActivity);
             }

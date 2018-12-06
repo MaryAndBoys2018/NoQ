@@ -22,12 +22,9 @@ import android.widget.Button;
 
 
 public class MyOrder extends AppCompatActivity {
-    String counter="";
-    String file ="Order"+counter+".txt";
-    String product_file ="Product"+counter+".txt";
-    String product_quantity="ProductQuantity"+counter+".txt";
-    String time_file="Time"+counter+".txt";
-    String product_price="ProductPrice"+counter+".txt";
+
+    String counter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +33,11 @@ public class MyOrder extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        counter= extras.getString("counter");
+        DisplayOrder(extras.getString("counter"));
+
 
         Button orderButton = (Button) findViewById(R.id.button_order);
-        //DisplayOrder();
-        Toast.makeText(MyOrder.this,Integer.toString(sum()),Toast.LENGTH_LONG);
+
 
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,11 +54,8 @@ public class MyOrder extends AppCompatActivity {
             }
         });
     }
-    String getCounter(){
-        Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-        return extras.getString("counter");
-    }
+
+
 
 
     private void sendData() {
@@ -134,38 +128,40 @@ public class MyOrder extends AppCompatActivity {
     }
 
 
-    private ArrayList<Product> products(){
+    private ArrayList<Product> products(String count){
 
-        ArrayList<String> rawProducts =moveIntoArrayList(ReadFromFileNotAsset(product_file));
-        ArrayList<String> quantities = moveIntoArrayList(ReadFromFileNotAsset(product_quantity));
-        ArrayList<String> prices = moveIntoArrayList(ReadFromFileNotAsset(product_price));
+        ArrayList<String> rawProducts =moveIntoArrayList(ReadFromFileNotAsset("Product"+count+".txt"));
+        ArrayList<String> quantities = moveIntoArrayList(ReadFromFileNotAsset("ProductQuantity"+count+".txt"));
+        ArrayList<String> prices = moveIntoArrayList(ReadFromFileNotAsset("ProductPrice"+count+".txt"));
         ArrayList<Product> products= new ArrayList<>();
         for (int i=0;i<(rawProducts.size());i++) {
-            products.add(new Product(rawProducts.get(i), prices.get(i + 1), quantities.get(i)));
+            products.add(new Product(rawProducts.get(i), prices.get(i), quantities.get(i)));
         }
         return  products;
     }
+    String file ="Order"+counter+".txt";
 
-    int sum(){
+
+    int sum(String count){
         int sum=0;
-        for (int i=0;i<products().size();i++)
-            sum+=Integer.getInteger(products().get(i).getmQuantity())*Integer.getInteger(products().get(i).getmProductPrice());
+        for (int i=0;i<products(count).size();i++)
+            sum+=Integer.getInteger(products(count).get(i).getmQuantity())*Integer.getInteger(products(count).get(i).getmProductPrice());
         return sum;
     }
 
 
-    private void DisplayOrder(){
+    private void DisplayOrder(String count){
 
         TextView nameTextView = (TextView) findViewById(R.id.order_cafe_name);
-        nameTextView.setText(ReadFromFileNotAsset(file));
+        nameTextView.setText(ReadFromFileNotAsset("Order"+count+".txt"));
 
 
         TextView timeTextView = (TextView) findViewById(R.id.order_time);
-        timeTextView.setText(ReadFromFileNotAsset(time_file));
+        timeTextView.setText(ReadFromFileNotAsset("Time"+count+".txt"));
 
         TextView sumTextView = (TextView) findViewById(R.id.sum_text_view);
-        sumTextView.setText(Integer.toString(sum()));
-        printListOfProducts(products());
+        printListOfProducts(products(count));
+        //sumTextView.setText(Integer.toString(sum(count)));
 
 
     }
