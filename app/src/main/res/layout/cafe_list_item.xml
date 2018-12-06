@@ -14,7 +14,7 @@
 
         <TextView
             android:id="@+id/cafe_name_text_view"
-            android:layout_width="200dp"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
@@ -36,15 +36,16 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginRight="216dp"/>
+            android:layout_marginRight="236dp"/>
 
 
 
         <TextView
             android:id="@+id/cafe_location_text_view"
-            android:layout_width="200dp"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:paddingTop="4dp"
+            android:textSize="18dp"
             android:paddingBottom="4dp"
             tools:text="вул. Степана Бандери, 19"
             android:textColor="#FFFFFF"
