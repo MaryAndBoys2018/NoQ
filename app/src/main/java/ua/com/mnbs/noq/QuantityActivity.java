@@ -1,6 +1,7 @@
 package ua.com.mnbs.noq;
 
 import android.content.Intent;
+import android.graphics.Path;
 import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import java.util.ArrayList;
 
 public class QuantityActivity extends AppCompatActivity {
 
+    ArrayList<Meal> meals;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +30,14 @@ public class QuantityActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        int numberOfCheckedItems = extras.getInt("number of checked meals");
+        final int numberOfCheckedItems = extras.getInt("number of checked meals");
+        final String currentCafeAddress = extras.getString("cafe address");
+
 
         final String nameOfCafeForBackButton = extras.getString("cafe name for intent");
         final int positionForBackButton = extras.getInt("position for intent");
 
-        ArrayList<Meal> meals = new ArrayList<>();
+       meals = new ArrayList<>();
 
         String tempName = "";
         String tempPrice = "";
@@ -75,6 +80,14 @@ public class QuantityActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent OpenTimeActivity = new Intent(QuantityActivity.this, TimeActivity.class);
+                OpenTimeActivity.putExtra("cafe name", nameOfCafeForBackButton);
+                OpenTimeActivity.putExtra("cafe address", currentCafeAddress);
+                OpenTimeActivity.putExtra("number of checked items", numberOfCheckedItems);
+                for (int i=0; i<numberOfCheckedItems; i++){
+                    OpenTimeActivity.putExtra("meal name"+i, meals.get(i).getMealName());
+                    OpenTimeActivity.putExtra("meal quantity"+i, meals.get(i).getQuantity());
+                    OpenTimeActivity.putExtra("meal price"+i, meals.get(i).getMealPrice());
+                }
                 startActivity(OpenTimeActivity);
 
             }

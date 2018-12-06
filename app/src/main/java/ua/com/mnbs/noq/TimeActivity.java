@@ -9,7 +9,11 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class TimeActivity extends AppCompatActivity {
+
+    ArrayList<Meal> meals;
 
     TimePicker floatTime;
     TextView orderTime;
@@ -32,15 +36,35 @@ public class TimeActivity extends AppCompatActivity {
         floatTime = (TimePicker) findViewById(R.id.clock);
         orderTime = (TextView) findViewById(R.id.text_time);
 
+        meals = new ArrayList<>();
+
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        final int numberOfCheckedItems = extras.getInt("number of checked items");
+        final String nameOfCafe = extras.getString("cafe name");
+        final String cafeAddress = extras.getString("cafe address");
+
+        String tempName = "";
+        String tempPrice = "";
+        int tempQuantity;
+        for (int i=0; i<numberOfCheckedItems; i++){
+            tempName = extras.getString("meal name"+i);
+            tempPrice = extras.getString("meal price"+i);
+            tempQuantity = extras.getInt("meal quantity"+i);
+            meals.add(new Meal(tempName, tempPrice));
+            meals.get(i).setQuantity(tempQuantity);
+        }
+
         floatTime.setIs24HourView(true);
 
         final Integer currentHour = floatTime.getHour();
         final Integer currentMinute = floatTime.getMinute();
 
-        if (isCafeOpen(currentHour, currentMinute)){
+      if (isCafeOpen(currentHour, currentMinute)){
             orderTime.setText(updateDisplay());
-        }
-        else {
+       }
+       else {
+
             Intent toMainActivity = new Intent(TimeActivity.this, MainActivity.class);
             startActivity(toMainActivity);
         }
@@ -48,7 +72,7 @@ public class TimeActivity extends AppCompatActivity {
         floatTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                if (isCafeOpen(hourOfDay, minute)) {
+               if (isCafeOpen(hourOfDay, minute)) {
                     if (isAllowableTime(hourOfDay, currentHour, minute, currentMinute)) {
                         updateDisplay(hourOfDay, minute);
                     }
@@ -62,6 +86,14 @@ public class TimeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent OpenMyOrder = new Intent(TimeActivity.this, MyOrdersActivity.class);
+                OpenMyOrder.putExtra("cafe name", nameOfCafe);
+                OpenMyOrder.putExtra("cafe address", cafeAddress);
+                OpenMyOrder.putExtra("number of checked items", numberOfCheckedItems);
+                for (int i=0; i<numberOfCheckedItems; i++){
+                    OpenMyOrder.putExtra("meal name"+i, meals.get(i).getMealName());
+                    OpenMyOrder.putExtra("meal quantity"+i, meals.get(i).getQuantity());
+                    OpenMyOrder.putExtra("meal price"+i, meals.get(i).getMealPrice());
+                }
                 if (checkPreparationTime(floatTime.getHour(), floatTime.getMinute(), currentHour, currentMinute)) {
                     startActivity(OpenMyOrder);
                 }
