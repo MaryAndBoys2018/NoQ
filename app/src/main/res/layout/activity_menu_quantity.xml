@@ -13,7 +13,7 @@
         <LinearLayout style="@style/LayoutInLayoutInTop">
 
             <ImageView
-                android:id="@+id/horse_icon_from_quantity"
+                android:id="@+id/back_from_quantity"
                 style="@style/Arrow" />
 
             <LinearLayout style="@style/LayoutInTop">
@@ -27,7 +27,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/back_from_quantity"
+                android:id="@+id/horse_icon_from_quantity"
                 style="@style/SmallIcon" />
         </LinearLayout>
 
