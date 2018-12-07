@@ -28,6 +28,7 @@ public class MyOrdersActivity extends AppCompatActivity {
         final String nameOfCafe = extras.getString("cafe name");
         final String cafeAddress = extras.getString("cafe address");
         final String orderTime = extras.getString("order time");
+        final String cafeEmail = extras.getString("email");
 
 
         meals = new ArrayList<>();
@@ -67,7 +68,7 @@ public class MyOrdersActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:"));
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"crusty@gmail.com"});
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{cafeEmail});
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Замовлення");
                 intent.putExtra(Intent.EXTRA_TEXT, finalOrder);
                 if (intent.resolveActivity(getPackageManager()) != null) {

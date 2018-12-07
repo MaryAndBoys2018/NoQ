@@ -31,6 +31,7 @@ public class QuantityActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         final int numberOfCheckedItems = extras.getInt("number of checked meals");
+        final String cafeEmail = extras.getString("email");
         final String currentCafeAddress = extras.getString("cafe address");
 
 
@@ -83,6 +84,7 @@ public class QuantityActivity extends AppCompatActivity {
                 OpenTimeActivity.putExtra("cafe name", nameOfCafeForBackButton);
                 OpenTimeActivity.putExtra("cafe address", currentCafeAddress);
                 OpenTimeActivity.putExtra("number of checked items", numberOfCheckedItems);
+                OpenTimeActivity.putExtra("email", cafeEmail);
                 for (int i=0; i<numberOfCheckedItems; i++){
                     OpenTimeActivity.putExtra("meal name"+i, meals.get(i).getMealName());
                     OpenTimeActivity.putExtra("meal quantity"+i, meals.get(i).getQuantity());

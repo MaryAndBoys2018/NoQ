@@ -43,6 +43,7 @@ public class TimeActivity extends AppCompatActivity {
         final int numberOfCheckedItems = extras.getInt("number of checked items");
         final String nameOfCafe = extras.getString("cafe name");
         final String cafeAddress = extras.getString("cafe address");
+        final String cafeEmail = extras.getString("email");
 
         String tempName = "";
         String tempPrice = "";
@@ -90,6 +91,7 @@ public class TimeActivity extends AppCompatActivity {
                 OpenMyOrder.putExtra("cafe address", cafeAddress);
                 OpenMyOrder.putExtra("number of checked items", numberOfCheckedItems);
                 OpenMyOrder.putExtra("order time",convertTime(floatTime.getHour(), floatTime.getMinute()));
+                OpenMyOrder.putExtra("email", cafeEmail);
                 for (int i=0; i<numberOfCheckedItems; i++){
                     OpenMyOrder.putExtra("meal name"+i, meals.get(i).getMealName());
                     OpenMyOrder.putExtra("meal quantity"+i, meals.get(i).getQuantity());
