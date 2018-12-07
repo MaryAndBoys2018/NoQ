@@ -89,6 +89,7 @@ public class TimeActivity extends AppCompatActivity {
                 OpenMyOrder.putExtra("cafe name", nameOfCafe);
                 OpenMyOrder.putExtra("cafe address", cafeAddress);
                 OpenMyOrder.putExtra("number of checked items", numberOfCheckedItems);
+                OpenMyOrder.putExtra("order time",convertTime(floatTime.getHour(), floatTime.getMinute()));
                 for (int i=0; i<numberOfCheckedItems; i++){
                     OpenMyOrder.putExtra("meal name"+i, meals.get(i).getMealName());
                     OpenMyOrder.putExtra("meal quantity"+i, meals.get(i).getQuantity());

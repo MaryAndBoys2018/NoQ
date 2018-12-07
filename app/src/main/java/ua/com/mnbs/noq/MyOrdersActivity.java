@@ -27,6 +27,7 @@ public class MyOrdersActivity extends AppCompatActivity {
         final int numberOfCheckedItems = extras.getInt("number of checked items");
         final String nameOfCafe = extras.getString("cafe name");
         final String cafeAddress = extras.getString("cafe address");
+        final String orderTime = extras.getString("order time");
 
 
         meals = new ArrayList<>();
@@ -46,7 +47,7 @@ public class MyOrdersActivity extends AppCompatActivity {
         }
 
 
-        displayOrder(nameOfCafe, cafeAddress, meals, totalPrice);
+        displayOrder(nameOfCafe, cafeAddress, meals, totalPrice, orderTime);
 
         Button orderButton = (Button) findViewById(R.id.button_order);
         orderButton.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +83,7 @@ public class MyOrdersActivity extends AppCompatActivity {
             startActivity(goToOrders);
         }
         }
-        private  void displayOrder(String cafeName, String cafeAddress, ArrayList<Meal> meals, int totalPrice)
+        private  void displayOrder(String cafeName, String cafeAddress, ArrayList<Meal> meals, int totalPrice, String time)
         {
             TextView nameTextView = (TextView) findViewById(R.id.place);
             TextView locationTextView = (TextView) findViewById(R.id.adress);
@@ -95,6 +96,9 @@ public class MyOrdersActivity extends AppCompatActivity {
 
             TextView totalTextView = (TextView) findViewById(R.id.total_field);
             totalTextView.setText(String.valueOf(totalPrice) + " грн");
+
+            TextView timeTextView = (TextView) findViewById(R.id.time_field);
+            timeTextView.setText(time);
         }
 
 }
