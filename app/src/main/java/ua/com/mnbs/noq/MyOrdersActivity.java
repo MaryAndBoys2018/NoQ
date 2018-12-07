@@ -45,7 +45,19 @@ public class MyOrdersActivity extends AppCompatActivity {
             meals.get(i).setQuantity(tempQuantity);
             totalPrice += Integer.parseInt(meals.get(i).getMealPrice()) * meals.get(i).getQuantity();
         }
+        String orderSummary;
+        orderSummary = "Замовлення:\n";
+        orderSummary += "Заклад: " + nameOfCafe;
+        orderSummary += "\nАдреса: " + cafeAddress;
+        orderSummary += "\nЧас отримання: " + orderTime;
+        orderSummary += "\nЗамовлені страви:";
+        for (int i=0; i <numberOfCheckedItems; i++){
+            orderSummary += "\n" + meals.get(i).getMealName() + " - " +
+                    meals.get(i).getQuantity() + "шт. - " +
+                    Integer.parseInt(meals.get(i).getMealPrice()) * meals.get(i).getQuantity() + " грн";
+        }
 
+        final String finalOrder = orderSummary;
 
         displayOrder(nameOfCafe, cafeAddress, meals, totalPrice, orderTime);
 
@@ -57,7 +69,7 @@ public class MyOrdersActivity extends AppCompatActivity {
                 intent.setData(Uri.parse("mailto:"));
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"crusty@gmail.com"});
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Замовлення");
-                intent.putExtra(Intent.EXTRA_TEXT, "Моє замовлення");
+                intent.putExtra(Intent.EXTRA_TEXT, finalOrder);
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(intent, 1);
                 }
