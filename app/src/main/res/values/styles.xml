@@ -49,7 +49,7 @@
 
     <style name="Title" parent="Base.Theme.AppCompat.Light">
         <item name="android:textColor">#FFFFFF</item>
-        <item name="android:textSize">35sp</item>
+        <item name="android:textSize">32sp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">match_parent</item>
