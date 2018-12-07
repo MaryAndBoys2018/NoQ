@@ -6,50 +6,23 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_list_of_cafes">
 
-    <LinearLayout
-        android:id="@+id/top"
-        android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:descendantFocusability="beforeDescendants"
-        android:focusableInTouchMode="true"
-        android:orientation="horizontal"
-        android:weightSum="10">
+    <LinearLayout style="@style/LayoutInLayoutInTop">
 
         <ImageView
             android:id="@+id/horse_icon_from_cafes"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="5dp"
-            android:src="@drawable/arrow" />
+            style="@style/Arrow" />
 
-        <LinearLayout
-            android:id="@+id/one"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="9">
+        <LinearLayout style="@style/LayoutInTop">
 
             <TextView
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Обрати заклад"
-                android:textColor="#FFFFFF"
-                android:textSize="35sp" />
+                style="@style/Title"
+                android:text="Обрати заклад" />
 
         </LinearLayout>
 
         <ImageView
             android:id="@+id/back_from_cafes"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="6dp"
-            android:layout_weight="1"
-            android:src="@drawable/horse" />
+            style="@style/SmallIcon" />
     </LinearLayout>
 
     <LinearLayout
@@ -58,12 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/top">
 
-        <TextView
-
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_horizontal"
-            android:background="#FFFFFF" />
+        <TextView style="@style/WhiteLine" />
     </LinearLayout>
 
     <ListView
