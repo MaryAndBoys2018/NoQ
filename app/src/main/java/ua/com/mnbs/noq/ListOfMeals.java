@@ -30,6 +30,7 @@ public class ListOfMeals extends AppCompatActivity {
         Bundle extras = intent.getExtras();
         String currentCafe = extras.getString("cafe name");
         final String currentCafeAddress = extras.getString("cafe address");
+        final String cafeEmail = extras.getString("email");
         int position = extras.getInt("position");
 
         final String cafeNameForIntent = currentCafe;
@@ -109,6 +110,7 @@ public class ListOfMeals extends AppCompatActivity {
                     OpenQuantityActivity.putExtra("cafe name for intent", cafeNameForIntent);
                     OpenQuantityActivity.putExtra("position for intent", positionForIntent);
                     OpenQuantityActivity.putExtra("cafe address", currentCafeAddress);
+                    OpenQuantityActivity.putExtra("email", cafeEmail);
                     int index = 0;
                     for (int i=0; i<meals.size(); i++) {
                         if (meals.get(i).getChecked()) {

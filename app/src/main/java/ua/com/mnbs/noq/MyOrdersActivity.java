@@ -27,6 +27,8 @@ public class MyOrdersActivity extends AppCompatActivity {
         final int numberOfCheckedItems = extras.getInt("number of checked items");
         final String nameOfCafe = extras.getString("cafe name");
         final String cafeAddress = extras.getString("cafe address");
+        final String orderTime = extras.getString("order time");
+        final String cafeEmail = extras.getString("email");
 
 
         meals = new ArrayList<>();
@@ -44,9 +46,21 @@ public class MyOrdersActivity extends AppCompatActivity {
             meals.get(i).setQuantity(tempQuantity);
             totalPrice += Integer.parseInt(meals.get(i).getMealPrice()) * meals.get(i).getQuantity();
         }
+        String orderSummary;
+        orderSummary = "Замовлення:\n";
+        orderSummary += "Заклад: " + nameOfCafe;
+        orderSummary += "\nАдреса: " + cafeAddress;
+        orderSummary += "\nЧас отримання: " + orderTime;
+        orderSummary += "\nЗамовлені страви:";
+        for (int i=0; i <numberOfCheckedItems; i++){
+            orderSummary += "\n" + meals.get(i).getMealName() + " - " +
+                    meals.get(i).getQuantity() + "шт. - " +
+                    Integer.parseInt(meals.get(i).getMealPrice()) * meals.get(i).getQuantity() + " грн";
+        }
 
+        final String finalOrder = orderSummary;
 
-        displayOrder(nameOfCafe, cafeAddress, meals, totalPrice);
+        displayOrder(nameOfCafe, cafeAddress, meals, totalPrice, orderTime);
 
         Button orderButton = (Button) findViewById(R.id.button_order);
         orderButton.setOnClickListener(new View.OnClickListener() {
@@ -54,9 +68,9 @@ public class MyOrdersActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:"));
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"crusty@gmail.com"});
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{cafeEmail});
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Замовлення");
-                intent.putExtra(Intent.EXTRA_TEXT, "Моє замовлення");
+                intent.putExtra(Intent.EXTRA_TEXT, finalOrder);
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(intent, 1);
                 }
@@ -82,7 +96,7 @@ public class MyOrdersActivity extends AppCompatActivity {
             startActivity(goToOrders);
         }
         }
-        private  void displayOrder(String cafeName, String cafeAddress, ArrayList<Meal> meals, int totalPrice)
+        private  void displayOrder(String cafeName, String cafeAddress, ArrayList<Meal> meals, int totalPrice, String time)
         {
             TextView nameTextView = (TextView) findViewById(R.id.place);
             TextView locationTextView = (TextView) findViewById(R.id.adress);
@@ -95,6 +109,9 @@ public class MyOrdersActivity extends AppCompatActivity {
 
             TextView totalTextView = (TextView) findViewById(R.id.total_field);
             totalTextView.setText(String.valueOf(totalPrice) + " грн");
+
+            TextView timeTextView = (TextView) findViewById(R.id.time_field);
+            timeTextView.setText(time);
         }
 
 }
