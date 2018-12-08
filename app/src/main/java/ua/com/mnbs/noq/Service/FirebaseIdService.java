@@ -25,6 +25,7 @@ public class FirebaseIdService extends FirebaseMessagingService {
         Log.d("TOKENFIREBASE",s);
     }
 
+
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
