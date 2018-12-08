@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class MyOrdersActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+        final String userName = extras.getString("UserName");
         final int numberOfCheckedItems = extras.getInt("number of checked items");
         final String nameOfCafe = extras.getString("cafe name");
         final String cafeAddress = extras.getString("cafe address");
@@ -48,7 +50,8 @@ public class MyOrdersActivity extends AppCompatActivity {
         }
         String orderSummary;
         orderSummary = "Замовлення:\n";
-        orderSummary += "Заклад: " + nameOfCafe;
+        orderSummary += "Користувач: " + userName;
+        orderSummary += "\nЗаклад: " + nameOfCafe;
         orderSummary += "\nАдреса: " + cafeAddress;
         orderSummary += "\nЧас отримання: " + orderTime;
         orderSummary += "\nЗамовлені страви:";
@@ -75,6 +78,25 @@ public class MyOrdersActivity extends AppCompatActivity {
                     startActivityForResult(intent, 1);
                 }
 
+            }
+        });
+
+        ImageView buttonToMain = (ImageView) findViewById(R.id.horse_icon_from_my_list_of_orders);
+
+        buttonToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toMainActivity = new Intent(MyOrdersActivity.this, MainActivity.class);
+                startActivity(toMainActivity);
+            }
+        });
+
+        ImageView backButton = (ImageView) findViewById(R.id.back_from_my_list_of_orders) ;
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

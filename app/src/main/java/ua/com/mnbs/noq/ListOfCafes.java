@@ -33,6 +33,9 @@ public class ListOfCafes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_cafes);
 
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        final String userName = extras.getString("UserName");
         String names = readFile("cafe_names.txt");
         String locations = readFile("cafe_locations.txt");
         String types = readFile("cafe_types.txt");
@@ -57,6 +60,7 @@ public class ListOfCafes extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> adapter, View view, int position, long l) {
 
                     Intent OpenMenu = new Intent(ListOfCafes.this, ListOfMeals.class);
+                    OpenMenu.putExtra("UserName", userName);
                     OpenMenu.putExtra("cafe name", cafes.get(position).getCafeName());
                     OpenMenu.putExtra("cafe address", cafes.get(position).getCafeLocation());
                     OpenMenu.putExtra("email", cafes.get(position).getCafeEmail());
