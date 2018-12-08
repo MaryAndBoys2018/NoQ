@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_my_order_background"
-    android:orientation="vertical"
+    android:fillViewport="true"
     tools:context=".MyOrdersActivity"
-    tools:ignore="NotSibling">
+    tools:ignore="NotSibling"
+    android:background="@drawable/gradient_my_order_background">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -140,6 +145,11 @@
                 android:layout_marginBottom="5dp"
                 android:background="#FFFFFF" />
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
             <ListView
 
                 android:id="@+id/list_view_my_order"
@@ -147,9 +157,12 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:background="@drawable/field_order">
+                android:background="@drawable/field_order"
+                android:isScrollContainer="true">
 
             </ListView>
+
+</ScrollView>
 
         </LinearLayout>
 
@@ -276,4 +289,6 @@
     </LinearLayout>
 
 </LinearLayout>
+
+</ScrollView>
 
