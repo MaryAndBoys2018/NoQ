@@ -34,7 +34,7 @@
     </style>
 
     <style name="CheckBoxStyle" parent="Theme.AppCompat.Light">
-        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="colorControlNormal">#ffffff</item>
         <item name="colorControlActivated">#ffffff</item>
         <item name="editTextColor">#FFFFFF</item>
     </style>
