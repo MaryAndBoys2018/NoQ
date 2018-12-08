@@ -50,8 +50,7 @@
             android:width="45dp"
             android:height="45dp"
             android:focusable="false"
-            android:theme="@style/CheckBoxStyle"
-            android:isChecked="false"/>
+            android:theme="@style/CheckBoxStyle" />
 
     </LinearLayout>
 
