@@ -81,7 +81,7 @@ public class MyOrdersActivity extends AppCompatActivity {
             }
         });
 
-        ImageView buttonToMain = (ImageView) findViewById(R.id.horse_icon_from_my_order);
+        ImageView buttonToMain = (ImageView) findViewById(R.id.horse_icon_from_my_list_of_orders);
 
         buttonToMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,13 +91,12 @@ public class MyOrdersActivity extends AppCompatActivity {
             }
         });
 
-        ImageView buttonToTimeActivity = (ImageView) findViewById(R.id.back_from_my_order);
+        ImageView backButton = (ImageView) findViewById(R.id.back_from_my_list_of_orders) ;
 
-        buttonToTimeActivity.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toTimeActivity = new Intent(MyOrdersActivity.this, TimeActivity.class);
-                startActivity(toTimeActivity);
+                finish();
             }
         });
     }

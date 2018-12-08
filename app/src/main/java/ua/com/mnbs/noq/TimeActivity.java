@@ -110,6 +110,15 @@ public class TimeActivity extends AppCompatActivity {
             }
         });
 
+        ImageView backButton = (ImageView) findViewById(R.id.back_from_time) ;
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         ImageView buttonToMain = (ImageView) findViewById(R.id.horse_icon_from_time);
 
         buttonToMain.setOnClickListener(new View.OnClickListener() {
