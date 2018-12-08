@@ -27,7 +27,7 @@ public class ListOfOrders extends AppCompatActivity {
             }
         });
 
-        ImageView backButton = (ImageView) findViewById(R.id.back_from_my_list_of_orders) ;
+        /*ImageView backButton = (ImageView) findViewById(R.id.back_from_my_list_of_orders) ;
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +36,7 @@ public class ListOfOrders extends AppCompatActivity {
                 startActivity(back);
                 overridePendingTransition(R.anim.from_top_to_bottom, R.anim.from_top_to_bottom_exit);
             }
-        });
+        });*/
     }
     private void printListOfOrders(ArrayList<Order> orders) {
         OrderAdapter adapter = new OrderAdapter(this, orders);

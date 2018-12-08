@@ -63,7 +63,7 @@ public class QuantityActivity extends AppCompatActivity {
             }
         });
 
-        ImageView backButton = (ImageView) findViewById(R.id.back_from_quantity) ;
+        /*ImageView backButton = (ImageView) findViewById(R.id.back_from_quantity) ;
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +74,7 @@ public class QuantityActivity extends AppCompatActivity {
                 startActivity(toLisOfMeals);
                 overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
             }
-        });
+        });*/
 
         Button chooseQuantity = (Button) findViewById(R.id.choose_quantity_button);
 

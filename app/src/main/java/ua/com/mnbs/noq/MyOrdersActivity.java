@@ -91,14 +91,14 @@ public class MyOrdersActivity extends AppCompatActivity {
             }
         });
 
-        ImageView backButton = (ImageView) findViewById(R.id.back_from_my_order) ;
+        /*ImageView backButton = (ImageView) findViewById(R.id.back_from_my_order) ;
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
-        });
+        });*/
     }
 
     private void sendData(){
