@@ -28,6 +28,7 @@ public class ListOfMeals extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+        final String userName = extras.getString("UserName");
         String currentCafe = extras.getString("cafe name");
         final String currentCafeAddress = extras.getString("cafe address");
         final String cafeEmail = extras.getString("email");
@@ -90,8 +91,7 @@ public class ListOfMeals extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toListOfCafes = new Intent(ListOfMeals.this, ListOfCafes.class);
-                startActivity(toListOfCafes);
+                finish();
             }
         });
 
@@ -107,6 +107,7 @@ public class ListOfMeals extends AppCompatActivity {
                 }
                 else {
                     Intent OpenQuantityActivity = new Intent(ListOfMeals.this, QuantityActivity.class);
+                    OpenQuantityActivity.putExtra("UserName", userName);
                     OpenQuantityActivity.putExtra("cafe name for intent", cafeNameForIntent);
                     OpenQuantityActivity.putExtra("position for intent", positionForIntent);
                     OpenQuantityActivity.putExtra("cafe address", currentCafeAddress);
@@ -121,6 +122,7 @@ public class ListOfMeals extends AppCompatActivity {
                         }
                     }
                     startActivity(OpenQuantityActivity);
+                    overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
                 }
 
             }
@@ -177,5 +179,11 @@ public class ListOfMeals extends AppCompatActivity {
             meals.add(new Meal(name.get(i), price.get(i)));
         }
         return meals;
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
     }
 }

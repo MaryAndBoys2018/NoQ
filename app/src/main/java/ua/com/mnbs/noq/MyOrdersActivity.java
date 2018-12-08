@@ -25,6 +25,7 @@ public class MyOrdersActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+        final String userName = extras.getString("UserName");
         final int numberOfCheckedItems = extras.getInt("number of checked items");
         final String nameOfCafe = extras.getString("cafe name");
         final String cafeAddress = extras.getString("cafe address");
@@ -49,7 +50,8 @@ public class MyOrdersActivity extends AppCompatActivity {
         }
         String orderSummary;
         orderSummary = "Замовлення:\n";
-        orderSummary += "Заклад: " + nameOfCafe;
+        orderSummary += "Користувач: " + userName;
+        orderSummary += "\nЗаклад: " + nameOfCafe;
         orderSummary += "\nАдреса: " + cafeAddress;
         orderSummary += "\nЧас отримання: " + orderTime;
         orderSummary += "\nЗамовлені страви:";
@@ -115,6 +117,7 @@ public class MyOrdersActivity extends AppCompatActivity {
         if (requestCode == 1) {
             Intent goToOrders = new Intent(MyOrdersActivity.this, ListOfOrders.class);
             startActivity(goToOrders);
+            overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
         }
         }
         private  void displayOrder(String cafeName, String cafeAddress, ArrayList<Meal> meals, int totalPrice, String time)
@@ -134,5 +137,11 @@ public class MyOrdersActivity extends AppCompatActivity {
             TextView timeTextView = (TextView) findViewById(R.id.time_field);
             timeTextView.setText(time);
         }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
+    }
 
 }

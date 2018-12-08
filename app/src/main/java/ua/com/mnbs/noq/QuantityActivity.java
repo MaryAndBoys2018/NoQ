@@ -30,6 +30,7 @@ public class QuantityActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+        final String userName = extras.getString("UserName");
         final int numberOfCheckedItems = extras.getInt("number of checked meals");
         final String cafeEmail = extras.getString("email");
         final String currentCafeAddress = extras.getString("cafe address");
@@ -71,6 +72,7 @@ public class QuantityActivity extends AppCompatActivity {
                 toLisOfMeals.putExtra("cafe name", nameOfCafeForBackButton);
                 toLisOfMeals.putExtra("position", positionForBackButton);
                 startActivity(toLisOfMeals);
+                overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
             }
         });
 
@@ -81,6 +83,7 @@ public class QuantityActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent OpenTimeActivity = new Intent(QuantityActivity.this, TimeActivity.class);
+                OpenTimeActivity.putExtra("UserName", userName);
                 OpenTimeActivity.putExtra("cafe name", nameOfCafeForBackButton);
                 OpenTimeActivity.putExtra("cafe address", currentCafeAddress);
                 OpenTimeActivity.putExtra("number of checked items", numberOfCheckedItems);
@@ -91,8 +94,14 @@ public class QuantityActivity extends AppCompatActivity {
                     OpenTimeActivity.putExtra("meal price"+i, meals.get(i).getMealPrice());
                 }
                 startActivity(OpenTimeActivity);
+                overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
 
             }
         });
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
     }
 }
