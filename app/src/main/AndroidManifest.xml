@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service android:name=".Service.FirebaseIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+
+        </service>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +28,13 @@
         <activity android:name=".ListOfMeals" />
         <activity android:name=".MyOrdersActivity" />
         <activity android:name=".TimeActivity" />
-        <activity android:name=".QuantityActivity" ></activity>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+        <activity android:name=".QuantityActivity" />
+
     </application>
 
 </manifest>
