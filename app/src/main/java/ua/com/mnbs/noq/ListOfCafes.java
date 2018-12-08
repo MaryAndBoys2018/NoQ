@@ -85,8 +85,7 @@ public class ListOfCafes extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toMainActivity = new Intent(ListOfCafes.this, MainActivity.class);
-                startActivity(toMainActivity);
+                finish();
             }
         });
 

@@ -71,6 +71,7 @@ public class QuantityActivity extends AppCompatActivity {
                 toLisOfMeals.putExtra("cafe name", nameOfCafeForBackButton);
                 toLisOfMeals.putExtra("position", positionForBackButton);
                 startActivity(toLisOfMeals);
+                overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
             }
         });
 

@@ -90,8 +90,7 @@ public class ListOfMeals extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toListOfCafes = new Intent(ListOfMeals.this, ListOfCafes.class);
-                startActivity(toListOfCafes);
+                finish();
             }
         });
 
