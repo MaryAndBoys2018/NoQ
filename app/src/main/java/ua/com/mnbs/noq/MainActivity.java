@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -23,8 +24,10 @@ public class MainActivity extends AppCompatActivity {
         Order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                TextView User = (TextView) findViewById(R.id.name);
+                String userName = User.getText().toString();
                 Intent OpenListOfCafes = new Intent(MainActivity.this, ListOfCafes.class);
+                OpenListOfCafes.putExtra("UserName", userName);
                 startActivity(OpenListOfCafes);
                 overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
 

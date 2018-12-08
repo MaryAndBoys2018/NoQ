@@ -28,6 +28,7 @@ public class ListOfMeals extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+        final String userName = extras.getString("UserName");
         String currentCafe = extras.getString("cafe name");
         final String currentCafeAddress = extras.getString("cafe address");
         final String cafeEmail = extras.getString("email");
@@ -106,6 +107,7 @@ public class ListOfMeals extends AppCompatActivity {
                 }
                 else {
                     Intent OpenQuantityActivity = new Intent(ListOfMeals.this, QuantityActivity.class);
+                    OpenQuantityActivity.putExtra("UserName", userName);
                     OpenQuantityActivity.putExtra("cafe name for intent", cafeNameForIntent);
                     OpenQuantityActivity.putExtra("position for intent", positionForIntent);
                     OpenQuantityActivity.putExtra("cafe address", currentCafeAddress);

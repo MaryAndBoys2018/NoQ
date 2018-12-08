@@ -24,6 +24,7 @@ public class MyOrdersActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+        final String userName = extras.getString("UserName");
         final int numberOfCheckedItems = extras.getInt("number of checked items");
         final String nameOfCafe = extras.getString("cafe name");
         final String cafeAddress = extras.getString("cafe address");
@@ -48,7 +49,8 @@ public class MyOrdersActivity extends AppCompatActivity {
         }
         String orderSummary;
         orderSummary = "Замовлення:\n";
-        orderSummary += "Заклад: " + nameOfCafe;
+        orderSummary += "Користувач: " + userName;
+        orderSummary += "\nЗаклад: " + nameOfCafe;
         orderSummary += "\nАдреса: " + cafeAddress;
         orderSummary += "\nЧас отримання: " + orderTime;
         orderSummary += "\nЗамовлені страви:";

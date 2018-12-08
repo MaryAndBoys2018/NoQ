@@ -40,6 +40,7 @@ public class TimeActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+        final String userName = extras.getString("UserName");
         final int numberOfCheckedItems = extras.getInt("number of checked items");
         final String nameOfCafe = extras.getString("cafe name");
         final String cafeAddress = extras.getString("cafe address");
@@ -87,6 +88,7 @@ public class TimeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent OpenMyOrder = new Intent(TimeActivity.this, MyOrdersActivity.class);
+                OpenMyOrder.putExtra("UserName", userName);
                 OpenMyOrder.putExtra("cafe name", nameOfCafe);
                 OpenMyOrder.putExtra("cafe address", cafeAddress);
                 OpenMyOrder.putExtra("number of checked items", numberOfCheckedItems);
