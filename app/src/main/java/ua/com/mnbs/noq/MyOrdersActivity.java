@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -75,6 +76,26 @@ public class MyOrdersActivity extends AppCompatActivity {
                     startActivityForResult(intent, 1);
                 }
 
+            }
+        });
+
+        ImageView buttonToMain = (ImageView) findViewById(R.id.horse_icon_from_my_order);
+
+        buttonToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toMainActivity = new Intent(MyOrdersActivity.this, MainActivity.class);
+                startActivity(toMainActivity);
+            }
+        });
+
+        ImageView buttonToTimeActivity = (ImageView) findViewById(R.id.back_from_my_order);
+
+        buttonToTimeActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toTimeActivity = new Intent(MyOrdersActivity.this, TimeActivity.class);
+                startActivity(toTimeActivity);
             }
         });
     }
