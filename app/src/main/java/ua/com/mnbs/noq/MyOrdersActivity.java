@@ -94,6 +94,7 @@ public class MyOrdersActivity extends AppCompatActivity {
         if (requestCode == 1) {
             Intent goToOrders = new Intent(MyOrdersActivity.this, ListOfOrders.class);
             startActivity(goToOrders);
+            overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
         }
         }
         private  void displayOrder(String cafeName, String cafeAddress, ArrayList<Meal> meals, int totalPrice, String time)
@@ -113,5 +114,11 @@ public class MyOrdersActivity extends AppCompatActivity {
             TextView timeTextView = (TextView) findViewById(R.id.time_field);
             timeTextView.setText(time);
         }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
+    }
 
 }

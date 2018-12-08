@@ -121,6 +121,7 @@ public class ListOfMeals extends AppCompatActivity {
                         }
                     }
                     startActivity(OpenQuantityActivity);
+                    overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
                 }
 
             }
@@ -177,5 +178,11 @@ public class ListOfMeals extends AppCompatActivity {
             meals.add(new Meal(name.get(i), price.get(i)));
         }
         return meals;
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
     }
 }

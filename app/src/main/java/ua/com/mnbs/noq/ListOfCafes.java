@@ -65,6 +65,7 @@ public class ListOfCafes extends AppCompatActivity {
                     WriteToFile("counter.txt",makeNewOrderFileName(ReadFromFileNotAsset("counter.txt")));
                     WriteToFile("Order"+ReadFromFileNotAsset("counter.txt")+".txt",cafes.get(position).getCafeName()+"\n"+cafes.get(position).getCafeType()+"\n"+cafes.get(position).getCafeLocation());
                     startActivity(OpenMenu);
+                    overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
                 }
             });
         }
@@ -191,5 +192,11 @@ public class ListOfCafes extends AppCompatActivity {
         for (int i = 0; i < name.size(); i++)
             cafes.add(new Cafe(name.get(i), location.get(i), type.get(i), email.get(i)));
         return cafes;
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
     }
 }

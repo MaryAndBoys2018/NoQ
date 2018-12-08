@@ -91,8 +91,14 @@ public class QuantityActivity extends AppCompatActivity {
                     OpenTimeActivity.putExtra("meal price"+i, meals.get(i).getMealPrice());
                 }
                 startActivity(OpenTimeActivity);
+                overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
 
             }
         });
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
     }
 }
