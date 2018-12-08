@@ -99,6 +99,7 @@ public class TimeActivity extends AppCompatActivity {
                 }
                 if (checkPreparationTime(floatTime.getHour(), floatTime.getMinute(), currentHour, currentMinute)) {
                     startActivity(OpenMyOrder);
+                    overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Май совість, дай хоча б 15 хвилин на приготування", Toast.LENGTH_SHORT).show();
@@ -246,5 +247,11 @@ public class TimeActivity extends AppCompatActivity {
             }
         }
         return  true;
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
     }
 }
