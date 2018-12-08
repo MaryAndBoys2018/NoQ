@@ -15,7 +15,7 @@
         android:padding="8dp"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textSize="20sp"
         tools:text="Заклад" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:padding="8dp"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="17sp"
         tools:text="Адреса" />
 
     <TextView
@@ -51,7 +51,7 @@
         android:padding="8dp"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textSize="20sp"
         tools:text="Час " />
 
     <TextView

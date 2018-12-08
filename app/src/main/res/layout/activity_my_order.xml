@@ -22,7 +22,6 @@
 
             <LinearLayout style="@style/LayoutInLayoutInTop">
 
-
                 <ImageView
                     android:id="@+id/back_from_my_order"
                     style="@style/Arrow" />
@@ -37,8 +36,10 @@
                 </LinearLayout>
 
                 <ImageView
+
                     android:id="@+id/horse_icon_from_my_order"
                     style="@style/SmallIcon" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -60,11 +61,11 @@
                 android:text="Заклад:"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/line2"
-                android:layout_width="66dp"
+                android:layout_width="72dp"
                 android:layout_height="1dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="7dp"
@@ -100,7 +101,7 @@
                     android:layout_marginBottom="1dp"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     tools:text="Заклад" />
 
                 <TextView
@@ -115,7 +116,7 @@
                     android:layout_marginBottom="1dp"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
-                    android:textSize="17sp"
+                    android:textSize="18sp"
                     tools:text="Адреса" />
 
             </RelativeLayout>
@@ -129,11 +130,11 @@
                 android:text="Замовлення:"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/line4"
-                android:layout_width="110dp"
+                android:layout_width="120dp"
                 android:layout_height="1dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="5dp"
@@ -186,11 +187,11 @@
                     android:text="Час:"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/line5"
-                    android:layout_width="35dp"
+                    android:layout_width="42dp"
                     android:layout_height="1dp"
                     android:layout_alignBottom="@id/time"
                     android:layout_gravity="center_horizontal"
@@ -233,11 +234,11 @@
                     android:text="Сума:"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/line6"
-                    android:layout_width="45dp"
+                    android:layout_width="52dp"
                     android:layout_height="1dp"
                     android:layout_alignBottom="@id/total"
                     android:layout_gravity="center_horizontal"
