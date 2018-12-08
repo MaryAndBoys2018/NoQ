@@ -51,7 +51,7 @@
             android:height="45dp"
             android:focusable="false"
             android:theme="@style/CheckBoxStyle"
-            android:typeface="monospace"/>
+            android:isChecked="false"/>
 
     </LinearLayout>
 
