@@ -7,6 +7,11 @@
     android:background="@drawable/gradient_main_background"
     tools:context=".MainActivity">
 
+<ScrollView
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -92,5 +97,7 @@
             android:text="Мої замовлення" />
 
     </LinearLayout>
+
+</ScrollView>
 
 </android.support.constraint.ConstraintLayout>

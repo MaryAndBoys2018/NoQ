@@ -35,7 +35,6 @@ public class MealAdapter extends ArrayAdapter<Meal> {
 
         CheckBox mealCheckBox = (CheckBox) listItemView.findViewById(R.id.meal_checkbox);
         currentMeal.setChecked(mealCheckBox.isChecked());
-
         mealCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

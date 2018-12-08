@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -40,6 +41,7 @@ public class TimeActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+        final String userName = extras.getString("UserName");
         final int numberOfCheckedItems = extras.getInt("number of checked items");
         final String nameOfCafe = extras.getString("cafe name");
         final String cafeAddress = extras.getString("cafe address");
@@ -87,6 +89,7 @@ public class TimeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent OpenMyOrder = new Intent(TimeActivity.this, MyOrdersActivity.class);
+                OpenMyOrder.putExtra("UserName", userName);
                 OpenMyOrder.putExtra("cafe name", nameOfCafe);
                 OpenMyOrder.putExtra("cafe address", cafeAddress);
                 OpenMyOrder.putExtra("number of checked items", numberOfCheckedItems);
@@ -99,10 +102,30 @@ public class TimeActivity extends AppCompatActivity {
                 }
                 if (checkPreparationTime(floatTime.getHour(), floatTime.getMinute(), currentHour, currentMinute)) {
                     startActivity(OpenMyOrder);
+                    overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Май совість, дай хоча б 15 хвилин на приготування", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        /*ImageView backButton = (ImageView) findViewById(R.id.back_from_time) ;
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });*/
+
+        ImageView buttonToMain = (ImageView) findViewById(R.id.horse_icon_from_time);
+
+        buttonToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toMainActivity = new Intent(TimeActivity.this, MainActivity.class);
+                startActivity(toMainActivity);
             }
         });
     }
@@ -246,5 +269,11 @@ public class TimeActivity extends AppCompatActivity {
             }
         }
         return  true;
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
     }
 }
