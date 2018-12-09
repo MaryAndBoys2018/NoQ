@@ -10,9 +10,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import java.util.Calendar;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MyOrdersActivity extends AppCompatActivity {
 
@@ -31,6 +36,8 @@ public class MyOrdersActivity extends AppCompatActivity {
         final String cafeAddress = extras.getString("cafe address");
         final String orderTime = extras.getString("order time");
         final String cafeEmail = extras.getString("email");
+        Date currentDate = Calendar.getInstance().getTime();
+
 
 
         meals = new ArrayList<>();
@@ -98,7 +105,10 @@ public class MyOrdersActivity extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
             }
+
         });
+        Order order = new Order(orderTime,cafeAddress,nameOfCafe,totalPrice,currentDate,meals);
+        AddToDatabase(order);
     }
 
     private void sendData(){
@@ -136,6 +146,14 @@ public class MyOrdersActivity extends AppCompatActivity {
             TextView timeTextView = (TextView) findViewById(R.id.time_field);
             timeTextView.setText(time);
         }
+
+    public void AddToDatabase(Order order) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("order");
+
+        myRef.setValue(order);
+    }
+
 
     @Override
     public void finish() {
