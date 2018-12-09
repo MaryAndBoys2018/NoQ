@@ -69,13 +69,15 @@ public class MyOrdersActivity extends AppCompatActivity {
         }
 
         final String finalOrder = orderSummary;
-
+        final Order order = new Order(orderTime,cafeAddress,nameOfCafe,totalPrice,currentDate,meals);
         displayOrder(nameOfCafe, cafeAddress, meals, totalPrice, orderTime);
 
         Button orderButton = (Button) findViewById(R.id.button_order);
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                AddToDatabase(order);
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:"));
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[]{cafeEmail});
@@ -107,8 +109,8 @@ public class MyOrdersActivity extends AppCompatActivity {
             }
 
         });
-        Order order = new Order(orderTime,cafeAddress,nameOfCafe,totalPrice,currentDate,meals);
-        AddToDatabase(order);
+
+
     }
 
     private void sendData(){
