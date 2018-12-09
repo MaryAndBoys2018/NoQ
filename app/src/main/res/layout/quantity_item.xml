@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <TextView
 
@@ -26,7 +26,8 @@
             android:paddingBottom="4dp"
             android:textSize="20sp"
             tools:text="Meal's Name"
-            android:layout_marginLeft="8dp"/>
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"/>
 
 
         <TextView
@@ -72,7 +73,6 @@
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
             android:text="+"
-            android:layout_marginRight="8dp"
             android:textColor="#FFFFFF"
             android:textSize="20dp" />
 
