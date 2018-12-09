@@ -24,16 +24,15 @@
             tools:text="NiceCoffee" />
 
 
-        <TextView
-            android:id="@+id/cafe_type_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <ImageView
+            android:id="@+id/cafe_icon_view"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="236dp"
-            android:textColor="#FFFFFF"
-            tools:text="кав'ярня" />
+            android:textColor="#FFFFFF" />
 
 
         <TextView

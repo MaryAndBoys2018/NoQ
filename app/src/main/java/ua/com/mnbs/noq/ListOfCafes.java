@@ -2,6 +2,7 @@ package ua.com.mnbs.noq;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.location.Location;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -38,19 +39,20 @@ public class ListOfCafes extends AppCompatActivity {
         final String userName = extras.getString("UserName");
         String names = readFile("cafe_names.txt");
         String locations = readFile("cafe_locations.txt");
-        String types = readFile("cafe_types.txt");
+        String icons = readFile("cafe_icons.txt");
         String emails = readFile("cafe_emails.txt");
 
         ArrayList<String> name = moveIntoArrayList(names);
         ArrayList<String> location = moveIntoArrayList(locations);
-        ArrayList<String> type = moveIntoArrayList(types);
+        ArrayList<String> icon = moveIntoArrayList(icons);
         ArrayList<String> email = moveIntoArrayList(emails);
+        ArrayList<Integer> iconId = transferIntoId(icon);
 
-        if (isMistakeInFiles(name, location, type, email))
+        if (isMistakeInFiles(name, location, icon, email))
             Toast.makeText(getApplicationContext(), "Something is wrong with your text files.",
                     Toast.LENGTH_SHORT).show();
         else {
-            cafes = createCafeArrayList(name, location, type, email);
+            cafes = createCafeArrayList(name, location, iconId, email);
             printListOfCafes(cafes);
 
             ListView listView = (ListView) findViewById(R.id.cafe_list);
@@ -135,6 +137,24 @@ public class ListOfCafes extends AppCompatActivity {
 
     }
 
+    public ArrayList<Integer> transferIntoId(ArrayList<String> icon){
+        ArrayList<Integer> returnValue = new ArrayList<>();
+        Resources r = getResources();
+        int drawableId = -1;
+        String temp = "";
+        for (int i=0; i<icon.size(); i++){
+            if (i == icon.size()-1) {
+                temp = icon.get(i);
+            } else {
+                temp = icon.get(i);
+                temp = temp.substring(0, temp.length() - 1);
+            }
+            drawableId = r.getIdentifier(temp, "drawable", getPackageName());
+            returnValue.add(drawableId);
+        }
+        return returnValue;
+    }
+
 
     public String makeNewOrderFileName(String text){
         String smth ="";
@@ -164,6 +184,24 @@ public class ListOfCafes extends AppCompatActivity {
         return returnValue;
     }
 
+    private ArrayList<Integer> moveIdIntoArrayList(String text) {
+        ArrayList<Integer> returnValue = new ArrayList<>();
+        String temp = "";
+        Resources r = getResources();
+        int drawableId = 0;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == '\n' || text.charAt(i) == '\0') {
+                temp.trim();
+                drawableId = r.getIdentifier(temp, "drawable", getPackageName());
+                returnValue.add(drawableId);
+                temp = "";
+                continue;
+            }
+            temp += text.charAt(i);
+        }
+        return returnValue;
+    }
+
     protected void WriteToFile(String file, String text)
     {
         try {
@@ -185,15 +223,15 @@ public class ListOfCafes extends AppCompatActivity {
     }
 
 
-    private boolean isMistakeInFiles(ArrayList<String> name, ArrayList<String> location, ArrayList<String> type, ArrayList<String> email) {
-        return (name.size() != location.size() || name.size() != type.size() || location.size() != type.size() ||
-        name.size() != email.size() || type.size() != email.size() || location.size() != email.size());
+    private boolean isMistakeInFiles(ArrayList<String> name, ArrayList<String> location, ArrayList<String> icon, ArrayList<String> email) {
+        return (name.size() != location.size() || name.size() != icon.size() || location.size() != icon.size() ||
+        name.size() != email.size() || icon.size() != email.size() || location.size() != email.size());
     }
 
-    private ArrayList<Cafe> createCafeArrayList(ArrayList<String> name, ArrayList<String> location, ArrayList<String> type, ArrayList<String> email) {
+    private ArrayList<Cafe> createCafeArrayList(ArrayList<String> name, ArrayList<String> location, ArrayList<Integer> icon, ArrayList<String> email) {
         ArrayList<Cafe> cafes = new ArrayList<>();
         for (int i = 0; i < name.size(); i++)
-            cafes.add(new Cafe(name.get(i), location.get(i), type.get(i), email.get(i)));
+            cafes.add(new Cafe(name.get(i), location.get(i), icon.get(i), email.get(i)));
         return cafes;
     }
 
