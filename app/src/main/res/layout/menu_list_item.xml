@@ -9,34 +9,32 @@
     android:paddingTop="8dp"
     tools:background="@drawable/gradient_main_background">
 
-
     <TextView
+
         android:id="@+id/meal_name_text_view"
+        style="@style/TextStyle"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:paddingLeft="32dp"
         android:paddingTop="4dp"
-        android:paddingBottom="4dp"
+        android:paddingBottom="8dp"
         android:layout_centerVertical="true"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         tools:text="Meal's Name" />
 
     <TextView
+
+        style="@style/TextStyle"
         android:id="@+id/price_type_text_view"
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"
         android:layout_marginRight="8dp"
         android:layout_marginLeft="16dp"
         android:layout_toLeftOf="@id/meal_checkbox"
-        android:textColor="#FFFFFF"
         android:textSize="20sp"
         tools:text="$$$" />
 
     <CheckBox
+
         android:id="@+id/meal_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,14 +50,10 @@
     <TextView
 
         android:id="@+id/line1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
+        style="@style/WhiteLine"
         android:layout_below="@+id/one"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="#FFFFFF" />
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

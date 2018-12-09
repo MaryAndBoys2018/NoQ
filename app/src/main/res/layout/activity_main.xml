@@ -42,31 +42,24 @@
 
             <TextView
                 android:id="@+id/line2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_gravity="center_horizontal"
+                style="@style/WhiteLine"
                 android:layout_marginTop="10dp"
-                android:layout_weight="0"
-                android:background="#FFFFFF" />
+                android:layout_weight="0" />
 
             <TextView
+
                 android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+               style="@style/TextStyle"
                 android:layout_margin="15dp"
                 android:layout_weight="1"
                 android:text="Конь   Марінич"
-                android:textColor="#FFFFFF"
-                android:textSize="24dp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/line1"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="0"
-                android:background="#FFFFFF" />
+                style="@style/WhiteLine"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0"/>
 
         </LinearLayout>
 

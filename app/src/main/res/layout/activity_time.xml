@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_activity_time_background"
     android:fillViewport="true"
-    tools:context=".TimeActivity"
-    tools:ignore="MissingConstraints">
+    tools:context=".TimeActivity">
 
     <LinearLayout
 
@@ -63,43 +62,32 @@
 
         <TextView
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
             android:text="Ви обрали:"
-            android:textColor="#FFFFFF"
+            style="@style/TextStyle"
             android:textSize="24dp" />
 
         <TextView
+
             android:id="@+id/line2"
+            style="@style/WhiteLine"
             android:layout_width="118dp"
-            android:layout_height="1dp"
-            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
-            android:layout_weight="0"
-            android:background="#FFFFFF" />
+            android:layout_weight="0" />
 
         <TextView
 
             android:id="@+id/text_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
+            style="@style/TextStyle"
             android:text="Час"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <TextView
 
             android:id="@+id/line3"
+            style="@style/WhiteLine"
             android:layout_width="90dp"
-            android:layout_height="1dp"
-            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
-            android:layout_weight="0"
-            android:background="#FFFFFF" />
+            android:layout_weight="0" />
 
 
         <Button

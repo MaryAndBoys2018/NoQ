@@ -32,24 +32,22 @@
 
             <TextView
                 android:id="@+id/cafe_name_text_view"
+                style="@style/TextStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
-                android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 tools:text="NiceCoffee" />
 
             <TextView
                 android:id="@+id/cafe_location_text_view"
+                style="@style/TextStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_below="@+id/cafe_name_text_view"
                 android:layout_marginRight="58dp"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
-                android:textColor="#FFFFFF"
                 android:textSize="18dp"
                 tools:text="вул. Степана Бандери, 19" />
         </RelativeLayout>
@@ -59,12 +57,9 @@
 
     <TextView
         android:id="@+id/line1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
+        style="@style/WhiteLine"
         android:layout_below="@+id/element"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="#FFFFFF" />
+        android:layout_marginRight="20dp" />
+
 </RelativeLayout>
