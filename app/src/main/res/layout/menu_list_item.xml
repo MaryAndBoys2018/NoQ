@@ -30,6 +30,7 @@
         android:layout_centerVertical="true"
         android:layout_gravity="center"
         android:layout_marginRight="8dp"
+        android:layout_marginLeft="16dp"
         android:layout_toLeftOf="@id/meal_checkbox"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
