@@ -5,11 +5,13 @@ public class Cafe {
     private String mCafeLocation;
     private String mCafeType;
     private String mCafeEmail;
+    private int mDrawableId;
+    public static final int NO_IMAGE_PROVIDED = -1;
 
-    Cafe(String cafeName, String cafeLocation, String cafeType, String cafeEmail) {
+    Cafe(String cafeName, String cafeLocation, int drawableId, String cafeEmail) {
         mCafeName = cafeName;
         mCafeLocation = cafeLocation;
-        mCafeType = cafeType;
+        mDrawableId = drawableId;
         mCafeEmail = cafeEmail;
     }
 
@@ -27,6 +29,12 @@ public class Cafe {
 
     public String getCafeEmail() {
         return mCafeEmail;
+    }
+
+    public int getDrawableId() { return mDrawableId; }
+
+    public boolean hasImage(){
+        return mDrawableId != NO_IMAGE_PROVIDED;
     }
 
 }
