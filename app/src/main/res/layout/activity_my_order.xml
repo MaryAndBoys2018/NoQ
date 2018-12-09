@@ -10,29 +10,32 @@
     android:background="@drawable/gradient_my_order_background">
 
 <LinearLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
         <LinearLayout
+
             android:id="@+id/group"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout style="@style/LayoutInLayoutInTop">
+            <LinearLayout
+                style="@style/LayoutInLayoutInTop">
 
                 <ImageView
                     android:id="@+id/back_from_my_order"
                     style="@style/Arrow" />
 
                 <LinearLayout style="@style/LayoutInTop">
-
 
                     <TextView
                         style="@style/Title"
@@ -41,40 +44,34 @@
                 </LinearLayout>
 
                 <ImageView
-
                     android:id="@+id/horse_icon_from_my_order"
                     style="@style/SmallIcon" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/line"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/top">
 
-                <TextView style="@style/WhiteLine" />
+                <TextView
+                    style="@style/WhiteLine" />
 
             </LinearLayout>
 
             <TextView
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                style="@style/TextStyle"
                 android:layout_marginTop="10dp"
                 android:text="Заклад:"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/line2"
+                style="@style/WhiteLine"
                 android:layout_width="72dp"
-                android:layout_height="1dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="7dp"
-                android:background="#FFFFFF" />
+                android:layout_marginBottom="7dp" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -93,48 +90,41 @@
                     android:layout_marginTop="5dp"
                     android:background="@drawable/field_order"
                     android:textColor="#FFFFFF"
+                    android:textAllCaps="false"
                     android:textSize="24sp" />
 
                 <TextView
 
                     android:id="@+id/place"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextStyle"
                     android:layout_alignTop="@id/field_place"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="1dp"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
                     android:textSize="24sp"
                     tools:text="Заклад" />
 
                 <TextView
 
                     android:id="@+id/adress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextStyle"
                     android:layout_below="@id/place"
                     android:layout_alignBottom="@id/field_place"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="1dp"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     tools:text="Адреса" />
 
             </RelativeLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+
+                style="@style/TextStyle"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="1dp"
                 android:text="Замовлення:"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 
             <TextView
@@ -189,29 +179,24 @@
                 android:layout_weight="30">
 
                 <TextView
+
                     android:id="@+id/time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextStyle"
                     android:layout_alignBottom="@id/list_view_my_order"
-                    android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="7dp"
                     android:layout_marginTop="7dp"
                     android:layout_marginBottom="7dp"
                     android:text="Час:"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/line5"
+                    style="@style/WhiteLine"
                     android:layout_width="42dp"
-                    android:layout_height="1dp"
                     android:layout_alignBottom="@id/time"
-                    android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="-1dp"
-                    android:background="#FFFFFF" />
+                    android:layout_marginBottom="-1dp" />
 
                 <TextView
 
@@ -237,28 +222,23 @@
 
                 <TextView
                     android:id="@+id/total"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextStyle"
                     android:layout_alignBottom="@id/list_view_my_order"
-                    android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="7dp"
                     android:layout_marginBottom="7dp"
                     android:text="Сума:"
-                    android:textAllCaps="false"
-                    android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 
                 <TextView
+
                     android:id="@+id/line6"
+                    style="@style/WhiteLine"
                     android:layout_width="52dp"
-                    android:layout_height="1dp"
                     android:layout_alignBottom="@id/total"
-                    android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="-3dp"
-                    android:background="#FFFFFF" />
+                    android:layout_marginBottom="-3dp" />
 
                 <TextView
 
@@ -280,7 +260,6 @@
 
             android:id="@+id/button_order"
             style="@style/ButtonStyle"
-            android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="12dp"
             android:layout_weight="1"
