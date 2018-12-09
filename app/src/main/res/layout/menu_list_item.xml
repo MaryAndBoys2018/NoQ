@@ -17,6 +17,7 @@
         android:paddingLeft="32dp"
         android:paddingTop="4dp"
         android:paddingBottom="8dp"
+        android:paddingRight="8dp"
         android:layout_centerVertical="true"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
