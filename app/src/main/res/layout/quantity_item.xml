@@ -26,7 +26,8 @@
             android:paddingBottom="4dp"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            tools:text="Meal's Name" />
+            tools:text="Meal's Name"
+            android:layout_marginLeft="8dp"/>
 
 
         <TextView
@@ -34,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="4dp"
+            android:layout_marginRight="10dp"
             android:paddingBottom="4dp"
             android:textColor="#FFFFFF"
             android:textSize="20dp"
@@ -72,6 +73,7 @@
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
             android:text="+"
+            android:layout_marginRight="8dp"
             android:textColor="#FFFFFF"
             android:textSize="20dp" />
     </LinearLayout>

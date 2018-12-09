@@ -25,20 +25,16 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         TextView cafeTextView = (TextView) listItemView.findViewById(R.id.cafe_text_view);
         cafeTextView.setText(currentOrder.getmCafe());
 
-        TextView productTextView = (TextView) listItemView.findViewById(R.id.product_text_view);
-        productTextView.setText(currentOrder.getmProduct());
 
         TextView sumTextView = (TextView) listItemView.findViewById(R.id.sum_text_view);
         sumTextView.setText(currentOrder.getmSum());
 
         TextView timeTextView = (TextView) listItemView.findViewById(R.id.time_text_view);
-        timeTextView.setText(currentOrder.getmHOUR()+":"+currentOrder.getmMinute());
+        timeTextView.setText(currentOrder.getmTime());
 
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.date_text_view);
-        dateTextView.setText(currentOrder.getmDate());
+        dateTextView.setText(currentOrder.getmDate().toString());
 
-        TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity_text_view);
-        quantityTextView.setText(currentOrder.getmQuantity());
         return listItemView;
 
     }

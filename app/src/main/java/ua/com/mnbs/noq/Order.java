@@ -1,37 +1,32 @@
 package ua.com.mnbs.noq;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Order {
-    private String mDate;
-    private int mHOUR;
-    private int mMinute;
+    private String mLocation;
+    private Date mDate;
+    private String mTime;
     private String mCafe;
     private int mSum;
-    private String mProduct;
-    private int mQuantity;
-    public Order(String product,int hour,int minute,String cafe,int sum,String date,int quantity){
-        mHOUR=hour;
-        mMinute=minute;
+    private ArrayList<Meal> listOfMeals;
+    public Order(String time, String location, String cafe, int sum,
+                 Date date, ArrayList<Meal> meals){
+        mLocation=location;
+        mTime=time;
         mCafe=cafe;
         mSum=sum;
         mDate=date;
-        mProduct=product;
-        mQuantity=quantity;
-
+        listOfMeals=meals;
     }
 
-    public int getmHOUR() {
-        return mHOUR;
-    }
-
-    public int getmMinute() {
-        return mMinute;
-    }
 
     public int getmSum() {
         return mSum;
     }
 
-    public String getmDate() {
+    public Date getmDate() {
         return mDate;
     }
 
@@ -39,11 +34,15 @@ public class Order {
         return mCafe;
     }
 
-    public String getmProduct() {
-        return mProduct;
+    public ArrayList<Meal> getListOfMeals() {
+        return listOfMeals;
     }
 
-    public int getmQuantity() {
-        return mQuantity;
+    public String getmLocation() {
+        return mLocation;
+    }
+
+    public String getmTime() {
+        return mTime;
     }
 }
