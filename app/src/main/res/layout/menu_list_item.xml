@@ -17,6 +17,8 @@
         android:paddingLeft="32dp"
         android:paddingTop="4dp"
         android:paddingBottom="8dp"
+        android:layout_centerVertical="true"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         tools:text="Meal's Name" />
 
@@ -26,6 +28,7 @@
         android:id="@+id/price_type_text_view"
         android:layout_width="80dp"
         android:layout_marginRight="8dp"
+        android:layout_marginLeft="16dp"
         android:layout_toLeftOf="@id/meal_checkbox"
         android:textSize="20sp"
         tools:text="$$$" />
@@ -41,7 +44,8 @@
         android:width="45dp"
         android:height="45dp"
         android:focusable="false"
-        android:theme="@style/CheckBoxStyle" />
+        android:theme="@style/CheckBoxStyle"
+        android:layout_centerVertical="true"/>
 
     <TextView
 
