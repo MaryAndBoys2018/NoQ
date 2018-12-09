@@ -63,18 +63,14 @@ public class QuantityActivity extends AppCompatActivity {
             }
         });
 
-        /*ImageView backButton = (ImageView) findViewById(R.id.back_from_quantity) ;
+        ImageView backButton = (ImageView) findViewById(R.id.back_from_quantity) ;
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toLisOfMeals = new Intent(QuantityActivity.this, ListOfMeals.class);
-                toLisOfMeals.putExtra("cafe name", nameOfCafeForBackButton);
-                toLisOfMeals.putExtra("position", positionForBackButton);
-                startActivity(toLisOfMeals);
-                overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
+                finish();
             }
-        });*/
+        });
 
         Button chooseQuantity = (Button) findViewById(R.id.choose_quantity_button);
 
