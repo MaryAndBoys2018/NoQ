@@ -1,7 +1,7 @@
-coffee_icon
-coffee_icon
-coffee_icon
-coffee_icon1
-coffee_icon
-coffee_icon
-coffee_icon
+burger2
+pizza2
+coffee2
+beer2
+beer2
+restourant2
+beer2
