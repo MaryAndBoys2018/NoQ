@@ -10,6 +10,7 @@
     tools:background="@drawable/gradient_main_background">
 
 
+
     <TextView
         android:id="@+id/meal_name_text_view"
         android:layout_width="200dp"
@@ -21,7 +22,6 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         tools:text="Meal's Name" />
-
 
     <TextView
         android:layout_centerVertical="true"
@@ -47,8 +47,8 @@
         android:focusable="false"
         android:theme="@style/CheckBoxStyle" />
 
-
     <TextView
+
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
