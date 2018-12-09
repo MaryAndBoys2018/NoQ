@@ -29,6 +29,7 @@
         android:layout_width="80dp"
         android:layout_marginRight="8dp"
         android:layout_marginLeft="16dp"
+        android:layout_centerVertical="true"
         android:layout_toLeftOf="@id/meal_checkbox"
         android:textSize="20sp"
         tools:text="$$$" />
