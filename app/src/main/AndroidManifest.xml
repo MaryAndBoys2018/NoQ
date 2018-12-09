@@ -25,7 +25,7 @@
         </activity>
         <activity android:name=".ListOfCafes" />
         <activity android:name=".ListOfOrders" />
-        <activity android:name=".ListOfMeals" />
+        <activity android:name=".ListOfMeals"  android:configChanges="orientation|screenSize"/>
         <activity android:name=".MyOrdersActivity" />
         <activity android:name=".TimeActivity" />
 
