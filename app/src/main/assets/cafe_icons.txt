@@ -5,3 +5,7 @@ beer2
 beer2
 restourant2
 beer2
+restourant2
+coffee2
+restourant2
+restourant2
