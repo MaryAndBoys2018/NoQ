@@ -79,14 +79,9 @@ public class MyOrdersActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 AddToDatabase(order);
-                Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse("mailto:"));
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{cafeEmail});
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Замовлення");
-                intent.putExtra(Intent.EXTRA_TEXT, finalOrder);
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(intent, 1);
-                }
+                Intent goToOrders = new Intent(MyOrdersActivity.this, ListOfOrders.class);
+                startActivity(goToOrders);
+                overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
 
             }
         });
@@ -115,24 +110,7 @@ public class MyOrdersActivity extends AppCompatActivity {
 
     }
 
-    private void sendData(){
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{ "crusty@gmail.com"});
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Замовлення");
-        intent.putExtra(Intent.EXTRA_TEXT, "Моє замовлення");
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
-    }
 
-        @Override   public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) {
-            Intent goToOrders = new Intent(MyOrdersActivity.this, ListOfOrders.class);
-            startActivity(goToOrders);
-            overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
-        }
-        }
         private  void displayOrder(String cafeName, String cafeAddress, ArrayList<Meal> meals, int totalPrice, String time)
         {
             TextView nameTextView = (TextView) findViewById(R.id.place);
