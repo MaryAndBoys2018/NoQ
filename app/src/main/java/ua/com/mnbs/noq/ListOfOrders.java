@@ -27,20 +27,24 @@ public class ListOfOrders extends AppCompatActivity {
             }
         });
 
-        /*ImageView backButton = (ImageView) findViewById(R.id.back_from_my_list_of_orders) ;
+        ImageView backButton = (ImageView) findViewById(R.id.back_from_my_list_of_orders) ;
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent back = new Intent(ListOfOrders.this, MainActivity.class);
-                startActivity(back);
-                overridePendingTransition(R.anim.from_top_to_bottom, R.anim.from_top_to_bottom_exit);
+                finish();
             }
-        });*/
+        });
     }
     private void printListOfOrders(ArrayList<Order> orders) {
         OrderAdapter adapter = new OrderAdapter(this, orders);
         ListView listView = (ListView) findViewById(R.id.order_list);
         listView.setAdapter(adapter);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
     }
 }
