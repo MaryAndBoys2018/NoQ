@@ -17,8 +17,8 @@ public class Order {
         mTime=time;
         mCafe=cafe;
         mSum=sum;
-        mDate=date;
         listOfMeals=meals;
+        mDate = date;
     }
 
 

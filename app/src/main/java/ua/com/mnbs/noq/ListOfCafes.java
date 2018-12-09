@@ -60,12 +60,17 @@ public class ListOfCafes extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapter, View view, int position, long l) {
-
+                    String tempEmail;
+                   if (position == cafes.size()-1) {
+                       tempEmail = cafes.get(position).getCafeEmail();
+                   } else {
+                       tempEmail = cafes.get(position).getCafeEmail().substring(0,cafes.get(position).getCafeEmail().length()-1);
+                   }
                     Intent OpenMenu = new Intent(ListOfCafes.this, ListOfMeals.class);
                     OpenMenu.putExtra("UserName", userName);
                     OpenMenu.putExtra("cafe name", cafes.get(position).getCafeName());
                     OpenMenu.putExtra("cafe address", cafes.get(position).getCafeLocation());
-                    OpenMenu.putExtra("email", cafes.get(position).getCafeEmail());
+                    OpenMenu.putExtra("email", tempEmail);
                     OpenMenu.putExtra("position", position);
                     deleteFile("counter.txt");
                     WriteToFile("counter.txt",makeNewOrderFileName(ReadFromFileNotAsset("counter.txt")));
