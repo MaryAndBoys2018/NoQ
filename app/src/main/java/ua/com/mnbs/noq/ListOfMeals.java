@@ -86,14 +86,14 @@ public class ListOfMeals extends AppCompatActivity {
             }
         });
 
-        /*ImageView backButton = (ImageView) findViewById(R.id.back_from_menu) ;
+        ImageView backButton = (ImageView) findViewById(R.id.back_from_menu) ;
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
-        });*/
+        });
 
         chooseDishes.setOnClickListener(new View.OnClickListener() {
             @Override

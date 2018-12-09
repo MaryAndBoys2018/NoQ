@@ -98,14 +98,15 @@ public class MyOrdersActivity extends AppCompatActivity {
             }
         });
 
-        /*ImageView backButton = (ImageView) findViewById(R.id.back_from_my_order) ;
+        ImageView backButton = (ImageView) findViewById(R.id.back_from_my_order) ;
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
-        });*/
+
+        });
         Order order = new Order(orderTime,cafeAddress,nameOfCafe,totalPrice,currentDate,meals);
         AddToDatabase(order);
     }
