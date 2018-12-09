@@ -1,5 +1,6 @@
 package ua.com.mnbs.noq;
 
+import android.app.LauncherActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -83,6 +84,7 @@ public class ListOfMeals extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toMainActivity = new Intent(ListOfMeals.this, MainActivity.class);
                 startActivity(toMainActivity);
+                overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
             }
         });
 

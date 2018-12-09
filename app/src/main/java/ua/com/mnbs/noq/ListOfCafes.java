@@ -1,5 +1,7 @@
 package ua.com.mnbs.noq;
 
+import android.app.Activity;
+import android.app.LauncherActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -83,6 +85,7 @@ public class ListOfCafes extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toMainActivity = new Intent(ListOfCafes.this, MainActivity.class);
                 startActivity(toMainActivity);
+                overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
             }
         });
 
