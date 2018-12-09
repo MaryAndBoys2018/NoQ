@@ -1,5 +1,6 @@
 package ua.com.mnbs.noq;
 
+import android.app.LauncherActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -97,6 +98,7 @@ public class MyOrdersActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toMainActivity = new Intent(MyOrdersActivity.this, MainActivity.class);
                 startActivity(toMainActivity);
+                overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
             }
         });
 
