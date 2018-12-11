@@ -79,9 +79,9 @@ public class MyOrdersActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 AddToDatabase(order);
-                Intent goToOrders = new Intent(MyOrdersActivity.this, ListOfOrders.class);
-                startActivity(goToOrders);
-                overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
+                Intent toMainActivity = new Intent(MyOrdersActivity.this, MainActivity.class);
+                startActivity(toMainActivity);
+                overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
 
             }
         });

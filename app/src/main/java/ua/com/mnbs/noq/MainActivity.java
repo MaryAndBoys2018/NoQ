@@ -41,16 +41,13 @@ public class MainActivity extends AppCompatActivity {
         myOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent OpenListOfOrders = new Intent(MainActivity.this, ListOfOrders.class);
-                startActivity(OpenListOfOrders);
-                overridePendingTransition(R.anim.from_bottom_to_top, R.anim.from_bottom_to_top_exit);
-
+              Toast.makeText(getApplicationContext(), "У розробці...", Toast.LENGTH_SHORT).show();
             }
         });
     }
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.from_top_to_bottom, R.anim.from_top_to_bottom_exit);
+        overridePendingTransition(R.anim.from_top_to_bottom_exit, R.anim.from_top_to_bottom);
     }
 }
